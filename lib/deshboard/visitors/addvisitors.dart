@@ -55,7 +55,7 @@ class _AddvisitorsState extends State<Addvisitors> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: Get.height / 60),
               child: SingleChildScrollView(
-                physics:BouncingScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,

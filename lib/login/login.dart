@@ -4,6 +4,8 @@ import 'package:sbc/login/forgotpass.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/login/register.dart';
 import '../aws.dart';
+import '../units/api.dart';
+import '../units/storage.dart';
 import '../units/validater.dart';
 
 class login extends StatefulWidget {
@@ -16,7 +18,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   @override
   final amplify = Amplify();
-
+  bool loding = false;
   TextEditingController emailcontroller = new TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
   void initState() {
@@ -36,156 +38,167 @@ class _loginState extends State<login> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: Get.height / 20,
-              ),
-              Center(
-                child: Image.asset(
-                  "assets/image/splayscreen.png",
-                  scale: 1.5,
-                ),
-              ),
-              SizedBox(
-                height: Get.height / 20,
-              ),
-              Text(
-                "Welcome",
-                style: TextStyle(
-                    fontFamily: "popins", color: Colors.blue, fontSize: 24),
-              ),
-              SizedBox(
-                height: Get.height / 20,
-              ),
-              TextFormField(
-                controller: emailcontroller,
-                style: TextStyle(
-                  fontFamily: "popins",
-                ),
-                // controller: code,
-                validator: (value) =>
-                    !validateEmail(value!) ? "Email is Invalid" : null,
-                autofocus: false,
-                decoration: buildInputDecoration(
-                  hintText: "Email",
-                  lbltext: "Email",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                controller: passwordcontroller,
-                style: TextStyle(
-                  fontFamily: "popins",
-                ),
-                // controller: code,
-                autofocus: false,
-                validator: (value) =>
-                    value!.isEmpty ? "Password is invalid" : null,
-                decoration: buildInputDecoration(
-                  hintText: "Password",
-                  lbltext: "Password",
-                  // prifix: Image.asset(
-                  //   'asstes/image/Lock.png',
-                  //   scale: 2.5,
-                  // ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Get.to(() => forget());
-                    },
-                    child: Text(
-                      "Forgot your password?",
+      body: !loding
+          ? Padding(
+              padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: Get.height / 20,
+                    ),
+                    Center(
+                      child: Image.asset(
+                        "assets/image/splayscreen.png",
+                        scale: 1.5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.height / 20,
+                    ),
+                    Text(
+                      "Welcome",
                       style: TextStyle(
                           fontFamily: "popins",
-                          fontSize: 14,
-                          color: Colors.blue),
+                          color: Colors.blue,
+                          fontSize: 24),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              InkWell(
-                onTap: () {
-                  setState(() {});
-                  // ApiWrapper.showToastMessage("somil vekariya");
-                  print('------------------------');
-                  print('------------------------');
-                  loginapi(emailcontroller.text, passwordcontroller.text);
-                  Get.off(() => const home());
-                },
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: Get.width / 40,
-                      ),
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontFamily: "popins"),
-                      ),
-                    ],
-                  ),
-                  height: Get.height / 15,
-                  width: Get.width / 1.8,
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(40)),
-                ),
-              ),
-              SizedBox(
-                height: Get.height / 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account yet?",
-                    style: TextStyle(
-                      fontFamily: "popins",
-                      fontSize: 14,
+                    SizedBox(
+                      height: Get.height / 20,
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.to(() => register());
-                    },
-                    child: Text(
-                      "Register",
+                    TextFormField(
+                      controller: emailcontroller,
                       style: TextStyle(
                         fontFamily: "popins",
-                        fontSize: 14,
-                        color: Colors.blue,
+                      ),
+                      // controller: code,
+                      validator: (value) =>
+                          !validateEmail(value!) ? "Email is Invalid" : null,
+                      autofocus: false,
+                      decoration: buildInputDecoration(
+                        hintText: "Email",
+                        lbltext: "Email",
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: passwordcontroller,
+                      style: TextStyle(
+                        fontFamily: "popins",
+                      ),
+                      // controller: code,
+                      autofocus: false,
+                      validator: (value) =>
+                          value!.isEmpty ? "Password is invalid" : null,
+                      decoration: buildInputDecoration(
+                        hintText: "Password",
+                        lbltext: "Password",
+                        // prifix: Image.asset(
+                        //   'asstes/image/Lock.png',
+                        //   scale: 2.5,
+                        // ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => forget());
+                          },
+                          child: Text(
+                            "Forgot your password?",
+                            style: TextStyle(
+                                fontFamily: "popins",
+                                fontSize: 14,
+                                color: Colors.blue),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {});
+                        loding = true;
+                        getUser();
+                        // ApiWrapper.showToastMessage("somil vekariya");
+                        print('------------------------');
+                        print('------------------------');
+                        // loginapi(emailcontroller.text, passwordcontroller.text);
+                      },
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: Get.width / 40,
+                            ),
+                            Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: "popins"),
+                            ),
+                          ],
+                        ),
+                        height: Get.height / 15,
+                        width: Get.width / 1.8,
+                        decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(40)),
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.height / 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account yet?",
+                          style: TextStyle(
+                            fontFamily: "popins",
+                            fontSize: 14,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => register());
+                          },
+                          child: Text(
+                            "Register",
+                            style: TextStyle(
+                              fontFamily: "popins",
+                              fontSize: 14,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            )
+          : Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.transparent,
+                value: null,
+                strokeWidth: 3.0,
+              ),
+            ),
     );
   }
 
@@ -216,6 +229,24 @@ class _loginState extends State<login> {
       filled: true,
       fillColor: Colors.grey.withOpacity(0.1),
     );
+  }
+
+  getUser() {
+    print("<<<<<<<--------------   USER   --------------->>>>>>");
+    ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
+      if ((val != null) && (val.isNotEmpty)) {
+        print("    USER----->>>>$val");
+        save('User', val);
+        setState(() {});
+        loding = false;
+        loding == false ? Get.to(() => home()) : "";
+        print("------------>>>>>>>>>>>${getdata.read('User')}");
+      } else {
+        loding = false;
+        ApiWrapper.showToastMessage('Something went wrong!!');
+        print('XXXXXXXXXXXX');
+      }
+    });
   }
 
   static Amplify() {}

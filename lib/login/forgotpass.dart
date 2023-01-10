@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import 'otp.dart';
 
-
 class forget extends StatefulWidget {
   const forget({Key? key}) : super(key: key);
 
@@ -51,7 +50,7 @@ class _forgetState extends State<forget> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
         child: SingleChildScrollView(
-          physics:BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

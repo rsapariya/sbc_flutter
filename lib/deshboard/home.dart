@@ -9,13 +9,10 @@ import 'package:sbc/deshboard/tabbar/miting.dart';
 import 'package:sbc/deshboard/tabbar/stats.dart';
 import 'package:sbc/deshboard/tabbar/summery.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
-
 import '../units/api.dart';
 import '../units/storage.dart';
 import 'business/request.dart';
-
 import 'members/filtermember.dart';
-import 'members/memberlist.dart';
 
 List getbuss = [];
 List recivebuss = [];
@@ -113,8 +110,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         backgroundColor: Colors.black,
                         backgroundImage: NetworkImage(
                             "https://sbc.sgcci.in/uploads/profile/" +
-                                    getdata.read('User')['profile'] ??
-                                "https://cdn-icons-png.flaticon.com/512/149/149071.png"),
+                                    getdata.read('User')['profile'] ??""),
                         radius: 30,
                       ),
                       SizedBox(
