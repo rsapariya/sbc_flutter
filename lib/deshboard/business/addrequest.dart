@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/deshboard/business/request.dart';
@@ -20,7 +21,6 @@ class Addrequest extends StatefulWidget {
 class _AddrequestState extends State<Addrequest> {
   TextEditingController city = TextEditingController();
 
-  @override
   bool loding = false;
   List _foundUsers = [];
   var bussiness = "New";
@@ -32,12 +32,13 @@ class _AddrequestState extends State<Addrequest> {
   TextEditingController date = TextEditingController();
   TextEditingController remark = TextEditingController();
 
+  @override
   void initState() {
     _foundUsers = Userss;
     super.initState();
-
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -46,14 +47,16 @@ class _AddrequestState extends State<Addrequest> {
         leading: InkWell(
             onTap: () {
               setState(() {
-                Get.off(() => bussnesss());
+                Get.off(() => const bussnesss());
                 loding = false;
               });
             },
-            child: Icon(Icons.arrow_back)),
+            child: const Icon(Icons.arrow_back)),
         title: Text(
           "Add Business",
-          style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontFamily: "popins")),
+          style: GoogleFonts.poppins(
+              textStyle:
+                  const TextStyle(color: Colors.white, fontFamily: "popins")),
         ),
       ),
       body: !loding
@@ -61,16 +64,16 @@ class _AddrequestState extends State<Addrequest> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: Get.height / 60),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
-                      style:GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(),
                       // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
@@ -79,7 +82,7 @@ class _AddrequestState extends State<Addrequest> {
                       decoration: buildInputDecoration(hintText: "Members"),
                     ),
                     list == true
-                        ? Container(
+                        ? SizedBox(
                             height: Get.height / 1.5,
                             child: ListView.builder(
                               // controller: controller,
@@ -99,21 +102,19 @@ class _AddrequestState extends State<Addrequest> {
                                           _foundUsers[index]['id'].toString();
                                       list = false;
                                     },
-                                    child: Container(
-                                      child: SizedBox(
-                                        width: Get.width / 2,
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: Get.height / 60),
-                                          child: Text(
-                                            _foundUsers[index]['username'] ??
-                                                "",
-                                            overflow: TextOverflow.ellipsis,
-                                            style:GoogleFonts.poppins(textStyle: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16,
-                                                fontFamily: 'popins')),
-                                          ),
+                                    child: SizedBox(
+                                      width: Get.width / 2,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: Get.height / 60),
+                                        child: Text(
+                                          _foundUsers[index]['username'] ?? "",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                  fontFamily: 'popins')),
                                         ),
                                       ),
                                     ),
@@ -126,13 +127,15 @@ class _AddrequestState extends State<Addrequest> {
                             ? Center(
                                 child: Text(
                                   "User Not Found",
-                                  style:GoogleFonts.poppins(textStyle:  TextStyle(color: Colors.red)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle:
+                                          const TextStyle(color: Colors.red)),
                                 ),
                               )
                             : Container(
                                 color: Colors.red,
                               ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
@@ -145,11 +148,11 @@ class _AddrequestState extends State<Addrequest> {
                         lbltext: "Amount",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
-                      style:GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(),
                       controller: date,
                       autofocus: false,
                       readOnly: true,
@@ -180,27 +183,29 @@ class _AddrequestState extends State<Addrequest> {
                       decoration: buildInputDecoration(
                           hintText: "Date",
                           lbltext: "Date",
-                          prifix: Icon(Icons.calendar_month_sharp)),
+                          prifix: const Icon(Icons.calendar_month_sharp)),
                     ),
                     Text(
                       "   yyyy-MM-dd",
-                      style: GoogleFonts.poppins(textStyle: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                          fontFamily: "popins")),
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontFamily: "popins")),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Text(
                       "Bussiness Type",
-                      style: GoogleFonts.poppins(textStyle: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontFamily: "popins")),
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16,
+                              fontFamily: "popins")),
                     ),
                     // appbutton(titel: "Request"),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -220,20 +225,22 @@ class _AddrequestState extends State<Addrequest> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "New",
-                                  style:GoogleFonts.poppins(textStyle:  TextStyle(
-                                      fontFamily: 'popins',
-                                      color: bussiness == "New"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          fontFamily: 'popins',
+                                          color: bussiness == "New"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -251,7 +258,8 @@ class _AddrequestState extends State<Addrequest> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Repeat",
                                   style: TextStyle(
@@ -264,15 +272,15 @@ class _AddrequestState extends State<Addrequest> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
-                    Text(
+                    const Text(
                       "Connection Type",
                       style: TextStyle(
                           color: Colors.blue,
@@ -280,7 +288,7 @@ class _AddrequestState extends State<Addrequest> {
                           fontFamily: "popins"),
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -300,7 +308,8 @@ class _AddrequestState extends State<Addrequest> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Inside",
                                   style: TextStyle(
@@ -313,7 +322,7 @@ class _AddrequestState extends State<Addrequest> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -331,7 +340,8 @@ class _AddrequestState extends State<Addrequest> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Outside",
                                   style: TextStyle(
@@ -344,7 +354,7 @@ class _AddrequestState extends State<Addrequest> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -362,7 +372,8 @@ class _AddrequestState extends State<Addrequest> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Tier3+",
                                   style: TextStyle(
@@ -377,12 +388,12 @@ class _AddrequestState extends State<Addrequest> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: remark,
@@ -392,7 +403,7 @@ class _AddrequestState extends State<Addrequest> {
                         lbltext: "Remark",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -423,7 +434,7 @@ class _AddrequestState extends State<Addrequest> {
                 ),
               ),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
@@ -443,16 +454,16 @@ class _AddrequestState extends State<Addrequest> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
@@ -475,10 +486,11 @@ class _AddrequestState extends State<Addrequest> {
         loding = false;
         print('OKKKKKKKKKK>>>>>>>>>>>>>>>>>>>');
 
-        loding == false ? Get.off(() => bussnesss()) : loding;
-      } else
+        loding == false ? Get.off(() => const bussnesss()) : loding;
+      } else {
         loding = false;
-      Get.off(() => bussnesss());
+      }
+      Get.off(() => const bussnesss());
     });
   }
 

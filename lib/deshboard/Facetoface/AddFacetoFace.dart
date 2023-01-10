@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/units/customwidget.dart';
@@ -8,8 +8,6 @@ import '../../units/api.dart';
 import 'package:http/http.dart' as http;
 import '../home.dart';
 import 'facetoface.dart';
-
-
 
 class addfacetoface extends StatefulWidget {
   final formkey = GlobalKey<FormState>();
@@ -34,11 +32,13 @@ class _addfacetofaceState extends State<addfacetoface> {
   TextEditingController date = TextEditingController();
   TextEditingController convertion = TextEditingController();
 
+  @override
   void initState() {
     _foundUsers = Userss;
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -50,10 +50,12 @@ class _addfacetofaceState extends State<addfacetoface> {
                 Get.back();
               });
             },
-            child: Icon(Icons.arrow_back)),
-        title:  Text(
+            child: const Icon(Icons.arrow_back)),
+        title: Text(
           "Add Face to Face",
-          style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontFamily: "popins")),
+          style: GoogleFonts.poppins(
+              textStyle:
+                  const TextStyle(color: Colors.white, fontFamily: "popins")),
         ),
       ),
       body: !Loding
@@ -61,7 +63,7 @@ class _addfacetofaceState extends State<addfacetoface> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: Get.height / 60),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -70,7 +72,8 @@ class _addfacetofaceState extends State<addfacetoface> {
                       height: 15,
                     ),
                     TextFormField(
-                      style:GoogleFonts.poppins(textStyle:  TextStyle(
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
                         fontFamily: "popins",
                       )),
                       // controller: code,
@@ -92,29 +95,29 @@ class _addfacetofaceState extends State<addfacetoface> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
-                                      setState(() {});
+                                      print(list);
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();
                                       userid =
                                           _foundUsers[index]['id'].toString();
+
                                       list = false;
+                                      setState(() {});
+                                      print(list);
                                     },
-                                    child: Container(
-                                      child: SizedBox(
-                                        width: Get.width / 2,
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: Get.height / 60),
-                                          child: Text(
-                                            _foundUsers[index]['username'] ??
-                                                "",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16,
-                                                fontFamily: 'popins'),
-                                          ),
+                                    child: SizedBox(
+                                      width: Get.width / 2,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: Get.height / 60),
+                                        child: Text(
+                                          _foundUsers[index]['username'] ?? "",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'popins'),
                                         ),
                                       ),
                                     ),
@@ -138,11 +141,11 @@ class _addfacetofaceState extends State<addfacetoface> {
                         lbltext: "Person Name",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: date,
@@ -156,12 +159,14 @@ class _addfacetofaceState extends State<addfacetoface> {
                                 2000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
-                          print(
-                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                          if (kDebugMode) {
+                            print(pickedDate);
+                          } //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(
-                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                          if (kDebugMode) {
+                            print(formattedDate);
+                          } //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
                           setState(() {
@@ -169,30 +174,32 @@ class _addfacetofaceState extends State<addfacetoface> {
                                 formattedDate; //set output date to TextField value.
                           });
                         } else {
-                          print("Date is not selected");
+                          if (kDebugMode) {
+                            print("Date is not selected");
+                          }
                         }
                       },
                       decoration: buildInputDecoration(
                           hintText: "Date",
                           lbltext: "Date",
-                          prifix: Icon(Icons.calendar_month_sharp)),
+                          prifix: const Icon(Icons.calendar_month_sharp)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text(
+                    const Text(
                       "   yyyy-MM-dd",
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
                           fontFamily: "popins"),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: convertion,
@@ -202,7 +209,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                         lbltext: "Remark",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -233,7 +240,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                 ),
               ),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
@@ -253,16 +260,16 @@ class _addfacetofaceState extends State<addfacetoface> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
@@ -294,14 +301,14 @@ class _addfacetofaceState extends State<addfacetoface> {
       setState(() {
         Loding = false;
       });
-      Get.off(() => Facetoface());
+      Get.off(() => const Facetoface());
       ApiWrapper.showToastMessage("Add Successfully");
 
       print(await response.stream.bytesToString());
     } else {
       setState(() {
         Loding = false;
-        Get.off(() => Facetoface());
+        Get.off(() => const Facetoface());
       });
 
       ApiWrapper.showToastMessage("Something Went Wrong!!");
@@ -326,7 +333,7 @@ class _addfacetofaceState extends State<addfacetoface> {
           .toList();
       // we use the toLowerCase() method to make it case-insensitive
     }
-    results.isEmpty ? list = false : _foundUsers = results;
     setState(() {});
+    results.isEmpty ? list = false : _foundUsers = results;
   }
 }

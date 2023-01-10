@@ -1,3 +1,6 @@
+// ignore_for_file: unnecessary_import, camel_case_types, non_constant_identifier_names
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,7 +21,6 @@ class bussnesss extends StatefulWidget {
 
 class _bussnesssState extends State<bussnesss>
     with SingleTickerProviderStateMixin {
-  @override
   late TabController _tabController;
   @override
   void initState() {
@@ -27,14 +29,15 @@ class _bussnesssState extends State<bussnesss>
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: Text("Business"),
+        title: const Text("Business"),
       ),
-      drawer: Drower(),
+      drawer: const Drower(),
       body: Column(
         children: [
           Padding(
@@ -56,7 +59,7 @@ class _bussnesssState extends State<bussnesss>
                   unselectedLabelColor: Colors.black,
                   indicatorColor: Colors.blue,
                   controller: _tabController,
-                  indicatorPadding: EdgeInsets.all(4),
+                  indicatorPadding: const EdgeInsets.all(4),
                   indicator: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(40)),
@@ -75,7 +78,7 @@ class _bussnesssState extends State<bussnesss>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [Recieved(), Sent()],
+              children: const [Recieved(), Sent()],
             ),
           ),
         ],
@@ -84,13 +87,19 @@ class _bussnesssState extends State<bussnesss>
   }
 
   catapi() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    if (kDebugMode) {
+      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    }
 
     ApiWrapper.dataGet(AppUrl.cetagory).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
+        if (kDebugMode) {
+          print("----------->>>>$val");
+        }
         val.forEach((e) {
-          print(e);
+          if (kDebugMode) {
+            print(e);
+          }
           setState(() {});
         });
         // print("Catagory----->>>>$cat");
@@ -99,7 +108,9 @@ class _bussnesssState extends State<bussnesss>
   }
 
   GetUSers() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    if (kDebugMode) {
+      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    }
 
     ApiWrapper.dataGet(AppUrl.getusers).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
@@ -108,11 +119,15 @@ class _bussnesssState extends State<bussnesss>
         // print("----------->>>>$val");
         val.forEach((e) {
           Users.add(e['username']);
-          print(">>>$Users");
+          if (kDebugMode) {
+            print(">>>$Users");
+          }
         });
         val.forEach((e) {
           Usersid.add(e['id']);
-          print(Usersid);
+          if (kDebugMode) {
+            print(Usersid);
+          }
         });
         setState(() {});
         // print("~~~~~~~~~~~~~~~~~>>>$Usersid");

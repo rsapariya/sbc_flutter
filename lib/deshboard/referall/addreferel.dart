@@ -8,7 +8,6 @@ import '../../units/api.dart';
 import '../business/request.dart';
 import '../home.dart';
 import 'package:http/http.dart' as http;
-
 import 'Reffrel.dart';
 
 bool lodiing = false;
@@ -36,7 +35,7 @@ class _addrefrelState extends State<addrefrel> {
 
   void initState() {
     super.initState();
-    _foundUsers = Userss;
+    // _foundUsers = Userss;
   }
 
   bool list = false;
@@ -57,7 +56,9 @@ class _addrefrelState extends State<addrefrel> {
         title: Text(
           "Add Referral",
           style: GoogleFonts.poppins(
-              textStyle: TextStyle(color: Colors.white, )),
+              textStyle: TextStyle(
+            color: Colors.white,
+          )),
         ),
       ),
       body: !lodiing
@@ -83,6 +84,7 @@ class _addrefrelState extends State<addrefrel> {
                       decoration: buildInputDecoration(hintText: "Members"),
                     ),
                     list == true
+                        // _foundUsers.isNotEmpty
                         ? Container(
                             height: Get.height / 1.2,
                             child: ListView.builder(
@@ -94,13 +96,14 @@ class _addrefrelState extends State<addrefrel> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
-                                      setState(() {});
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();
                                       userid =
                                           _foundUsers[index]['id'].toString();
                                       list = false;
+                                      _foundUsers.clear();
+                                      setState(() {});
                                     },
                                     child: Container(
                                       child: SizedBox(
@@ -114,9 +117,9 @@ class _addrefrelState extends State<addrefrel> {
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
                                                 textStyle: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 16,
-                                                    )),
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                            )),
                                           ),
                                         ),
                                       ),
@@ -160,9 +163,9 @@ class _addrefrelState extends State<addrefrel> {
                       "Priority",
                       style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                              )),
+                        color: Colors.blue,
+                        fontSize: 16,
+                      )),
                     ),
                     // appbutton(titel: "Request"),
 
@@ -192,7 +195,6 @@ class _addrefrelState extends State<addrefrel> {
                                   "Cold",
                                   style: GoogleFonts.poppins(
                                       textStyle: TextStyle(
-
                                           color: priority == "Cold"
                                               ? Colors.white
                                               : Colors.blue)),
@@ -309,9 +311,9 @@ class _addrefrelState extends State<addrefrel> {
                       "   yyyy-MM-dd",
                       style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                              )),
+                        color: Colors.grey,
+                        fontSize: 12,
+                      )),
                     ),
                     SizedBox(
                       height: 15,
@@ -378,10 +380,8 @@ class _addrefrelState extends State<addrefrel> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: GoogleFonts.poppins(
-          textStyle: TextStyle( fontSize: 14)),
-      labelStyle: GoogleFonts.poppins(
-          textStyle: TextStyle(fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
@@ -460,6 +460,8 @@ class _addrefrelState extends State<addrefrel> {
       list = true;
     });
     if (enteredKeyword.isEmpty) {
+      // _foundUsers.clear();
+
       // if the search field is empty or only contains white-space, we'll display all users
       // results = Userss.cast<Map<String, dynamic>>();
     } else {
