@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/login/forgotpass.dart';
-import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/login/register.dart';
-import '../aws.dart';
-
+import '../units/awsregister.dart';
 import '../units/validater.dart';
+
+bool Login = false;
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -16,7 +16,6 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
   @override
-  final amplify = Amplify();
   bool loding = false;
   TextEditingController emailcontroller = new TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
@@ -129,7 +128,15 @@ class _loginState extends State<login> {
                     InkWell(
                       onTap: () {
                         setState(() {});
-                        Get.to(() => home());
+                        // Get.to(() => home());
+
+                        login(emailcontroller.text, passwordcontroller.text);
+                        // if (Login == true) {
+                        //   Get.to(() => home());
+                        // } else {
+                        //   ApiWrapper.showToastMessage(
+                        //       'Please Enter Valid Value??');
+                        // }
                         // loding = true;
                         // getUser();
                         // ApiWrapper.showToastMessage("somil vekariya");
@@ -249,8 +256,6 @@ class _loginState extends State<login> {
   //   });
   // }
 
-  static Amplify() {}
-
-  loginapi(String email, String password) =>
-      Serveices().createInitialRecord(email, password);
+  login(String email, String password) =>
+      AWSServices().createInitialRecord(email.toString(), password.toString());
 }

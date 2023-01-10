@@ -1,75 +1,48 @@
-// import 'package:flutter/material.dart';
-//
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({Key? key, required this.title}) : super(key: key);
-//
-//   final String title;
-//
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-//
-// class _MyHomePageState extends State<MyHomePage> {
-//   int iconIndex = 0;
-//
-//   List iconName = <String>['icon1', 'icon2', 'icon3'];
-//   List imagelist = <String>['icon1', 'icon2', 'icon3'];
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       // appBar: buildAppBar(appBarTitle: widget.title),
-//       body: Padding(
-//           padding: EdgeInsets.all(10),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               buildIconTile(0, 'red'),
-//               buildIconTile(1, 'dark'),
-//               buildIconTile(2, 'blue'),
-//               // HeightSpacer(myHeight: kSpacing),
-//
-//               TextButton(onPressed: (){changeAppIcon();}, child: Text("set as app icon"))
-//             ],
-//           )),
-//     );
-//   }
-//
-//   Widget buildIconTile(int index, String themeTxt) => Padding(
-//         padding: EdgeInsets.all(10),
-//         child: GestureDetector(
-//           onTap: () => setState(() => iconIndex = index),
-//           child: ListTile(
-//               contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
-//               leading: Image.asset(
-//                 imagelist[index],
-//                 width: 45,
-//                 height: 45,
-//               ),
-//               title: Text(themeTxt, style: const TextStyle(fontSize: 25)),
-//               trailing: iconIndex == index
-//                   ? const Icon(
-//                       Icons.check_circle_rounded,
-//                       color: Colors.green,
-//                       size: 30,
-//                     )
-//                   : Icon(
-//                       Icons.circle_outlined,
-//                       color: Colors.grey.withOpacity(0.5),
-//                       size: 30,
-//                     )),
-//         ),
-//       );
-//   changeAppIcon() async {
-//     try {
-//       if (await FlutterDynamicIcon.supportsAlternateIcons) {
-//         await FlutterDynamicIcon.setAlternateIconName(iconName[iconIndex]);
-//         debugPrint("App icon change successful");
-//         return;
-//       }
-//     } catch (e) {
-//       debugPrint("Exception: ${e.toString()}");
-//     }
-//     debugPrint("Failed to change app icon ");
-//
-// }}
+import 'package:amazon_cognito_identity_dart_2/cognito.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:sbc/deshboard/home.dart';
+
+import '../login/login.dart';
+
+class AWSServices {
+  final userPool = CognitoUserPool(
+      "ap-south-1_sibAO5sKY", "292k0u072s6v0i4esbefrfogoq",
+      clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
+
+  Future createInitialRecord(email, password) async {
+    debugPrint('Authenticating User... ${userPool.toString()}');
+    final cognitoUser = CognitoUser(email, userPool,
+        clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
+    final authDetails = AuthenticationDetails(
+      username: email,
+      password: password,
+    );
+    CognitoUserSession? session;
+    try {
+      session = await cognitoUser.authenticateUser(authDetails);
+      debugPrint('Login Success...');
+      Login = true;
+      Get.to(() => home());
+    } on CognitoUserNewPasswordRequiredException catch (e) {
+      debugPrint('CognitoUserNewPasswordRequiredException $e');
+    } on CognitoUserMfaRequiredException catch (e) {
+      debugPrint('CognitoUserMfaRequiredException $e');
+    } on CognitoUserSelectMfaTypeException catch (e) {
+      debugPrint('CognitoUserMfaRequiredException $e');
+    } on CognitoUserMfaSetupException catch (e) {
+      debugPrint('CognitoUserMfaSetupException $e');
+    } on CognitoUserTotpRequiredException catch (e) {
+      debugPrint('CognitoUserTotpRequiredException $e');
+    } on CognitoUserCustomChallengeException catch (e) {
+      debugPrint('CognitoUserCustomChallengeException $e');
+    } on CognitoUserConfirmationNecessaryException catch (e) {
+      debugPrint('CognitoUserConfirmationNecessaryException $e');
+    } on CognitoClientException catch (e) {
+      debugPrint('CognitoClientException ---->>>$e');
+    } catch (e) {
+      print(e);
+    }
+  }
+}

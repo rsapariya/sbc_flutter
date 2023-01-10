@@ -7,8 +7,8 @@ import 'package:sbc/splaysh.dart';
 import 'package:sbc/units/color.dart';
 
 void main() async {
-  await dotenv.load();
   await GetStorage.init();
+  await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(provider());
 }
