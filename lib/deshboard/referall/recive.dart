@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../units/storage.dart';
 import 'Reffrel.dart';
@@ -34,8 +35,8 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
             ? Center(
                 child: Text(
                   "Requests Not Found",
-                  style: TextStyle(
-                      color: Colors.red, fontSize: 18, fontFamily: "popinns"),
+                  style: GoogleFonts.poppins(textStyle: TextStyle(
+                      color: Colors.red, fontSize: 18,)),
                 ),
               )
             : SingleChildScrollView(
@@ -48,7 +49,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                     //     height: Get.height / 14,
                     //     child: TextFormField(
                     //       style: TextStyle(
-                    //         fontFamily: "popins",
+                    //         ,
                     //       ),
                     //       // controller: code,
                     //       autofocus: false,
@@ -85,17 +86,17 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                                     children: [
                                       Text(
                                         Recivereffrel[index]['person_name'],
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle:  TextStyle(
                                             color: Colors.black,
                                             fontSize: 18,
-                                            fontFamily: "popins"),
+                                            )),
                                       ),
                                       Text(
                                         Recivereffrel[index]['ref_date'],
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            )),
                                       ),
                                     ],
                                   ),
@@ -134,8 +135,8 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      labelStyle:GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
@@ -164,7 +165,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
             children: [
               Text(
                 getdata.read('details')["person_name"],
-                style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.black, )),
               ),
               IconButton(
                   onPressed: () {
@@ -186,17 +187,17 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                 children: [
                   Text(
                     "Remarks",
-                    style: TextStyle(
-                        color: Colors.grey, fontSize: 14, fontFamily: "popins"),
+                    style:GoogleFonts.poppins(textStyle:  TextStyle(
+                        color: Colors.grey, fontSize: 14, )),
                   ),
                   SizedBox(
                     width: double.infinity,
                     child: Text(
                       getdata.read('details')["remarks"],
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(textStyle: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
-                          fontFamily: "popins"),
+                          )),
                     ),
                   ),
                 ],
@@ -206,17 +207,17 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                 children: [
                   Text(
                     "Contact",
-                    style: TextStyle(
-                        color: Colors.grey, fontSize: 14, fontFamily: "popins"),
+                    style: GoogleFonts.poppins(textStyle: TextStyle(
+                        color: Colors.grey, fontSize: 14, )),
                   ),
                   Row(
                     children: [
                       Text(
                         getdata.read('details')["person_contact"],
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(textStyle: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
-                            fontFamily: "popins"),
+                            )),
                       ),
                       Spacer(),
                       InkWell(

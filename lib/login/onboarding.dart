@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'login.dart';
 
@@ -65,11 +66,9 @@ class _BoardingPageState extends State<BoardingPage> {
                         child: Text(
                           slide.heading,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              // overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                              fontFamily: "popins",
-                              fontSize: 26),
+                          style: GoogleFonts.poppins(
+                              textStyle:
+                                  TextStyle(color: Colors.black, fontSize: 26)),
                         ),
                       ),
                       SizedBox(

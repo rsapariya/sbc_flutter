@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -44,7 +45,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                 Get.back();
               });
             },
-            child: Icon(Icons.arrow_back)),
+            child: const Icon(Icons.arrow_back)),
         title: const Text(
           "Add Visitors",
           style: TextStyle(color: Colors.white, fontFamily: "popins"),
@@ -55,7 +56,7 @@ class _AddvisitorsState extends State<Addvisitors> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: Get.height / 60),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +65,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: visitorname,
@@ -74,7 +75,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                         lbltext: "Visitors Name.",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
@@ -90,7 +91,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: business,
@@ -104,7 +105,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: phone,
@@ -115,10 +116,10 @@ class _AddvisitorsState extends State<Addvisitors> {
                         lbltext: "Phone No. ",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
-                    Text(
+                    const Text(
                       "Is SGCCI Member ? ",
                       style: TextStyle(
                           color: Colors.blue,
@@ -126,7 +127,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                           fontFamily: "popins"),
                     ),
                     // appbutton(titel: "Request"),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -146,7 +147,8 @@ class _AddvisitorsState extends State<Addvisitors> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Yes",
                                   style: TextStyle(
@@ -159,7 +161,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -177,7 +179,8 @@ class _AddvisitorsState extends State<Addvisitors> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "No",
                                   style: TextStyle(
@@ -192,12 +195,12 @@ class _AddvisitorsState extends State<Addvisitors> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popins",
                       ),
                       controller: description,
@@ -207,7 +210,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                         lbltext: "Description",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -232,7 +235,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                 ),
               ),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
@@ -252,16 +255,16 @@ class _AddvisitorsState extends State<Addvisitors> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
@@ -292,14 +295,16 @@ class _AddvisitorsState extends State<Addvisitors> {
     if (response.statusCode == 200) {
       Loding = false;
       setState(() {});
-      Get.off(() => Visitors());
+      Get.off(() => const Visitors());
       ApiWrapper.showToastMessage("Visitor Add Successfully");
       print(await response.stream.bytesToString());
     } else {
       Loding = false;
       setState(() {});
       ApiWrapper.showToastMessage("Something Went Wrong!!");
-      print(response.reasonPhrase);
+      if (kDebugMode) {
+        print(response.reasonPhrase);
+      }
     }
   }
 
@@ -309,7 +314,7 @@ class _AddvisitorsState extends State<Addvisitors> {
         alignedDropdown: true,
         child: DropdownButton<String>(
           isDense: true,
-          hint: new Text("Select Filled"),
+          hint: const Text("Select Filled"),
           value: _selected,
           onChanged: (String? newValue) {
             setState(() {
@@ -318,7 +323,7 @@ class _AddvisitorsState extends State<Addvisitors> {
             print(_selected);
           },
           items: _myJson.map((Map map) {
-            return new DropdownMenuItem<String>(
+            return DropdownMenuItem<String>(
               value: map["ev_id"].toString(),
               // value: _mySelection,
               child: Row(
@@ -328,7 +333,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                   //   width: 25,
                   // ),
                   Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       child: Text(map["ev_title"])),
                 ],
               ),

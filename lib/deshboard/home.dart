@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:sbc/deshboard/Profile.dart';
 import 'package:sbc/deshboard/attendance.dart';
 import 'package:sbc/deshboard/Facetoface/facetoface.dart';
@@ -32,8 +33,10 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   @override
   List screens = [summery(), mitting(), states()];
   late TabController _tabController;
+  bool loding = true;
   @override
   void initState() {
+    homeapi();
     _tabController = TabController(vsync: this, length: 3);
     getbiss();
     recibiss();
@@ -41,7 +44,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
     getevents();
     getUser();
     getallusers();
-    homeapi();
+
     super.initState();
   }
 
@@ -75,7 +78,9 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   Get.to(() => Profilepage());
                 } else if (menu == "Change Password") {
                 } else if (menu == "Sign Out") {
-                } else if (menu == "Rate Us") {}
+                } else if (menu == "Rate Us") {
+                  LaunchReview.launch(androidAppId: "com.sgcci.sbc");
+                }
               },
             )
           ],
@@ -85,215 +90,249 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontFamily: "popins"),
           ),
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Get.width / 30, vertical: Get.height / 80),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          spreadRadius: 2,
-                          color: Colors.grey.withOpacity(0.1),
-                          blurRadius: 4)
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Get.width / 20, vertical: Get.height / 80),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.black,
-                        backgroundImage: NetworkImage(
-                            "https://sbc.sgcci.in/uploads/profile/" +
-                                    getdata.read('User')['profile'] ??
-                                "llll"),
-                        radius: 30,
+        body: !loding
+            ? Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Get.width / 30, vertical: Get.height / 80),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                color: Colors.grey.withOpacity(0.1),
+                                blurRadius: 4)
+                          ]),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Get.width / 20,
+                            vertical: Get.height / 80),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.black,
+                              backgroundImage: NetworkImage(
+                                  "https://sbc.sgcci.in/uploads/profile/" +
+                                      getdata.read('User')['profile']),
+                              radius: 30,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  getdata.read('User')['username'] ?? "",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins"),
+                                ),
+                                Text(
+                                  "Status : ${getdata.read('User')['status'] ?? ""}",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins"),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            getdata.read('User')['username'] ?? "",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins"),
-                          ),
-                          Text(
-                            "Status : ${getdata.read('User')['status'] ?? ""}",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins"),
-                          )
-                        ],
-                      )
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        spreadRadius: 2,
-                        color: Colors.grey.withOpacity(0.1),
-                        blurRadius: 4),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              spreadRadius: 2,
+                              color: Colors.grey.withOpacity(0.1),
+                              blurRadius: 4),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Get.width / 20,
+                            vertical: Get.width / 40),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Next Meeting Date",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins"),
+                                ),
+                                Text(
+                                  getdata.read("dashboard")['next_event']
+                                          ['date'] ??
+                                      "",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins Light"),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Visitor",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins"),
+                                ),
+                                Text(
+                                  getdata.read("dashboard")['next_event']
+                                          ['visitors'] ??
+                                      "",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins Light"),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Divider(),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Speakers",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins"),
+                                ),
+                                Text(
+                                  getdata.read("dashboard")['next_event']
+                                          ['speakers'] ??
+                                      "",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: "popins Light"),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Get.width / 30, vertical: Get.height / 80),
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              spreadRadius: 2,
+                              color: Colors.grey.withOpacity(0.1),
+                              blurRadius: 4)
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: TabBar(
+                          unselectedLabelColor: Colors.black,
+                          indicatorColor: Colors.blue,
+                          controller: _tabController,
+                          indicatorPadding: EdgeInsets.all(4),
+                          indicator: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(40)),
+                          tabs: [
+                            Text(
+                              'Summary',
+                              style: TextStyle(fontFamily: 'popins'),
+                            ),
+                            Text(
+                              'All time',
+                              style: TextStyle(fontFamily: 'popins'),
+                            ),
+                            Text(
+                              '12 Month',
+                              style: TextStyle(fontFamily: 'popins'),
+                            ),
+                          ]),
+                    ),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [summery(), mitting(), states()],
+                    ),
+                  )
+                ],
+              )
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Skeltel(
+                      height: Get.height / 15,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Skeltel(
+                      height: Get.height / 8,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Skeltel(
+                      height: Get.height / 15,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Skeltel(
+                      height: Get.height / 3,
+                    ),
                   ],
                 ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Get.width / 20, vertical: Get.width / 40),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Next Meeting Date",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins"),
-                          ),
-                          Text(
-                            getdata.read("dashboard")['next_event']['date'] ??
-                                "",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins Light"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Divider(),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Visitor",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins"),
-                          ),
-                          Text(
-                            getdata.read("dashboard")['next_event']
-                                    ['visitors'] ??
-                                "",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins Light"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Divider(),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Speakers",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins"),
-                          ),
-                          Text(
-                            getdata.read("dashboard")['next_event']
-                                    ['speakers'] ??
-                                "",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: "popins Light"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                    ],
-                  ),
-                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Get.width / 30, vertical: Get.height / 80),
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                        spreadRadius: 2,
-                        color: Colors.grey.withOpacity(0.1),
-                        blurRadius: 4)
-                  ],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: TabBar(
-                    unselectedLabelColor: Colors.black,
-                    indicatorColor: Colors.blue,
-                    controller: _tabController,
-                    indicatorPadding: EdgeInsets.all(4),
-                    indicator: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(40)),
-                    tabs: [
-                      Text(
-                        'Summary',
-                        style: TextStyle(fontFamily: 'popins'),
-                      ),
-                      Text(
-                        'All time',
-                        style: TextStyle(fontFamily: 'popins'),
-                      ),
-                      Text(
-                        '12 Month',
-                        style: TextStyle(fontFamily: 'popins'),
-                      ),
-                    ]),
-              ),
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [summery(), mitting(), states()],
-              ),
-            )
-          ],
-        ),
         drawer: Drower());
   }
 
@@ -418,20 +457,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
       }
     });
   }
-}
 
-homeapi() {
-  print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  homeapi() {
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-  ApiWrapper.dataGet(AppUrl.dashbord).then((val) {
-    if ((val != null) && (val.isNotEmpty)) {
-      save('dashboard', val);
-      save('deta', val['data']);
+    ApiWrapper.dataGet(AppUrl.dashbord).then((val) {
+      if ((val != null) && (val.isNotEmpty)) {
+        save('dashboard', val);
+        save('deta', val['data']);
 
-      print("----------->>>${getdata.read('dashboard')}");
-      print(val);
-    }
-  });
+        print("----------->>>${getdata.read('dashboard')}");
+        print(val);
+        setState(() {});
+
+        loding = false;
+      } else {
+        loding = false;
+        setState(() {});
+        ApiWrapper.showToastMessage("Something Went Wrong!!");
+      }
+    });
+  }
 }
 
 class Drower extends StatefulWidget {
@@ -598,6 +644,26 @@ class _DrowerState extends State<Drower> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Skeltel extends StatelessWidget {
+  const Skeltel({
+    Key? key,
+    this.height,
+    this.width,
+  }) : super(key: key);
+  final double? height, width;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.04),
+          borderRadius: BorderRadius.circular(16)),
     );
   }
 }

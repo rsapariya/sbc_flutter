@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:http/http.dart' as http;
-import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/deshboard/visitors/addvisitors.dart';
 
 import '../../units/api.dart';
-import '../home.dart';
-import '../home.dart';
-import '../home.dart';
-import '../home.dart';
-import '../home.dart';
 
 class Visitors extends StatefulWidget {
   const Visitors({Key? key}) : super(key: key);
@@ -47,15 +42,15 @@ class _VisitorsState extends State<Visitors> {
         centerTitle: true,
         title: Text(
           'Visitors',
-          style: TextStyle(fontFamily: "popins"),
+            style: GoogleFonts.poppins()
         ),
       ),
       body: visitors.isEmpty
           ? Center(
               child: Text(
-                "Visitors Not Found",
-                style: TextStyle(
-                    color: Colors.red, fontSize: 18, fontFamily: "popinns"),
+                "Visitors Not Found",style: GoogleFonts.poppins(color: Colors.red, fontSize: 18,)
+
+
               ),
             )
           : !Loding
@@ -88,10 +83,10 @@ class _VisitorsState extends State<Visitors> {
                                   ),
                                   Text(
                                     visitors[index]['ev_title'],
-                                    style: TextStyle(
+                                    style:GoogleFonts.poppins(textStyle: TextStyle(
                                         color: Colors.blue,
                                         fontSize: 18,
-                                        fontFamily: "popins"),
+                                        )) ,
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -118,17 +113,17 @@ class _VisitorsState extends State<Visitors> {
                                     children: [
                                       Text(
                                         "Name",
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            )),
                                       ),
                                       Text(
                                         visitors[index]['visitor_name'],
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            )),
                                       ),
                                     ],
                                   ),
@@ -139,17 +134,17 @@ class _VisitorsState extends State<Visitors> {
                                     children: [
                                       Text(
                                         "Date",
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            fontFamily: "popins Light")),
                                       ),
                                       Text(
                                         visitors[index]['ev_date'],
-                                        style: TextStyle(
+                                        style: GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            fontFamily: "popins")),
                                       ),
                                     ],
                                   ),
@@ -170,19 +165,19 @@ class _VisitorsState extends State<Visitors> {
                                     children: [
                                       Text(
                                         "Phone No.",
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            fontFamily: "popins Light")),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
                                         child: Text(
                                           visitors[index]["visitor_contact"],
-                                          style: TextStyle(
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins"),
+                                              fontFamily: "popins")),
                                         ),
                                       ),
                                     ],
@@ -228,7 +223,7 @@ class _VisitorsState extends State<Visitors> {
         return AlertDialog(
           title: Text(
             'Are you Sure Want to Delete Visitor ?',
-            style: TextStyle(color: Colors.black, fontFamily: "popins"),
+            style:GoogleFonts.poppins(textStyle: TextStyle(color: Colors.black, fontFamily: "popins")),
           ),
           actions: [
             TextButton(
@@ -238,7 +233,7 @@ class _VisitorsState extends State<Visitors> {
                 },
                 child: Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                  style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.black, fontFamily: "popins")),
                 )),
             TextButton(
                 onPressed: () {
@@ -250,7 +245,7 @@ class _VisitorsState extends State<Visitors> {
                 },
                 child: Text(
                   'Delete',
-                  style: TextStyle(color: Colors.red, fontFamily: "popins"),
+                  style:GoogleFonts.poppins(textStyle:  TextStyle(color: Colors.red, fontFamily: "popins")),
                 )),
           ],
         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/Facetoface/AddFacetoFace.dart';
 import '../../units/api.dart';
 import '../home.dart';
@@ -38,15 +39,15 @@ class _FacetofaceState extends State<Facetoface> {
         centerTitle: true,
         title: Text(
           'Face to Face',
-          style: TextStyle(fontFamily: 'popins'),
+          style:GoogleFonts.poppins(),
         ),
       ),
       body: Face.isEmpty
           ? Center(
               child: Text(
                 "Requests Not Found",
-                style: TextStyle(
-                    color: Colors.red, fontSize: 18, fontFamily: "popinns"),
+                style:GoogleFonts.poppins(textStyle: TextStyle(
+                    color: Colors.red, fontSize: 18, fontFamily: "popinns")),
               ),
             )
           : !Loding
@@ -79,10 +80,10 @@ class _FacetofaceState extends State<Facetoface> {
                                   ),
                                   Text(
                                     Face[index]['username'],
-                                    style: TextStyle(
+                                    style:GoogleFonts.poppins(textStyle:  TextStyle(
                                         color: Colors.blue,
                                         fontSize: 18,
-                                        fontFamily: "popins"),
+                                        fontFamily: "popins")),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -109,17 +110,17 @@ class _FacetofaceState extends State<Facetoface> {
                                     children: [
                                       Text(
                                         "Location",
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            fontFamily: "popins Light")),
                                       ),
                                       Text(
                                         Face[index]['oto_location'],
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            fontFamily: "popins")),
                                       ),
                                     ],
                                   ),
@@ -130,17 +131,17 @@ class _FacetofaceState extends State<Facetoface> {
                                     children: [
                                       Text(
                                         "Date",
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            fontFamily: "popins Light")),
                                       ),
                                       Text(
                                         Face[index]['oto_date'],
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            fontFamily: "popins")),
                                       ),
                                     ],
                                   ),
@@ -161,19 +162,19 @@ class _FacetofaceState extends State<Facetoface> {
                                     children: [
                                       Text(
                                         "Conversion",
-                                        style: TextStyle(
+                                        style:GoogleFonts.poppins(textStyle: TextStyle(
                                             color: Colors.grey,
                                             fontSize: 12,
-                                            fontFamily: "popins Light"),
+                                            fontFamily: "popins Light")),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
                                         child: Text(
                                           Face[index]["oto_conversation"],
-                                          style: TextStyle(
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins"),
+                                              fontFamily: "popins")),
                                         ),
                                       ),
                                     ],
@@ -261,7 +262,7 @@ class _FacetofaceState extends State<Facetoface> {
         return AlertDialog(
           title: Text(
             'Are you Sure Want to Delete Face to Face ?',
-            style: TextStyle(color: Colors.black, fontFamily: "popins"),
+            style: GoogleFonts.poppins(),
           ),
           actions: [
             TextButton(
@@ -271,7 +272,7 @@ class _FacetofaceState extends State<Facetoface> {
                 },
                 child: Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                  style: GoogleFonts.poppins(),
                 )),
             TextButton(
                 onPressed: () {

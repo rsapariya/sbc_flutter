@@ -100,7 +100,7 @@ class _summeryState extends State<summery> {
                               fontFamily: "popins"),
                         ),
                         Text(
-                          "₹${getdata.read('deta')[2]['amount']}",
+                          getdata.read('deta')[2]['amount'],
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,

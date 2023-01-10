@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/referall/Reffrel.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/storage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
-import '../home.dart';
+
 import 'addreferel.dart';
 
 class given extends StatefulWidget {
@@ -41,8 +42,8 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
             ? Center(
                 child: Text(
                   "Raferral Not Found",
-                  style: TextStyle(
-                      color: Colors.red, fontSize: 18, fontFamily: "popinns"),
+                  style: GoogleFonts.poppins(textStyle: TextStyle(
+                      color: Colors.red, fontSize: 18,)),
                 ),
               )
             : !Loding
@@ -57,7 +58,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                         //     height: Get.height / 14,
                         //     child: TextFormField(
                         //       style: TextStyle(
-                        //         fontFamily: "popins",
+                        //         ,
                         //       ),
                         //       // controller: code,
                         //       autofocus: false,
@@ -98,17 +99,17 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                                               Text(
                                                 Givenreffrel[index]
                                                     ['person_name'],
-                                                style: TextStyle(
+                                                style: GoogleFonts.poppins(textStyle: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 18,
-                                                    fontFamily: "popins"),
+                                                    )),
                                               ),
                                               Text(
                                                 Givenreffrel[index]["ref_date"],
-                                                style: TextStyle(
+                                                style: GoogleFonts.poppins(textStyle: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 14,
-                                                    fontFamily: "popins"),
+                                                   )),
                                               ),
                                             ],
                                           ),
@@ -169,8 +170,8 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle:GoogleFonts.poppins(textStyle: TextStyle( fontSize: 14)),
+      labelStyle:GoogleFonts.poppins(textStyle: TextStyle( fontSize: 14)),
       labelText: lbltext,
       contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
@@ -208,7 +209,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
             children: [
               Text(
                 getdata.read('details')["person_name"],
-                style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                style:GoogleFonts.poppins(),
               ),
               IconButton(
                   onPressed: () {
@@ -230,19 +231,19 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                     children: [
                       Text(
                         "Remarks",
-                        style: TextStyle(
+                        style:GoogleFonts.poppins(textStyle: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
-                            fontFamily: "popins"),
+                            )),
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: Text(
                           getdata.read('details')["remarks"],
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
-                              fontFamily: "popins"),
+                              )),
                         ),
                       ),
                     ],
@@ -252,19 +253,19 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                     children: [
                       Text(
                         "Contact",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(textStyle: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
-                            fontFamily: "popins"),
+                            )),
                       ),
                       Row(
                         children: [
                           Text(
                             getdata.read('details')["person_contact"],
-                            style: TextStyle(
+                            style:GoogleFonts.poppins(textStyle: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
-                                fontFamily: "popins"),
+                                )),
                           ),
                           Spacer(),
                           InkWell(
@@ -330,7 +331,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
         return AlertDialog(
           title: Text(
             'Are you Sure Want to Delete Raferral ?',
-            style: TextStyle(color: Colors.black, fontFamily: "popins"),
+            style: GoogleFonts.poppins(),
           ),
           actions: [
             TextButton(
@@ -340,7 +341,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                 },
                 child: Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                  style: GoogleFonts.poppins(),
                 )),
             TextButton(
                 onPressed: () {
@@ -352,7 +353,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                 },
                 child: Text(
                   'Delete',
-                  style: TextStyle(color: Colors.red, fontFamily: "popins"),
+                  style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.red, )),
                 )),
           ],
         );

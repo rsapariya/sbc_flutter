@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:sbc/splaysh.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import '../business/request.dart';
 import '../home.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import 'Reffrel.dart';
 
@@ -55,9 +54,10 @@ class _addrefrelState extends State<addrefrel> {
               });
             },
             child: Icon(Icons.arrow_back)),
-        title: const Text(
+        title: Text(
           "Add Referral",
-          style: TextStyle(color: Colors.white, fontFamily: "popins"),
+          style: GoogleFonts.poppins(
+              textStyle: TextStyle(color: Colors.white, )),
         ),
       ),
       body: !lodiing
@@ -74,9 +74,7 @@ class _addrefrelState extends State<addrefrel> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
@@ -114,10 +112,11 @@ class _addrefrelState extends State<addrefrel> {
                                             _foundUsers[index]['username'] ??
                                                 "",
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16,
-                                                fontFamily: 'popins'),
+                                            style: GoogleFonts.poppins(
+                                                textStyle: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16,
+                                                    )),
                                           ),
                                         ),
                                       ),
@@ -132,9 +131,7 @@ class _addrefrelState extends State<addrefrel> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: parson,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -146,9 +143,7 @@ class _addrefrelState extends State<addrefrel> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       keyboardType: TextInputType.phone,
                       controller: phone,
                       autofocus: false,
@@ -163,10 +158,11 @@ class _addrefrelState extends State<addrefrel> {
 
                     Text(
                       "Priority",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontFamily: "popins"),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16,
+                              )),
                     ),
                     // appbutton(titel: "Request"),
 
@@ -194,11 +190,12 @@ class _addrefrelState extends State<addrefrel> {
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Cold",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
-                                      color: priority == "Cold"
-                                          ? Colors.white
-                                          : Colors.blue),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+
+                                          color: priority == "Cold"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -225,11 +222,11 @@ class _addrefrelState extends State<addrefrel> {
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Regular",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
-                                      color: priority == "Regular"
-                                          ? Colors.white
-                                          : Colors.blue),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: priority == "Regular"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -256,11 +253,11 @@ class _addrefrelState extends State<addrefrel> {
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Hot",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
-                                      color: priority == "Hot"
-                                          ? Colors.white
-                                          : Colors.blue),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: priority == "Hot"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -272,9 +269,7 @@ class _addrefrelState extends State<addrefrel> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: date,
                       autofocus: false,
                       readOnly: true,
@@ -312,19 +307,18 @@ class _addrefrelState extends State<addrefrel> {
                     ),
                     Text(
                       "   yyyy-MM-dd",
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                          fontFamily: "popins"),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              )),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: remark,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -384,8 +378,10 @@ class _addrefrelState extends State<addrefrel> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(
+          textStyle: TextStyle( fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(
+          textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

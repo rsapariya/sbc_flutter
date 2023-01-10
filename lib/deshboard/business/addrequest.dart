@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/deshboard/business/request.dart';
 import 'package:sbc/units/customwidget.dart';
@@ -52,7 +53,7 @@ class _AddrequestState extends State<Addrequest> {
             child: Icon(Icons.arrow_back)),
         title: Text(
           "Add Business",
-          style: TextStyle(color: Colors.white, fontFamily: "popins"),
+          style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontFamily: "popins")),
         ),
       ),
       body: !loding
@@ -69,9 +70,7 @@ class _AddrequestState extends State<Addrequest> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style:GoogleFonts.poppins(),
                       // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
@@ -110,10 +109,10 @@ class _AddrequestState extends State<Addrequest> {
                                             _foundUsers[index]['username'] ??
                                                 "",
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
+                                            style:GoogleFonts.poppins(textStyle: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
-                                                fontFamily: 'popins'),
+                                                fontFamily: 'popins')),
                                           ),
                                         ),
                                       ),
@@ -127,7 +126,7 @@ class _AddrequestState extends State<Addrequest> {
                             ? Center(
                                 child: Text(
                                   "User Not Found",
-                                  style: TextStyle(color: Colors.red),
+                                  style:GoogleFonts.poppins(textStyle:  TextStyle(color: Colors.red)),
                                 ),
                               )
                             : Container(
@@ -137,9 +136,7 @@ class _AddrequestState extends State<Addrequest> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       keyboardType: TextInputType.number,
                       controller: amount,
                       autofocus: false,
@@ -152,9 +149,7 @@ class _AddrequestState extends State<Addrequest> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style:GoogleFonts.poppins(),
                       controller: date,
                       autofocus: false,
                       readOnly: true,
@@ -189,20 +184,20 @@ class _AddrequestState extends State<Addrequest> {
                     ),
                     Text(
                       "   yyyy-MM-dd",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(textStyle: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
-                          fontFamily: "popins"),
+                          fontFamily: "popins")),
                     ),
                     SizedBox(
                       height: 15,
                     ),
                     Text(
                       "Bussiness Type",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(textStyle: TextStyle(
                           color: Colors.blue,
                           fontSize: 16,
-                          fontFamily: "popins"),
+                          fontFamily: "popins")),
                     ),
                     // appbutton(titel: "Request"),
                     SizedBox(
@@ -228,11 +223,11 @@ class _AddrequestState extends State<Addrequest> {
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "New",
-                                  style: TextStyle(
+                                  style:GoogleFonts.poppins(textStyle:  TextStyle(
                                       fontFamily: 'popins',
                                       color: bussiness == "New"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/deshboard/referall/recive.dart';
 
@@ -36,7 +37,7 @@ class _RefferalState extends State<Refferal>
         centerTitle: true,
         title: Text(
           "Referral",
-          style: TextStyle(fontFamily: "popins"),
+          style: GoogleFonts.poppins(),
         ),
       ),
       drawer: Drower(),
@@ -68,11 +69,11 @@ class _RefferalState extends State<Refferal>
                   tabs: [
                     Text(
                       'Recevied',
-                      style: TextStyle(fontFamily: 'popins'),
+                      style: GoogleFonts.poppins(),
                     ),
                     Text(
                       'Given',
-                      style: TextStyle(fontFamily: 'popins'),
+                      style: GoogleFonts.poppins(),
                     ),
                   ]),
             ),

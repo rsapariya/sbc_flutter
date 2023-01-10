@@ -4,8 +4,7 @@ import 'package:sbc/login/forgotpass.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/login/register.dart';
 import '../aws.dart';
-import '../units/api.dart';
-import '../units/storage.dart';
+
 import '../units/validater.dart';
 
 class login extends StatefulWidget {
@@ -130,8 +129,9 @@ class _loginState extends State<login> {
                     InkWell(
                       onTap: () {
                         setState(() {});
-                        loding = true;
-                        getUser();
+                        Get.to(() => home());
+                        // loding = true;
+                        // getUser();
                         // ApiWrapper.showToastMessage("somil vekariya");
                         print('------------------------');
                         print('------------------------');
@@ -231,23 +231,23 @@ class _loginState extends State<login> {
     );
   }
 
-  getUser() {
-    print("<<<<<<<--------------   USER   --------------->>>>>>");
-    ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
-      if ((val != null) && (val.isNotEmpty)) {
-        print("    USER----->>>>$val");
-        save('User', val);
-        setState(() {});
-        loding = false;
-        loding == false ? Get.to(() => home()) : "";
-        print("------------>>>>>>>>>>>${getdata.read('User')}");
-      } else {
-        loding = false;
-        ApiWrapper.showToastMessage('Something went wrong!!');
-        print('XXXXXXXXXXXX');
-      }
-    });
-  }
+  // getUser() {
+  //   print("<<<<<<<--------------   USER   --------------->>>>>>");
+  //   ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
+  //     if ((val != null) && (val.isNotEmpty)) {
+  //       print("    USER----->>>>$val");
+  //       save('User', val);
+  //       setState(() {});
+  //       loding = false;
+  //       loding == false ? Get.to(() => home()) : "";
+  //       print("------------>>>>>>>>>>>${getdata.read('User')}");
+  //     } else {
+  //       loding = false;
+  //       ApiWrapper.showToastMessage('Something went wrong!!');
+  //       print('XXXXXXXXXXXX');
+  //     }
+  //   });
+  // }
 
   static Amplify() {}
 

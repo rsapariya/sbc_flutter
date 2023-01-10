@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:http/http.dart' as http;
 import '../../units/api.dart';
@@ -40,8 +41,8 @@ class _RecievedState extends State<Recieved>
             ? Center(
                 child: Text(
                   "Requests Not Found",
-                  style: TextStyle(
-                      color: Colors.red, fontSize: 18, fontFamily: "popinns"),
+                  style:GoogleFonts.poppins(textStyle: TextStyle(
+                      color: Colors.red, fontSize: 18, fontFamily: "popinns")),
                 ),
               )
             : !loding
@@ -74,10 +75,10 @@ class _RecievedState extends State<Recieved>
                                     ),
                                     Text(
                                       recivebuss[index]['username'],
-                                      style: TextStyle(
+                                      style:GoogleFonts.poppins(textStyle: TextStyle(
                                           color: Colors.blue,
                                           fontSize: 18,
-                                          fontFamily: "popins"),
+                                          fontFamily: "popins")),
                                     ),
                                     InkWell(
                                       onTap: () {
@@ -103,17 +104,17 @@ class _RecievedState extends State<Recieved>
                                       children: [
                                         Text(
                                           "Date",
-                                          style: TextStyle(
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 12,
-                                              fontFamily: "popins Light"),
+                                              fontFamily: "popins Light")),
                                         ),
                                         Text(
                                           recivebuss[index]['entry_date'],
-                                          style: TextStyle(
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins"),
+                                              fontFamily: "popins")),
                                         ),
                                       ],
                                     ),
@@ -126,17 +127,17 @@ class _RecievedState extends State<Recieved>
                                       children: [
                                         Text(
                                           "Amount",
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 12,
-                                              fontFamily: "popins Light"),
+                                              fontFamily: "popins Light")),
                                         ),
                                         Text(
                                           recivebuss[index]['amount'],
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins"),
+                                              fontFamily: "popins")),
                                         ),
                                       ],
                                     )
@@ -154,19 +155,19 @@ class _RecievedState extends State<Recieved>
                                       children: [
                                         Text(
                                           "Remark",
-                                          style: TextStyle(
+                                          style: GoogleFonts.poppins(textStyle: TextStyle(
                                               color: Colors.grey,
                                               fontSize: 12,
-                                              fontFamily: "popins Light"),
+                                              fontFamily: "popins Light")),
                                         ),
                                         SizedBox(
                                           width: Get.width / 1.2,
                                           child: Text(
                                             recivebuss[index]['remarks'],
-                                            style: TextStyle(
+                                            style: GoogleFonts.poppins(textStyle: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: "popins"),
+                                                fontFamily: "popins")),
                                           ),
                                         ),
                                       ],

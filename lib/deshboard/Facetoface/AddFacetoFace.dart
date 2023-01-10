@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
@@ -8,7 +9,7 @@ import 'package:http/http.dart' as http;
 import '../home.dart';
 import 'facetoface.dart';
 
-bool lodiing = false;
+
 
 class addfacetoface extends StatefulWidget {
   final formkey = GlobalKey<FormState>();
@@ -22,6 +23,7 @@ class _addfacetofaceState extends State<addfacetoface> {
   TextEditingController city = TextEditingController();
 
   @override
+  bool lodiing = false;
   List _foundUsers = [];
   var priority = "Cold";
   var userid = "null";
@@ -49,9 +51,9 @@ class _addfacetofaceState extends State<addfacetoface> {
               });
             },
             child: Icon(Icons.arrow_back)),
-        title: const Text(
+        title:  Text(
           "Add Face to Face",
-          style: TextStyle(color: Colors.white, fontFamily: "popins"),
+          style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white, fontFamily: "popins")),
         ),
       ),
       body: !Loding
@@ -68,9 +70,9 @@ class _addfacetofaceState extends State<addfacetoface> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
+                      style:GoogleFonts.poppins(textStyle:  TextStyle(
                         fontFamily: "popins",
-                      ),
+                      )),
                       // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
@@ -128,9 +130,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: location,
                       autofocus: false,
                       decoration: buildInputDecoration(
