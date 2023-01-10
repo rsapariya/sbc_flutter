@@ -110,7 +110,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         backgroundColor: Colors.black,
                         backgroundImage: NetworkImage(
                             "https://sbc.sgcci.in/uploads/profile/" +
-                                    getdata.read('User')['profile'] ??""),
+                                    getdata.read('User')['profile'] ??
+                                "llll"),
                         radius: 30,
                       ),
                       SizedBox(
@@ -470,7 +471,7 @@ class _DrowerState extends State<Drower> {
             ),
             ListTile(
               leading: Image.asset(
-                'assets/image/bussiness.png',
+                'assets/image/growth.png',
                 scale: 18,
               ),
               title: Text(
@@ -488,7 +489,7 @@ class _DrowerState extends State<Drower> {
             ),
             ListTile(
               leading: Image.asset(
-                'assets/image/reffer.png',
+                'assets/image/team.png',
                 scale: 18,
               ),
               title: Text(
@@ -506,7 +507,7 @@ class _DrowerState extends State<Drower> {
             ),
             ListTile(
               leading: Image.asset(
-                'assets/image/face.png',
+                'assets/image/discussion.png',
                 scale: 18,
               ),
               title: Text(

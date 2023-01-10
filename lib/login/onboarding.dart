@@ -16,11 +16,11 @@ class _BoardingPageState extends State<BoardingPage> {
     _currentPage = 0;
 
     _slides = [
-      Slide("assets/image/b2.jpg", "Lorean ipsum doller Sit amet",
+      Slide("assets/image/b2-min.jpg", "Lorean ipsum doller Sit amet",
           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."),
-      Slide("assets/image/b1.jpg", "Lorean ipsum doller Sit amet",
+      Slide("assets/image/b1-min.jpg", "Lorean ipsum doller Sit amet",
           " will be distracted by the readable content of a page when looking at its layout It is a long established fact that a reader."),
-      Slide("assets/image/b3.jpg", "Lorean ipsum doller Sit amet",
+      Slide("assets/image/b3-min.jpg", "Lorean ipsum doller Sit amet",
           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."),
     ];
     _pageController = PageController(initialPage: _currentPage);
