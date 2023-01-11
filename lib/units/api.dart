@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
+import '../login/login.dart';
+
 var id;
 
 class ApiWrapper {
@@ -51,7 +53,6 @@ class ApiWrapper {
       }
     } catch (e) {
       return e;
-      print("Exeption----- $e");
     }
   }
 
@@ -87,23 +88,22 @@ class ApiWrapper {
 
 class AppUrl {
   static const String baseurl = 'https://sbc.sgcci.in/api-old/';
-  static const String Imageurl = 'https://sbc.sgcci.in/uploads/profile/';
-  static const String dashbord = baseurl + 'getDashboard/287';
-  static const String city = baseurl + 'getCity';
-  static const String cetagory = baseurl + 'getCategories';
-  static const String Rbuiss = baseurl + 'getRecievedBusiness/287';
-  static const String Gbuiss = baseurl + 'getGivenBusiness/287';
-  static const String addbusiness = baseurl + 'addBusinessRecieved';
-  static const String getusers = baseurl + 'getUsers/tushardesai4981@gmail.com';
-  static const String getgivenraf = baseurl + 'getGivenReferral/287';
-  static const String getreciveraf = baseurl + 'getRecievedReferral/287';
-  static const String visitors = baseurl + 'getUserVisitors/287';
-  static const String facetoface = baseurl + 'getGivenOTO/287';
-  static const String deleteface = baseurl + 'deleteOTO/';
-  static const String eventsss = baseurl + 'getChapterEvents/1/287';
-  static const String atandence = baseurl + 'getAttendence/1/287';
-  static const String GetallUsers =
-      baseurl + 'getUsers/tushardesai4981@gmail.com';
-  static const String GetUser =
-      baseurl + 'getUserProfile/tushardesai4981@gmail.com';
+  static String Imageurl = 'https://sbc.sgcci.in/uploads/profile/';
+  static String dashbord = baseurl + 'getDashboard/' + UserID.toString();
+  static String city = baseurl + 'getCity';
+  static String cetagory = baseurl + 'getCategories';
+  static String Rbuiss = baseurl + 'getRecievedBusiness/' + UserID.toString();
+  static String Gbuiss = baseurl + 'getGivenBusiness/' + UserID.toString();
+  static String addbusiness = baseurl + 'addBusinessRecieved';
+  static String getusers = baseurl + 'getUsers/' + EmailID.toString();
+  static String getgivenraf = baseurl + 'getGivenReferral/' + UserID.toString();
+  static String getreciveraf =
+      baseurl + 'getRecievedReferral/' + UserID.toString();
+  static String visitors = baseurl + 'getUserVisitors/' + UserID.toString();
+  static String facetoface = baseurl + 'getGivenOTO/' + UserID.toString();
+  static String deleteface = baseurl + 'deleteOTO/';
+  static String eventsss = baseurl + 'getChapterEvents/1/' + UserID.toString();
+  static String atandence = baseurl + 'getAttendence/1/' + UserID.toString();
+  static String GetallUsers = baseurl + 'getUsers/' + EmailID.toString();
+  static String GetUser = baseurl + 'getUserProfile/' + EmailID.toString();
 }

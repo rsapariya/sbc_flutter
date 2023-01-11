@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
+import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/customwidget.dart';
 import 'package:sbc/units/storage.dart';
@@ -664,7 +667,7 @@ class _ProfilepageState extends State<Profilepage> {
     var request = http.MultipartRequest(
         'POST',
         Uri.parse(
-            'https://sbc.sgcci.in/api-old/updateUser/tushardesai4981@gmail.com'));
+            'https://sbc.sgcci.in/api-old/updateUser/' + EmailID.toString()));
     request.fields.addAll({
       'name': Fname.text,
       "lname": Lname.text,
@@ -712,7 +715,7 @@ class _ProfilepageState extends State<Profilepage> {
     var headers = {'Cookie': 'PHPSESSID=1dfd04b2e90396cdff14902457261edf'};
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/profile'));
-    request.fields.addAll({'email': 'tushardesai4981@gmail.com'});
+    request.fields.addAll({'email': EmailID.toString()});
     request.files.add(await http.MultipartFile.fromPath(
         'profile', imageFile!.path.toString()));
     request.headers.addAll(headers);

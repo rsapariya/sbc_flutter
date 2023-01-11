@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sbc/deshboard/home.dart';
+import 'package:sbc/units/api.dart';
 
 import '../login/login.dart';
 
@@ -23,8 +24,9 @@ class AWSServices {
     try {
       session = await cognitoUser.authenticateUser(authDetails);
       debugPrint('Login Success...');
-      Login = true;
+      EmailID = email.toString();
       Get.to(() => home());
+      ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {
       debugPrint('CognitoUserNewPasswordRequiredException $e');
     } on CognitoUserMfaRequiredException catch (e) {

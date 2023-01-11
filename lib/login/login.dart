@@ -5,7 +5,8 @@ import 'package:sbc/login/register.dart';
 import '../units/awsregister.dart';
 import '../units/validater.dart';
 
-bool Login = false;
+String? UserID;
+String? EmailID;
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -129,6 +130,8 @@ class _loginState extends State<login> {
                       onTap: () {
                         setState(() {});
                         // Get.to(() => home());
+                        UserID = null;
+                        EmailID = null;
 
                         login(emailcontroller.text, passwordcontroller.text);
                         // if (Login == true) {

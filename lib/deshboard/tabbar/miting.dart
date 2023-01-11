@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+
 import '../../units/storage.dart';
 
 class mitting extends StatefulWidget {
@@ -101,7 +102,8 @@ class _mittingState extends State<mitting> {
                               fontFamily: "popins"),
                         ),
                         Text(
-                          getdata.read("dashboard")["life_time_detailes"]['connection_received'],
+                          getdata.read("dashboard")["life_time_detailes"]
+                              ['connection_received'],
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -124,7 +126,8 @@ class _mittingState extends State<mitting> {
                               fontFamily: "popins"),
                         ),
                         Text(
-                          getdata.read("dashboard")["life_time_detailes"]['connection_given'],
+                          getdata.read("dashboard")["life_time_detailes"]
+                              ['connection_given'],
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,

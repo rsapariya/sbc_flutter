@@ -49,8 +49,7 @@ class _statesState extends State<states> {
                               fontFamily: "popins"),
                         ),
                         Text(
-                          "₹${getdata.read("dashboard")["last_one_year"]
-                              ['business_recieved']}",
+                          "₹${getdata.read("dashboard")["last_one_year"]['business_recieved']}",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -102,7 +101,8 @@ class _statesState extends State<states> {
                               fontFamily: "popins"),
                         ),
                         Text(
-                          getdata.read("dashboard")["last_one_year"]['connection_received'],
+                          getdata.read("dashboard")["last_one_year"]
+                              ['connection_received'],
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,

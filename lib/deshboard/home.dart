@@ -10,6 +10,7 @@ import 'package:sbc/deshboard/tabbar/miting.dart';
 import 'package:sbc/deshboard/tabbar/stats.dart';
 import 'package:sbc/deshboard/tabbar/summery.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
+import 'package:sbc/login/login.dart';
 import '../units/api.dart';
 import '../units/storage.dart';
 import 'business/request.dart';
@@ -36,7 +37,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   bool loding = true;
   @override
   void initState() {
-    homeapi();
+    // homeapi();
     _tabController = TabController(vsync: this, length: 3);
     getbiss();
     recibiss();
@@ -115,9 +116,14 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           children: [
                             CircleAvatar(
                               backgroundColor: Colors.black,
-                              backgroundImage: NetworkImage(
-                                  "https://sbc.sgcci.in/uploads/profile/" +
-                                      getdata.read('User')['profile']),
+                              backgroundImage: getdata
+                                          .read('User')['profile'] !=
+                                      null
+                                  ? NetworkImage(
+                                      "https://sbc.sgcci.in/uploads/profile/" +
+                                          getdata.read('User')['profile'])
+                                  : NetworkImage(
+                                      'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
                               radius: 30,
                             ),
                             SizedBox(
@@ -445,13 +451,15 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
 
   getUser() {
     print("--------------   USER   ---------------");
+    print("-------------- $EmailID---------------");
     ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         print("    USER----->>>>$val");
         save('User', val);
-
+        UserID = getdata.read('User')['id'].toString();
         setState(() {});
         print("**********************${getdata.read('User')}");
+        homeapi();
       } else {
         print('XXXXXXXXXXXX');
       }
