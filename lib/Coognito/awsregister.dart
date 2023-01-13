@@ -1,17 +1,21 @@
-import 'package:flutter/widgets.dart';
 import 'package:amazon_cognito_identity_dart_2/cognito.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:sbc/deshboard/home.dart';
+import 'package:sbc/units/api.dart';
 
-class Serveices {
+import '../login/login.dart';
+
+class AWSServices {
   final userPool = CognitoUserPool(
-      // '${(dotenv.env['POOl_ID'])}',
-      // '${(dotenv.env['CLIENT_ID'])}'
-
-      'ap-south-1_sibAO5sKY',
-      '292k0u072s6v0i4esbefrfogoq');
+      "ap-south-1_sibAO5sKY", "292k0u072s6v0i4esbefrfogoq",
+      clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
 
   Future createInitialRecord(email, password) async {
-    final cognitoUser = CognitoUser(email, userPool);
-
+    debugPrint('Authenticating User... ${userPool.toString()}');
+    final cognitoUser = CognitoUser(email, userPool,
+        clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
     final authDetails = AuthenticationDetails(
       username: email,
       password: password,
@@ -19,15 +23,16 @@ class Serveices {
     CognitoUserSession? session;
     try {
       session = await cognitoUser.authenticateUser(authDetails);
-      debugPrint("Login Success.....");
-      debugPrint('CognitoClientException ====>>>> $email $password');
-      debugPrint("Authentication User....");
+      debugPrint('Login Success...');
+      EmailID = email.toString();
+      Get.off(() => home());
+      ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {
       debugPrint('CognitoUserNewPasswordRequiredException $e');
     } on CognitoUserMfaRequiredException catch (e) {
       debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserSelectMfaTypeException catch (e) {
-      debugPrint('CognitoUserSelectMfaTypeException $e');
+      debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserMfaSetupException catch (e) {
       debugPrint('CognitoUserMfaSetupException $e');
     } on CognitoUserTotpRequiredException catch (e) {
@@ -37,30 +42,10 @@ class Serveices {
     } on CognitoUserConfirmationNecessaryException catch (e) {
       debugPrint('CognitoUserConfirmationNecessaryException $e');
     } on CognitoClientException catch (e) {
-      debugPrint('CognitoClientException ====>>>> $email $password');
-      debugPrint('CognitoClientException ====>>>> $e');
+      ApiWrapper.showToastMessage(e.message);
+      debugPrint('CognitoClientException ---->>>$e');
     } catch (e) {
       print(e);
     }
   }
-
-//   final userPooll = CognitoUserPool(
-//     '${(dotenv.env['POOl_ID'])}', '${(dotenv.env['CLIENT_ID'])}',
-//   );
-//   final userAttributes = [
-//     AttributeArg(name: 'first_name', value: 'Jimmy'),
-//     AttributeArg(name: 'last_name', value: 'Wong'),
-//   ];
-//
-//   var data;
-//   try  async {
-//   data = await userPool.signUp(
-//   'email@inspire.my',
-//   'Password001',
-//   userAttributes: userAttributes,
-//   );
-// } catch (e) {
-// print(e);
-// }
-
 }

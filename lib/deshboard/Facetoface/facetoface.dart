@@ -1,3 +1,6 @@
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, annotate_overrides, sort_child_properties_last
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,25 +37,28 @@ class _FacetofaceState extends State<Facetoface> {
           Icons.add,
         ),
       ),
-      drawer: Drower(),
+      drawer: const Drower(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Face to Face',
-          style:GoogleFonts.poppins(),
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: Face.isEmpty
           ? Center(
               child: Text(
                 "Requests Not Found",
-                style:GoogleFonts.poppins(textStyle: TextStyle(
-                    color: Colors.red, fontSize: 18, fontFamily: "popinns")),
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 18,
+                        fontFamily: "popinns")),
               ),
             )
           : !Loding
               ? ListView.builder(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemCount: Face.length,
                   itemBuilder: (_, index) {
                     return Padding(
@@ -67,23 +73,24 @@ class _FacetofaceState extends State<Facetoface> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.delete,
                                     color: Colors.transparent,
                                   ),
                                   Text(
                                     Face[index]['username'],
-                                    style:GoogleFonts.poppins(textStyle:  TextStyle(
-                                        color: Colors.blue,
-                                        fontSize: 18,
-                                        fontFamily: "popins")),
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            color: Colors.blue,
+                                            fontSize: 18,
+                                            fontFamily: "popins")),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -93,14 +100,14 @@ class _FacetofaceState extends State<Facetoface> {
                                         _showMyDialogg();
                                       });
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.delete,
                                       color: Colors.black45,
                                     ),
                                   )
                                 ],
                               ),
-                              Divider(),
+                              const Divider(),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -110,38 +117,42 @@ class _FacetofaceState extends State<Facetoface> {
                                     children: [
                                       Text(
                                         "Location",
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12,
-                                            fontFamily: "popins Light")),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12,
+                                                fontFamily: "popins Light")),
                                       ),
                                       Text(
                                         Face[index]['oto_location'],
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontFamily: "popins")),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontFamily: "popins")),
                                       ),
                                     ],
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Date",
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12,
-                                            fontFamily: "popins Light")),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12,
+                                                fontFamily: "popins Light")),
                                       ),
                                       Text(
                                         Face[index]['oto_date'],
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontFamily: "popins")),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                                fontFamily: "popins")),
                                       ),
                                     ],
                                   ),
@@ -150,7 +161,7 @@ class _FacetofaceState extends State<Facetoface> {
                                   )
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
@@ -162,26 +173,28 @@ class _FacetofaceState extends State<Facetoface> {
                                     children: [
                                       Text(
                                         "Conversion",
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12,
-                                            fontFamily: "popins Light")),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12,
+                                                fontFamily: "popins Light")),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
                                         child: Text(
                                           Face[index]["oto_conversation"],
-                                          style:GoogleFonts.poppins(textStyle: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: "popins")),
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 14,
+                                                  fontFamily: "popins")),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                             ],
@@ -202,7 +215,7 @@ class _FacetofaceState extends State<Facetoface> {
                     );
                   },
                 )
-              : Center(
+              : const Center(
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.transparent,
                     value: null,
@@ -213,7 +226,9 @@ class _FacetofaceState extends State<Facetoface> {
   }
 
   facetofaceapi() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    if (kDebugMode) {
+      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    }
 
     ApiWrapper.dataGet(AppUrl.facetoface).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
@@ -229,8 +244,8 @@ class _FacetofaceState extends State<Facetoface> {
         print("**********************$Face");
       } else {
         setState(() {});
-        Face.clear();
         Loding = false;
+        Face.clear();
       }
     });
   }
@@ -282,7 +297,7 @@ class _FacetofaceState extends State<Facetoface> {
                     deletefacetofaceapi();
                   });
                 },
-                child: Text(
+                child: const Text(
                   'Delete',
                   style: TextStyle(color: Colors.red, fontFamily: "popins"),
                 )),

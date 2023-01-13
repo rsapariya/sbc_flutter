@@ -1,6 +1,7 @@
+// ignore_for_file: annotate_overrides, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/qrcode.dart';
 import 'home.dart';
@@ -22,16 +23,16 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Events"),
+        title: const Text("Events"),
       ),
-      drawer: Drower(),
+      drawer: const Drower(),
       body: Container(
         child: event.isEmpty
             ? Center(
                 child: Text(
                   'No Event Found',
                   style: GoogleFonts.poppins(
-                      textStyle: TextStyle(color: Colors.red, fontSize: 20)),
+                      textStyle: const TextStyle(color: Colors.red, fontSize: 20)),
                 ),
               )
             : ListView.builder(
@@ -49,20 +50,20 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Center(
                               child: Text(
                                 event[index]['ev_title'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.blue,
                                     fontSize: 18,
                                     fontFamily: "popins"),
                               ),
                             ),
-                            Divider(),
-                            Text(
+                            const Divider(),
+                            const Text(
                               "Address",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -71,15 +72,15 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             ),
                             Text(
                               event[index]['ev_address'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: "popins"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
-                            Text(
+                            const Text(
                               "Description",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -88,15 +89,15 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             ),
                             Text(
                               event[index]['ev_description'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: "popins"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
-                            Text(
+                            const Text(
                               "Date & Time",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -105,18 +106,18 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             ),
                             Text(
                               "${event[index]['ev_date']} (${event[index]['ev_start']} to ${event[index]['ev_end']})",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: "popins"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Center(
                               child: InkWell(
                                 onTap: () {
-                                  Get.to(() => QRViewExample());
+                                  Get.to(() => const QRViewExample());
                                   // event[index]['ev_status'] == "OPEN"
                                   //     ? Get.to(() => QRViewExample())
                                   //     : "";
@@ -132,7 +133,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                         event[index]['ev_status'] == "OPEN"
                                             ? "JOIN NOW"
                                             : event[index]['ev_status'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,
                                             fontFamily: "popins"),
@@ -153,7 +154,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],

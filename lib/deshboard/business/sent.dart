@@ -23,9 +23,12 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
         child: getbuss.isEmpty
             ? Center(
                 child: Text(
-                  "Requests Not Found",
-                  style:GoogleFonts.poppins(textStyle:  const TextStyle(
-                      color: Colors.red, fontSize: 18, fontFamily: "popinns")),
+                  getbuss.toString(),
+                  style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 18,
+                          fontFamily: "popinns")),
                 ),
               )
             : ListView.builder(
@@ -60,10 +63,11 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                             Center(
                               child: Text(
                                 getbuss[index]['username'],
-                                style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
-                                    fontFamily: "popins")),
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 18,
+                                        fontFamily: "popins")),
                               ),
                             ),
                             const Divider(),
@@ -75,17 +79,19 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                   children: [
                                     Text(
                                       "Date",
-                                      style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                          fontFamily: "popins Light")),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 12,
+                                              fontFamily: "popins Light")),
                                     ),
                                     Text(
                                       getbuss[index]['entry_date'],
-                                      style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                          fontFamily: "popins")),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: "popins")),
                                     ),
                                   ],
                                 ),
@@ -97,17 +103,19 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                   children: [
                                     Text(
                                       "Amount",
-                                      style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                          fontFamily: "popins Light")),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 12,
+                                              fontFamily: "popins Light")),
                                     ),
                                     Text(
                                       getbuss[index]['amount'],
-                                      style:GoogleFonts.poppins(textStyle:  const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                          fontFamily: "popins")),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: "popins")),
                                     ),
                                   ],
                                 )

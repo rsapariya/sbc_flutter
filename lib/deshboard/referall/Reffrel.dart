@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, annotate_overrides, prefer_const_literals_to_create_immutables, override_on_non_overriding_member, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -40,7 +42,7 @@ class _RefferalState extends State<Refferal>
           style: GoogleFonts.poppins(),
         ),
       ),
-      drawer: Drower(),
+      drawer: const Drower(),
       body: Column(
         children: [
           Padding(
@@ -62,7 +64,7 @@ class _RefferalState extends State<Refferal>
                   unselectedLabelColor: Colors.black,
                   indicatorColor: Colors.blue,
                   controller: _tabController,
-                  indicatorPadding: EdgeInsets.all(4),
+                  indicatorPadding: const EdgeInsets.all(4),
                   indicator: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(40)),
@@ -81,7 +83,7 @@ class _RefferalState extends State<Refferal>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [Reciev(), given()],
+              children: [const Reciev(), const given()],
             ),
           ),
         ],
@@ -90,9 +92,7 @@ class _RefferalState extends State<Refferal>
   }
 
   getgivenrefrel() {
-    print("GIVEN___REFREEEEL____________________");
     ApiWrapper.dataGet(AppUrl.getgivenraf).then((val) {
-      print("GIVEN____REFREEEEL____________________");
       if ((val != null) && (val.isNotEmpty)) {
         Givenreffrel.clear();
         setState(() {});
@@ -100,7 +100,6 @@ class _RefferalState extends State<Refferal>
           Givenreffrel.add(e);
         });
         setState(() {});
-        print("~~~~~~~~~~~~~~~~~>>>$Givenreffrel");
       } else {
         setState(() {});
         Givenreffrel.clear();
@@ -109,10 +108,8 @@ class _RefferalState extends State<Refferal>
   }
 
   getrecivereffrel() {
-    print("RECIVE___REFREEEEL____________________");
 
     ApiWrapper.dataGet(AppUrl.getreciveraf).then((val) {
-      print("RECIVE____REFREEEEL____________________");
       if ((val != null) && (val.isNotEmpty)) {
         Recivereffrel.clear();
         setState(() {});
@@ -120,7 +117,6 @@ class _RefferalState extends State<Refferal>
           Recivereffrel.add(e);
         });
         setState(() {});
-        print("RECIVE~~~~~~~~~>>>$Recivereffrel");
       } else {
         setState(() {});
         Recivereffrel.clear();

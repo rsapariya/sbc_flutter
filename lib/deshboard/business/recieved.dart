@@ -57,7 +57,9 @@ class _RecievedState extends State<Recieved>
                     itemCount: recivebuss.length,
                     itemBuilder: (_, index) {
                       return Padding(
-                        padding:  EdgeInsets.symmetric( horizontal: Get.width / 30, vertical: Get.height / 80),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Get.width / 30,
+                            vertical: Get.height / 80),
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -309,14 +311,10 @@ class _RecievedState extends State<Recieved>
           print("___________RECIVEBUSINESS SUCSESS>>>>");
         }
         recivebuss.clear();
-
         val.forEach((e) {
           recivebuss.add(e);
-          if (kDebugMode) {
-            print(e);
-          }
+          print(e);
         });
-
         setState(() {});
         loding = false;
       } else {

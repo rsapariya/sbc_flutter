@@ -1,11 +1,8 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, prefer_typing_uninitialized_variables
 
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
@@ -80,10 +77,10 @@ class _ProfilepageState extends State<Profilepage> {
       source: source,
     );
     setState(() {
+      // ignore: unnecessary_cast
       imageFile = pickedFile as PickedFile?;
       profileuplode();
 
-      print("-----------$imageFile");
     });
   }
 
@@ -97,9 +94,9 @@ class _ProfilepageState extends State<Profilepage> {
             onTap: () {
               Get.back();
             },
-            child: Icon(Icons.arrow_back)),
+            child: const Icon(Icons.arrow_back)),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Profile",
           style: TextStyle(fontFamily: "popins"),
         ),
@@ -109,7 +106,7 @@ class _ProfilepageState extends State<Profilepage> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 40, vertical: Get.width / 40),
               child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Stack(children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,6 +115,7 @@ class _ProfilepageState extends State<Profilepage> {
                           child: CircleAvatar(
                             backgroundColor: Colors.black,
                             backgroundImage: NetworkImage(
+                                // ignore: prefer_interpolation_to_compose_strings
                                 "https://sbc.sgcci.in/uploads/profile/" +
                                     getdata.read('User')['profile']),
                             radius: 40,
@@ -131,12 +129,12 @@ class _ProfilepageState extends State<Profilepage> {
                         Text(
                           getdata.read('User')['name'] +
                               getdata.read('User')['lname'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: "popins"),
                         ),
-                        Text(
+                        const Text(
                           'About',
                           style: TextStyle(
                               color: Colors.grey,
@@ -145,7 +143,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         Text(
                           getdata.read('User')['role_type'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: "popins"),
@@ -154,7 +152,7 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Fname,
@@ -169,7 +167,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Lname,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           autofocus: false,
@@ -183,7 +181,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Email,
@@ -198,7 +196,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Phone,
@@ -230,7 +228,7 @@ class _ProfilepageState extends State<Profilepage> {
                                 child: Center(
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
+                                        const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
                                       "Male",
                                       style: TextStyle(
@@ -243,7 +241,7 @@ class _ProfilepageState extends State<Profilepage> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             InkWell(
@@ -262,7 +260,7 @@ class _ProfilepageState extends State<Profilepage> {
                                 child: Center(
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
+                                        const EdgeInsets.symmetric(horizontal: 20),
                                     child: Text(
                                       "Female",
                                       style: TextStyle(
@@ -281,7 +279,7 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           autofocus: false,
@@ -294,12 +292,10 @@ class _ProfilepageState extends State<Profilepage> {
                                     2000), //DateTime.now() - not to allow to choose before today.
                                 lastDate: DateTime(2101));
                             if (pickedDate != null) {
-                              print(
-                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              //pickedDate output format => 2021-03-10 00:00:00.000
                               String formattedDate =
                                   DateFormat('yyyy-MM-dd').format(pickedDate);
-                              print(
-                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //formatted date output using intl package =>  2021-03-16
                               //you can implement different kind of Date Format here according to your requirement
 
                               setState(() {
@@ -307,18 +303,17 @@ class _ProfilepageState extends State<Profilepage> {
                                     formattedDate; //set output date to TextField value.
                               });
                             } else {
-                              print("Date is not selected");
                             }
                           },
                           controller: Date,
                           decoration: buildInputDecoration(
                               hintText: "Birthdate",
                               lbltext: "Birthdate",
-                              prifix: Icon(Icons.calendar_month_sharp)),
+                              prifix: const Icon(Icons.calendar_month_sharp)),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               "   yyyy-MM-dd",
                               style: TextStyle(
@@ -332,7 +327,7 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: sDate,
@@ -346,12 +341,10 @@ class _ProfilepageState extends State<Profilepage> {
                                     2000), //DateTime.now() - not to allow to choose before today.
                                 lastDate: DateTime(2101));
                             if (pickedDate != null) {
-                              print(
-                                  pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                              //pickedDate output format => 2021-03-10 00:00:00.000
                               String formattedDate =
                                   DateFormat('yyyy-MM-dd').format(pickedDate);
-                              print(
-                                  formattedDate); //formatted date output using intl package =>  2021-03-16
+                              //formatted date output using intl package =>  2021-03-16
                               //you can implement different kind of Date Format here according to your requirement
 
                               setState(() {
@@ -359,17 +352,16 @@ class _ProfilepageState extends State<Profilepage> {
                                     formattedDate; //set output date to TextField value.
                               });
                             } else {
-                              print("Date is not selected");
                             }
                           },
                           decoration: buildInputDecoration(
                               hintText: "Anniversry",
                               lbltext: "Anniversry",
-                              prifix: Icon(Icons.calendar_month_sharp)),
+                              prifix: const Icon(Icons.calendar_month_sharp)),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               "   yyyy-MM-dd",
                               style: TextStyle(
@@ -384,7 +376,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Pcode,
@@ -400,7 +392,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Address,
@@ -416,7 +408,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Achivments,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           // controller: code,
@@ -432,7 +424,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Business,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           // controller: code,
@@ -447,7 +439,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Website,
@@ -462,7 +454,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Businessinfo,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           // controller: code,
@@ -478,7 +470,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Businessadd,
@@ -494,7 +486,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: BusinessWhatt,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           // controller: code,
@@ -509,7 +501,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Fb,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           // controller: code,
@@ -524,7 +516,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Insta,
@@ -539,7 +531,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Linkdin,
@@ -554,7 +546,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Twiter,
@@ -569,7 +561,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           controller: Googlemap,
@@ -584,7 +576,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "popins",
                           ),
                           maxLines: 3,
@@ -616,14 +608,14 @@ class _ProfilepageState extends State<Profilepage> {
                           onPressed: () {
                             takePhoto(ImageSource.gallery);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.edit,
                             color: Colors.blue,
                           )),
                     )
                   ])),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
@@ -643,16 +635,16 @@ class _ProfilepageState extends State<Profilepage> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
@@ -667,7 +659,7 @@ class _ProfilepageState extends State<Profilepage> {
     var request = http.MultipartRequest(
         'POST',
         Uri.parse(
-            'https://sbc.sgcci.in/api-old/updateUser/' + EmailID.toString()));
+            'https://sbc.sgcci.in/api-old/updateUser/$EmailID'));
     request.fields.addAll({
       'name': Fname.text,
       "lname": Lname.text,
@@ -696,18 +688,16 @@ class _ProfilepageState extends State<Profilepage> {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
       setState(() {
         Lodin = false;
       });
-      Get.off(() => home());
+      Get.off(() => const home());
       ApiWrapper.showToastMessage("Profile Update Succesfuly.");
     } else {
       setState(() {
         Lodin = false;
       });
       ApiWrapper.showToastMessage("Something Went Wrong!!");
-      print(response.reasonPhrase);
     }
   }
 
@@ -723,11 +713,9 @@ class _ProfilepageState extends State<Profilepage> {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      Get.off(() => home());
+      Get.off(() => const home());
       ApiWrapper.showToastMessage("Profile Update Succesfuly.");
-      print(await response.stream.bytesToString());
     } else {
-      print(response.reasonPhrase);
     }
   }
 }

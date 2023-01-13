@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/deshboard/business/request.dart';
 import 'package:sbc/units/customwidget.dart';
+import '../../login/login.dart';
 import '../../units/api.dart';
 import '../home.dart';
 import 'package:http/http.dart' as http;
@@ -100,6 +101,7 @@ class _AddrequestState extends State<Addrequest> {
                                           .toString();
                                       userid =
                                           _foundUsers[index]['id'].toString();
+                                      print(userid);
                                       list = false;
                                     },
                                     child: SizedBox(
@@ -475,6 +477,7 @@ class _AddrequestState extends State<Addrequest> {
 
   recibiss() {
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
+      print(AppUrl.Rbuiss);
       if ((val != null) && (val.isNotEmpty)) {
         print("----------->>>>$val");
 
@@ -488,9 +491,11 @@ class _AddrequestState extends State<Addrequest> {
 
         loding == false ? Get.off(() => const bussnesss()) : loding;
       } else {
+        setState(() {});
         loding = false;
+        ApiWrapper.showToastMessage("Something Went Wrong!!");
       }
-      Get.off(() => const bussnesss());
+      // Get.off(() => const bussnesss());
     });
   }
 
@@ -502,7 +507,7 @@ class _AddrequestState extends State<Addrequest> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addBusinessRecieved'));
     request.fields.addAll({
-      'user': '287',
+      'user': UserID.toString(),
       'user_from': userid.toString(),
       'amount': amount.text.toString(),
       'ch_id': '1',

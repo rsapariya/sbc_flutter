@@ -1,7 +1,42 @@
 // ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' show AlertDialog, AppBar, BorderRadius, BouncingScrollPhysics, BoxDecoration, BoxShadow, BuildContext, Center, CircularProgressIndicator, Colors, Column, Container, CrossAxisAlignment, Divider, EdgeInsets, FloatingActionButton, Icon, Icons, InkWell, Key, ListView, MainAxisAlignment, Padding, Row, Scaffold, SizedBox, Spacer, State, StatefulWidget, Text, TextButton, TextStyle, Widget, showDialog;
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        AppBar,
+        BorderRadius,
+        BouncingScrollPhysics,
+        BoxDecoration,
+        BoxShadow,
+        BuildContext,
+        Center,
+        CircularProgressIndicator,
+        Colors,
+        Column,
+        Container,
+        CrossAxisAlignment,
+        Divider,
+        EdgeInsets,
+        FloatingActionButton,
+        Icon,
+        Icons,
+        InkWell,
+        Key,
+        ListView,
+        MainAxisAlignment,
+        Padding,
+        Row,
+        Scaffold,
+        SizedBox,
+        Spacer,
+        State,
+        StatefulWidget,
+        Text,
+        TextButton,
+        TextStyle,
+        Widget,
+        showDialog;
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/home.dart';
@@ -92,7 +127,7 @@ class _VisitorsState extends State<Visitors> {
                                     color: Colors.transparent,
                                   ),
                                   Text(
-                                    visitors[index]['ev_title'],
+                                    visitors[index]['ev_title'] ?? "",
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
                                       color: Colors.blue,
@@ -101,9 +136,8 @@ class _VisitorsState extends State<Visitors> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      //
                                       setState(() {
-                                        visitid = visitors[index]['id'];
+                                        visitid = visitors[index]['id'] ?? "";
                                         _showMyDialogg();
                                       });
                                     },
@@ -131,7 +165,7 @@ class _VisitorsState extends State<Visitors> {
                                         )),
                                       ),
                                       Text(
-                                        visitors[index]['visitor_name'],
+                                        visitors[index]['visitor_name'] ?? "",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                           color: Colors.black,
@@ -154,7 +188,7 @@ class _VisitorsState extends State<Visitors> {
                                                 fontFamily: "popins Light")),
                                       ),
                                       Text(
-                                        visitors[index]['ev_date'],
+                                        visitors[index]['ev_date'] ?? "",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                                 color: Colors.black,
@@ -242,8 +276,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Cancel',
                   style: GoogleFonts.poppins(
-                      textStyle:
-                          const TextStyle(color: Colors.black, fontFamily: "popins")),
+                      textStyle: const TextStyle(
+                          color: Colors.black, fontFamily: "popins")),
                 )),
             TextButton(
                 onPressed: () {
@@ -256,8 +290,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Delete',
                   style: GoogleFonts.poppins(
-                      textStyle:
-                          const TextStyle(color: Colors.red, fontFamily: "popins")),
+                      textStyle: const TextStyle(
+                          color: Colors.red, fontFamily: "popins")),
                 )),
           ],
         );
@@ -289,10 +323,6 @@ class _VisitorsState extends State<Visitors> {
   }
 
   Visitors() {
-    if (kDebugMode) {
-      print(">>>>>>>>>vivivivdicjdcj>>>>>>>>>>>>>");
-    }
-
     ApiWrapper.dataGet(AppUrl.visitors).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         if (kDebugMode) {
@@ -308,7 +338,6 @@ class _VisitorsState extends State<Visitors> {
           }
         });
         Loding = false;
-        ApiWrapper.showToastMessage("Delete Visitor Succesefuly.");
         if (kDebugMode) {
           print("VISITORS>>>>>>----->>>>$visitors");
         }

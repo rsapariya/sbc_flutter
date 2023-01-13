@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print, override_on_non_overriding_member, sized_box_for_whitespace, curly_braces_in_flow_control_structures, camel_case_types, prefer_typing_uninitialized_variables, annotate_overrides, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import '../business/request.dart';
@@ -39,6 +41,7 @@ class _addrefrelState extends State<addrefrel> {
   }
 
   bool list = false;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -52,11 +55,11 @@ class _addrefrelState extends State<addrefrel> {
                 // lodiing = false;
               });
             },
-            child: Icon(Icons.arrow_back)),
+            child: const Icon(Icons.arrow_back)),
         title: Text(
           "Add Referral",
           style: GoogleFonts.poppins(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
             color: Colors.white,
           )),
         ),
@@ -66,7 +69,7 @@ class _addrefrelState extends State<addrefrel> {
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: Get.height / 60),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -105,22 +108,20 @@ class _addrefrelState extends State<addrefrel> {
                                       _foundUsers.clear();
                                       setState(() {});
                                     },
-                                    child: Container(
-                                      child: SizedBox(
-                                        width: Get.width / 2,
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: Get.height / 60),
-                                          child: Text(
-                                            _foundUsers[index]['username'] ??
-                                                "",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                            )),
-                                          ),
+                                    child: SizedBox(
+                                      width: Get.width / 2,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: Get.height / 60),
+                                        child: Text(
+                                          _foundUsers[index]['username'] ??
+                                              "",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                          )),
                                         ),
                                       ),
                                     ),
@@ -129,7 +130,7 @@ class _addrefrelState extends State<addrefrel> {
                               },
                             ),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                     const SizedBox(
                       height: 15,
                     ),
@@ -155,21 +156,21 @@ class _addrefrelState extends State<addrefrel> {
                         lbltext: "Phone No.",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
 
                     Text(
                       "Priority",
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                         color: Colors.blue,
                         fontSize: 16,
                       )),
                     ),
                     // appbutton(titel: "Request"),
 
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
 
@@ -190,7 +191,7 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Cold",
                                   style: GoogleFonts.poppins(
@@ -203,7 +204,7 @@ class _addrefrelState extends State<addrefrel> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -221,7 +222,7 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Regular",
                                   style: GoogleFonts.poppins(
@@ -234,7 +235,7 @@ class _addrefrelState extends State<addrefrel> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -252,7 +253,7 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Hot",
                                   style: GoogleFonts.poppins(
@@ -267,7 +268,7 @@ class _addrefrelState extends State<addrefrel> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
@@ -302,20 +303,20 @@ class _addrefrelState extends State<addrefrel> {
                       decoration: buildInputDecoration(
                           hintText: "Date",
                           lbltext: "Date",
-                          prifix: Icon(Icons.calendar_month_sharp)),
+                          prifix: const Icon(Icons.calendar_month_sharp)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
                       "   yyyy-MM-dd",
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                         color: Colors.grey,
                         fontSize: 12,
                       )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
@@ -328,7 +329,7 @@ class _addrefrelState extends State<addrefrel> {
                         lbltext: "Remark",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
@@ -360,7 +361,7 @@ class _addrefrelState extends State<addrefrel> {
                 ),
               ),
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
@@ -380,16 +381,16 @@ class _addrefrelState extends State<addrefrel> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
-      labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),
@@ -412,10 +413,10 @@ class _addrefrelState extends State<addrefrel> {
         lodiing = false;
         print('OKKKKKKKKKK>>>>>>>>>>>>>>>>>>>');
 
-        lodiing == false ? Get.off(() => bussnesss()) : lodiing;
+        lodiing == false ? Get.off(() => const bussnesss()) : lodiing;
       } else
         lodiing = false;
-      Get.off(() => bussnesss());
+      Get.off(() => const bussnesss());
     });
   }
 
@@ -424,7 +425,7 @@ class _addrefrelState extends State<addrefrel> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addReferral'));
     request.fields.addAll({
-      'ref_from': '287',
+      'ref_from': UserID.toString(),
       'ref_to': userid.toString(),
       'person_name': parson.text,
       'person_contact': phone.text,
@@ -443,7 +444,7 @@ class _addrefrelState extends State<addrefrel> {
       print(response.statusCode);
       lodiing = false;
       setState(() {});
-      Get.off(() => Refferal());
+      Get.off(() => const Refferal());
       ApiWrapper.showToastMessage("Referral Add successfully.");
       print(await response.stream.bytesToString());
     } else {

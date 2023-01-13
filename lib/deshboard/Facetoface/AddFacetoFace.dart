@@ -1,8 +1,11 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +23,6 @@ class addfacetoface extends StatefulWidget {
 class _addfacetofaceState extends State<addfacetoface> {
   TextEditingController city = TextEditingController();
 
-  @override
   bool lodiing = false;
   List _foundUsers = [];
   var priority = "Cold";
@@ -84,7 +86,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                       decoration: buildInputDecoration(hintText: "Members"),
                     ),
                     list == true
-                        ? Container(
+                        ? SizedBox(
                             height: Get.height / 1.2,
                             child: ListView.builder(
                               // controller: controller,
@@ -95,7 +97,9 @@ class _addfacetofaceState extends State<addfacetoface> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
-                                      print(list);
+                                      if (kDebugMode) {
+                                        print(list);
+                                      }
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();
@@ -104,7 +108,9 @@ class _addfacetofaceState extends State<addfacetoface> {
 
                                       list = false;
                                       setState(() {});
-                                      print(list);
+                                      if (kDebugMode) {
+                                        print(list);
+                                      }
                                     },
                                     child: SizedBox(
                                       width: Get.width / 2,
@@ -224,7 +230,9 @@ class _addfacetofaceState extends State<addfacetoface> {
                                 setState(() {
                                   Loding = true;
                                 });
-                                print(userid);
+                                if (kDebugMode) {
+                                  print(userid);
+                                }
                                 Addfacetofaceapi();
                               } else {
                                 ApiWrapper.showToastMessage(
@@ -280,21 +288,21 @@ class _addfacetofaceState extends State<addfacetoface> {
   }
 
   Addfacetofaceapi() async {
-    print("--------------------");
+    if (kDebugMode) {
+      print("--------------------");
+    }
     var headers = {'Cookie': 'PHPSESSID=96e5eb5258d6ea9e422f81c683fea5f8'};
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addOTO'));
     request.fields.addAll({
-      'oto_from': '287',
+      'oto_from': UserID.toString(),
       'oto_to': userid.toString(),
       'oto_location': location.text,
       'oto_date': date.text,
       'oto_conversation': convertion.text,
       'ch_id': '1'
     });
-
     request.headers.addAll(headers);
-
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
@@ -304,7 +312,9 @@ class _addfacetofaceState extends State<addfacetoface> {
       Get.off(() => const Facetoface());
       ApiWrapper.showToastMessage("Add Successfully");
 
-      print(await response.stream.bytesToString());
+      if (kDebugMode) {
+        print(await response.stream.bytesToString());
+      }
     } else {
       setState(() {
         Loding = false;
@@ -313,7 +323,9 @@ class _addfacetofaceState extends State<addfacetoface> {
 
       ApiWrapper.showToastMessage("Something Went Wrong!!");
 
-      print(response.reasonPhrase);
+      if (kDebugMode) {
+        print(response.reasonPhrase);
+      }
     }
   }
 

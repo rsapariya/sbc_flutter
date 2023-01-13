@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 appbutton({titel,void Function()? onTap}){
   return InkWell(onTap:onTap,
@@ -13,7 +11,7 @@ appbutton({titel,void Function()? onTap}){
       child: Center(
         child: Text(titel,
 
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white,fontSize:16, fontFamily: "popins"),
         ),
       ),

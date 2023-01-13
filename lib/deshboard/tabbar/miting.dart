@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -36,13 +38,13 @@ class _mittingState extends State<mitting> {
                     horizontal: Get.width / 20, vertical: Get.width / 40),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Business Received",
                           style: TextStyle(
                               color: Colors.black,
@@ -51,24 +53,24 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["life_time_detailes"]['business_recieved']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Business Given",
                           style: TextStyle(
                               color: Colors.black,
@@ -77,24 +79,24 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["life_time_detailes"]['business_given']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Referral Received",
                           style: TextStyle(
                               color: Colors.black,
@@ -104,21 +106,21 @@ class _mittingState extends State<mitting> {
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['connection_received'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
+                    const Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Referral Given",
                           style: TextStyle(
                               color: Colors.black,
@@ -128,21 +130,21 @@ class _mittingState extends State<mitting> {
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['connection_given'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
+                    const Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Face-to-Face",
                           style: TextStyle(
                               color: Colors.black,
@@ -152,21 +154,21 @@ class _mittingState extends State<mitting> {
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['p2p'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
+                    const Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Visitors",
                           style: TextStyle(
                               color: Colors.black,
@@ -176,14 +178,14 @@ class _mittingState extends State<mitting> {
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['visitor'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                   ],

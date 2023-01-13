@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, prefer_typing_uninitialized_variables, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -109,7 +111,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Profile",
           style: TextStyle(fontFamily: "popins"),
         ),
@@ -118,7 +120,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
         padding: EdgeInsets.symmetric(
             horizontal: Get.width / 40, vertical: Get.width / 40),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -127,7 +129,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
                   radius: 30,
                   backgroundColor: Colors.grey,
                   backgroundImage: getdata.read('userdeta')['profile'] == null
-                      ? NetworkImage(
+                      ? const NetworkImage(
                           'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                         )
                       : NetworkImage(
@@ -136,24 +138,24 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               Text(
                 getdata.read('userdeta')['username'],
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black, fontSize: 16, fontFamily: "popins"),
               ),
-              Text(
+              const Text(
                 'About',
                 style: TextStyle(
                     color: Colors.grey, fontSize: 14, fontFamily: "popins"),
               ),
               Text(
                 getdata.read('userdeta')['role_type'],
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black, fontSize: 16, fontFamily: "popins"),
               ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Fname,
@@ -169,7 +171,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Lname,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 autofocus: false,
@@ -184,7 +186,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Email,
@@ -199,7 +201,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Phone,
@@ -240,7 +242,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Date,
@@ -254,7 +256,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "   yyyy-MM-dd",
                     style: TextStyle(
                         color: Colors.grey, fontSize: 12, fontFamily: "popins"),
@@ -266,7 +268,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: sDate,
@@ -280,7 +282,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "   yyyy-MM-dd",
                     style: TextStyle(
                         color: Colors.grey, fontSize: 12, fontFamily: "popins"),
@@ -292,7 +294,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Pcode,
@@ -308,7 +310,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Address,
@@ -324,7 +326,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Achivments,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -340,7 +342,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Business,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -355,7 +357,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Website,
@@ -370,7 +372,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Businessinfo,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -386,7 +388,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Businessadd,
@@ -402,7 +404,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: BusinessWhatt,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -417,7 +419,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Fb,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -432,7 +434,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Insta,
@@ -447,7 +449,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Linkdin,
@@ -462,7 +464,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Twiter,
@@ -477,7 +479,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 controller: Googlemap,
@@ -492,7 +494,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 maxLines: 3,
@@ -528,16 +530,16 @@ class _MemberDetalisState extends State<MemberDetalis> {
       disabledBorder: InputBorder.none,
       hintText: hintText,
       focusColor: Colors.transparent,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.transparent,
           width: 1,
         ),

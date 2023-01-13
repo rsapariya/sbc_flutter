@@ -1,8 +1,15 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, sort_child_properties_last, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_pin_code_fields/flutter_pin_code_fields.dart';
+import 'package:pinput/pin_put/pin_put.dart';
+import 'package:sbc/units/api.dart';
 
 import 'newpass.dart';
+
+bool submit = false;
+var Email;
+var OTP;
 
 class verification extends StatefulWidget {
   const verification({Key? key}) : super(key: key);
@@ -12,6 +19,13 @@ class verification extends StatefulWidget {
 }
 
 class _verificationState extends State<verification> {
+  @override
+  void initState() {
+    submit = false;
+    OTP = null;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +40,9 @@ class _verificationState extends State<verification> {
             child: Container(
               height: Get.height / 18,
               width: Get.width / 8,
-              child: Center(
+              child: const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 10),
                   child: Icon(
                     Icons.arrow_back_ios,
                     color: Colors.white,
@@ -42,7 +56,7 @@ class _verificationState extends State<verification> {
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Verification",
           style: TextStyle(fontFamily: "popins", color: Colors.black),
         ),
@@ -51,7 +65,7 @@ class _verificationState extends State<verification> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
         child: SingleChildScrollView(
-          physics:BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +73,7 @@ class _verificationState extends State<verification> {
               SizedBox(
                 height: Get.height / 15,
               ),
-              Text(
+              const Text(
                 "We have sent a 4 digit OTP to",
                 style: TextStyle(
                   fontFamily: "popins",
@@ -69,7 +83,7 @@ class _verificationState extends State<verification> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "test123@gmail.com",
                     style: TextStyle(
                       fontFamily: "popins Medium",
@@ -80,7 +94,7 @@ class _verificationState extends State<verification> {
                     onTap: () {
                       Get.back();
                     },
-                    child: Text(
+                    child: const Text(
                       "Edit Email",
                       style: TextStyle(
                         fontFamily: "popins Medium",
@@ -94,36 +108,49 @@ class _verificationState extends State<verification> {
               SizedBox(
                 height: Get.height / 30,
               ),
-              PinCodeFields(
-                length: 4,
-                fieldBorderStyle: FieldBorderStyle.square,
-                responsive: false,
-                fieldHeight: Get.height / 15,
-                fieldWidth: Get.width / 7,
-                borderWidth: 1.0,
-                // activeBorderColor: Colors.pink,
-                // activeBackgroundColor: Colors.pink.shade100,
-                borderRadius: BorderRadius.circular(10.0),
-                keyboardType: TextInputType.number,
-                autoHideKeyboard: false,
-                fieldBackgroundColor: Colors.grey.withOpacity(0.1),
-                borderColor: Colors.transparent,
+              PinPut(
                 textStyle: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontFamily: "Gilroy Bold",
+                    fontSize: Get.height / 40),
+                fieldsCount: 6,
+                eachFieldWidth: Get.width / 8,
+                withCursor: false,
+                submittedFieldDecoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.3),
+
+                  borderRadius: BorderRadius.circular(10.0),
+                  // border: Border.all(color: notifire.getgreycolor.withOpacity(0.4)),
+                ).copyWith(
+                  borderRadius: BorderRadius.circular(10.0),
+                  // border: Border.all(color: notifire.getgreycolor.withOpacity(0.4)),
                 ),
-                onComplete: (output) {
-                  // Your logic with pin code
-                  print(output);
+                selectedFieldDecoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(10.0),
+                  // border: Border.all(color: notifire.getgreycolor.withOpacity(0.4)),
+                ),
+                followingFieldDecoration: BoxDecoration(
+                  // border: Border.all(color: notifire.getgreycolor.withOpacity(0.4)),
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10.0),
+                ).copyWith(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.grey.withOpacity(0.5),
+                ),
+                onSubmit: (pin) async {
+                  setState(() {});
+                  submit = true;
+                  OTP = pin.toString();
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "If you don't recive code",
                     style: TextStyle(
                       fontFamily: "popins",
@@ -134,7 +161,7 @@ class _verificationState extends State<verification> {
                     onTap: () {
                       Get.back();
                     },
-                    child: Text(
+                    child: const Text(
                       "Resend",
                       style: TextStyle(
                         fontFamily: "popins",
@@ -145,18 +172,21 @@ class _verificationState extends State<verification> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               InkWell(
                 onTap: () {
-                  Get.to(() => const newpass());
+                  print(OTP);
+                  submit == true
+                      ? Get.to(() => newpass())
+                      : ApiWrapper.showToastMessage('Enter OTP');
                 },
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Submit",
                         style: TextStyle(
                             color: Colors.white,
@@ -192,19 +222,19 @@ class _verificationState extends State<verification> {
       prefixIcon: Icon(icon, color: Colors.blue),
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
               color: Colors.white,
               width: 0.5,
               strokeAlign: StrokeAlign.center)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.transparent,
           width: 1,
         ),

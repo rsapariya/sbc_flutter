@@ -1,8 +1,11 @@
+// ignore_for_file: annotate_overrides, prefer_final_fields, override_on_non_overriding_member, unnecessary_import, non_constant_identifier_names, prefer_typing_uninitialized_variables
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
+import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import 'package:http/http.dart' as http;
@@ -220,6 +223,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                             if (visitorname.text.isNotEmpty &&
                                 business.text.isNotEmpty &&
                                 phone.text.isNotEmpty &&
+                                _selected == null &&
                                 description.text.isNotEmpty) {
                               setState(() {
                                 Loding = true;
@@ -282,7 +286,7 @@ class _AddvisitorsState extends State<Addvisitors> {
       'visitor_name': visitorname.text,
       'visitor_contact': phone.text,
       'business': business.text,
-      'added_by': '287',
+      'added_by': UserID.toString(),
       'event_id': _selected.toString(),
       'ch_id': '1',
       'is_member': member.toString()
@@ -297,7 +301,6 @@ class _AddvisitorsState extends State<Addvisitors> {
       setState(() {});
       Get.off(() => const Visitors());
       ApiWrapper.showToastMessage("Visitor Add Successfully");
-      print(await response.stream.bytesToString());
     } else {
       Loding = false;
       setState(() {});
@@ -320,7 +323,6 @@ class _AddvisitorsState extends State<Addvisitors> {
             setState(() {
               _selected = newValue!;
             });
-            print(_selected);
           },
           items: _myJson.map((Map map) {
             return DropdownMenuItem<String>(
@@ -345,22 +347,16 @@ class _AddvisitorsState extends State<Addvisitors> {
   }
 
   getevents() {
-    print("--------------   EVENTS   ---------------");
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         _myJson.clear();
 
-        print("------------????????????$_myJson");
 
         _myJson.clear();
         val.forEach((e) {
           _myJson.add(e);
-          print(e);
-          print("**********************>>>>>>>>>>$_myJson");
         });
         setState(() {});
-        print("**********************$_myJson");
       } else {
         setState(() {});
         _myJson.clear();

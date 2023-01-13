@@ -1,6 +1,7 @@
+// ignore_for_file: annotate_overrides, sort_child_properties_last, override_on_non_overriding_member, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../units/api.dart';
 import 'home.dart';
 
@@ -24,12 +25,12 @@ class _AttendanceState extends State<Attendance>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Attendance"),
+        title: const Text("Attendance"),
       ),
-      drawer: Drower(),
+      drawer: const Drower(),
       body: Container(
         child: Atandace.isEmpty
-            ? Center(
+            ? const Center(
                 child: Text(
                   "Data Not Found",
                   style: TextStyle(
@@ -51,20 +52,20 @@ class _AttendanceState extends State<Attendance>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Center(
                               child: Text(
                                 Atandace[index]['ev_title'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.blue,
                                     fontSize: 18,
                                     fontFamily: "popins"),
                               ),
                             ),
-                            Divider(),
-                            Text(
+                            const Divider(),
+                            const Text(
                               "Address",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -73,15 +74,15 @@ class _AttendanceState extends State<Attendance>
                             ),
                             Text(
                               Atandace[index]['ev_address'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: "popins"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
-                            Text(
+                            const Text(
                               "Description",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -93,16 +94,16 @@ class _AttendanceState extends State<Attendance>
                                 Atandace[index]['ev_description'],
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: "popins"),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
-                            Text(
+                            const Text(
                               "Date & Time",
                               style: TextStyle(
                                   color: Colors.grey,
@@ -111,34 +112,17 @@ class _AttendanceState extends State<Attendance>
                             ),
                             Text(
                               "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']} to ${Atandace[index]['ev_end']})",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: "popins"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Center(
                               child: Container(
                                 width: Get.width / 1.5,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: Get.width / 20, vertical: 8),
-                                  child: Center(
-                                    child: Text(
-                                      Atandace[index]['user_attendence']
-                                                  .toString() ==
-                                              '1'
-                                          ? "PRESENT"
-                                          : "ABSENT",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontFamily: "popins"),
-                                    ),
-                                  ),
-                                ),
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -152,9 +136,26 @@ class _AttendanceState extends State<Attendance>
                                         ? Colors.green
                                         : Colors.red.withOpacity(0.8),
                                     borderRadius: BorderRadius.circular(5)),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Get.width / 20, vertical: 8),
+                                  child: Center(
+                                    child: Text(
+                                      Atandace[index]['user_attendence']
+                                                  .toString() ==
+                                              '1'
+                                          ? "PRESENT"
+                                          : "ABSENT",
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontFamily: "popins"),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
@@ -180,19 +181,15 @@ class _AttendanceState extends State<Attendance>
   }
 
   getatendance() {
-    print(">>>>>>>>>>>>       Attandance     >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.atandence).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         setState(() {
           Atandace.clear();
         });
         val.forEach((e) {
           Atandace.add(e);
-          print(e);
         });
-        print("Get>>>>>>----->>>>$getbuss");
       } else {
         setState(() {});
         Atandace.clear();

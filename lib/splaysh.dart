@@ -1,7 +1,11 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
+import 'package:sbc/units/storage.dart';
 import 'login/onboarding.dart';
 
 var countryCode = [];
@@ -23,7 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
     city();
     catapi();
-    Timer(const Duration(seconds: 4), () => Get.off(() => BoardingPage()));
+    Timer(
+        const Duration(seconds: 4),
+        () => getdata.read('isOpen') == true
+            ? Get.off(() => login())
+            : Get.off(() => const BoardingPage()));
   }
 
   @override
@@ -34,7 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 'assets/image/splayscreen.png',
@@ -42,44 +49,27 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ],
           ),
-        )
-        // Center(
-        //     child: Text(
-        //   "go".tr,
-        //   style: TextStyle(
-        //       color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-        // )),
-        );
+        ));
   }
 
   city() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
     ApiWrapper.dataGet(AppUrl.city).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         val.forEach((e) {
           countryCode.add(e['city_name']);
-          print(e);
           setState(() {});
         });
-        print("City------>>>>$countryCode");
       }
     });
   }
 
   catapi() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
     ApiWrapper.dataGet(AppUrl.cetagory).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         val.forEach((e) {
           cat.add(e['cat_name']);
-          print(e);
           setState(() {});
         });
-        print("Catagory----->>>>$cat");
       }
     });
   }

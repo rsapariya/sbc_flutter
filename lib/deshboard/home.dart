@@ -39,12 +39,12 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   void initState() {
     // homeapi();
     _tabController = TabController(vsync: this, length: 3);
-    getbiss();
-    recibiss();
-    Visitors();
-    getevents();
+    // getbiss();
+    // recibiss();
+    // Visitors();
+    // getevents();
     getUser();
-    getallusers();
+    // getallusers();
 
     super.initState();
   }
@@ -173,13 +173,13 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                             vertical: Get.width / 40),
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Next Meeting Date",
                                   style: TextStyle(
                                       color: Colors.black,
@@ -190,24 +190,24 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   getdata.read("dashboard")['next_event']
                                           ['date'] ??
                                       "",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
                                       fontFamily: "popins Light"),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Divider(),
-                            SizedBox(
+                            const Divider(),
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Visitor",
                                   style: TextStyle(
                                       color: Colors.black,
@@ -218,24 +218,24 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   getdata.read("dashboard")['next_event']
                                           ['visitors'] ??
                                       "",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
                                       fontFamily: "popins Light"),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Divider(),
-                            SizedBox(
+                            const Divider(),
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   "Speakers",
                                   style: TextStyle(
                                       color: Colors.black,
@@ -246,14 +246,14 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   getdata.read("dashboard")['next_event']
                                           ['speakers'] ??
                                       "",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
                                       fontFamily: "popins Light"),
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                           ],
@@ -280,7 +280,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           unselectedLabelColor: Colors.black,
                           indicatorColor: Colors.blue,
                           controller: _tabController,
-                          indicatorPadding: EdgeInsets.all(4),
+                          indicatorPadding: const EdgeInsets.all(4),
                           indicator: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(40)),
@@ -303,7 +303,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children: [summery(), mitting(), states()],
+                      children: [
+                        const summery(),
+                        const mitting(),
+                        const states()
+                      ],
                     ),
                   )
                 ],
@@ -312,25 +316,25 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                 padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Skeltel(
                       height: Get.height / 15,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Skeltel(
                       height: Get.height / 8,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Skeltel(
                       height: Get.height / 15,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Skeltel(
@@ -339,15 +343,17 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   ],
                 ),
               ),
-        drawer: Drower());
+        drawer: const Drower());
   }
 
   getbiss() {
     print(">>>>>>>>>>>>       GETBUSINESS     >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.Gbuiss).then((val) {
+      print(UserID.toString());
+
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
+        print("           GETBUSINESS          $val");
         setState(() {
           getbuss.clear();
         });
@@ -355,25 +361,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           getbuss.add(e);
           print(e);
         });
-        print("Get>>>>>>----->>>>$getbuss");
+        print("           BUSINESSSSSSSSSSSS          ----->>>>$getbuss");
+      } else {
+        print(val);
       }
     });
   }
 
   getallusers() {
-    print(">>>>>>>>>>>>       USERSSSSS     >>>>>>>>>>>>");
+    // print(">>>>>>>>>>>>       USERSSSSS     >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.GetallUsers).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
+        // print("----------->>>>$val");
         setState(() {
           Userss.clear();
         });
         val.forEach((e) {
           Userss.add(e);
-          print(e);
+          // print(e);
         });
-        print("Get>>>>>>----->>>>$Userss");
+        // print("Get>>>>>>----->>>>$Userss");
       } else {
         setState(() {
           Userss.clear();
@@ -383,38 +391,38 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   Visitors() {
-    print(">>>>>>>>>>>>>       VISITORS      >>>>>>>>>>>>");
+    // print(">>>>>>>>>>>>>       VISITORS      >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.visitors).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("VISITORS--->>>>$val");
+        // print("VISITORS--->>>>$val");
         setState(() {
           visitors.clear();
         });
         val.forEach((e) {
           visitors.add(e);
-          print(e);
+          // print(e);
         });
-        print("VISITORS>>>>>>----->>>>$visitors");
+        // print("VISITORS>>>>>>----->>>>$visitors");
       }
     });
   }
 
   recibiss() {
-    print(">>>>>>>>>>>>         RECIVE        >>>>>>>>>>>>");
+    // print(">>>>>>>>>>>>         RECIVE        >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         print("----------->>>>$val");
         recivebuss.clear();
-        print("--------------------------????????????$recivebuss");
+        // print("--------------------------????????????$recivebuss");
         val.forEach((e) {
           recivebuss.add(e);
-          print(e);
-          print("**********************>>>>>>>>>>$recivebuss");
+          // print(e);
+          // print("**********************>>>>>>>>>>$recivebuss");
         });
         setState(() {});
-        print("**********************$recivebuss");
+        // print("**********************$recivebuss");
       } else {
         recivebuss.clear();
       }
@@ -422,26 +430,26 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getevents() {
-    print("--------------   EVENTS   ---------------");
+    // print("--------------   EVENTS   ---------------");
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         print("----------->>>>$val");
         events.clear();
 
-        print("------------????????????$events");
+        // print("------------????????????$events");
         val.forEach((e) {
           events.add(e['ev_title']);
-          print(e);
-          print("**********************>>>>>>>>>>$events");
+          // print(e);
+          // print("**********************>>>>>>>>>>$events");
         });
         event.clear();
         val.forEach((e) {
           event.add(e);
-          print(e);
-          print("**********************>>>>>>>>>>$events");
+          // print(e);
+          // print("**********************>>>>>>>>>>$events");
         });
         setState(() {});
-        print("**********************$events");
+        // print("**********************$events");
       } else {
         setState(() {});
         events.clear();
@@ -450,35 +458,40 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getUser() {
-    print("--------------   USER   ---------------");
-    print("-------------- $EmailID---------------");
+    // print("--------------   USER   ---------------");
+    // print("-------------- $EmailID---------------");
     ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("    USER----->>>>$val");
+        // print("    USER----->>>>$val");
         save('User', val);
         UserID = getdata.read('User')['id'].toString();
         setState(() {});
-        print("**********************${getdata.read('User')}");
+        // print("**********************${getdata.read('User')}");
         homeapi();
       } else {
-        print('XXXXXXXXXXXX');
+        // print('XXXXXXXXXXXX');
       }
     });
   }
 
   homeapi() {
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    // print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.dashbord).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         save('dashboard', val);
         save('deta', val['data']);
 
-        print("----------->>>${getdata.read('dashboard')}");
-        print(val);
+        // print("----------->>>${getdata.read('dashboard')}");
+        // print(val);
         setState(() {});
 
         loding = false;
+        getevents();
+        recibiss();
+        getbiss();
+        getallusers();
+        Visitors();
       } else {
         loding = false;
         setState(() {});
@@ -510,7 +523,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Dashboard",
                 style: TextStyle(
                     color: Colors.black,
@@ -520,7 +533,7 @@ class _DrowerState extends State<Drower> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => home()));
+                    MaterialPageRoute(builder: (context) => const home()));
               },
             ),
             ListTile(
@@ -528,7 +541,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/growth.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Business",
                 style: TextStyle(
                     color: Colors.black,
@@ -538,7 +551,7 @@ class _DrowerState extends State<Drower> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => bussnesss()));
+                    MaterialPageRoute(builder: (context) => const bussnesss()));
               },
             ),
             ListTile(
@@ -546,7 +559,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/team.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Referral",
                 style: TextStyle(
                     color: Colors.black,
@@ -556,7 +569,7 @@ class _DrowerState extends State<Drower> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Refferal()));
+                    MaterialPageRoute(builder: (context) => const Refferal()));
               },
             ),
             ListTile(
@@ -564,7 +577,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/discussion.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Face to Face",
                 style: TextStyle(
                     color: Colors.black,
@@ -573,8 +586,8 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Facetoface()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const Facetoface()));
               },
             ),
             ListTile(
@@ -582,7 +595,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/calendar.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Events",
                 style: TextStyle(
                     color: Colors.black,
@@ -592,7 +605,7 @@ class _DrowerState extends State<Drower> {
               onTap: () {
                 Navigator.of(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Events()));
+                    MaterialPageRoute(builder: (context) => const Events()));
               },
             ),
             ListTile(
@@ -600,7 +613,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/attendance.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Attendance",
                 style: TextStyle(
                     color: Colors.black,
@@ -609,8 +622,8 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Attendance()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const Attendance()));
               },
             ),
             ListTile(
@@ -618,7 +631,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/visitor.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Visitors",
                 style: TextStyle(
                     color: Colors.black,
@@ -628,7 +641,7 @@ class _DrowerState extends State<Drower> {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Visitors()));
+                    MaterialPageRoute(builder: (context) => const Visitors()));
               },
             ),
             ListTile(
@@ -636,7 +649,7 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title: Text(
+              title: const Text(
                 "Members List",
                 style: TextStyle(
                     color: Colors.black,
@@ -645,8 +658,8 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => FilterMember()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const FilterMember()));
               },
             ),
           ],
@@ -668,7 +681,7 @@ class Skeltel extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.04),
           borderRadius: BorderRadius.circular(16)),

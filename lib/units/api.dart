@@ -89,21 +89,20 @@ class ApiWrapper {
 class AppUrl {
   static const String baseurl = 'https://sbc.sgcci.in/api-old/';
   static String Imageurl = 'https://sbc.sgcci.in/uploads/profile/';
-  static String dashbord = baseurl + 'getDashboard/' + UserID.toString();
-  static String city = baseurl + 'getCity';
-  static String cetagory = baseurl + 'getCategories';
-  static String Rbuiss = baseurl + 'getRecievedBusiness/' + UserID.toString();
-  static String Gbuiss = baseurl + 'getGivenBusiness/' + UserID.toString();
-  static String addbusiness = baseurl + 'addBusinessRecieved';
-  static String getusers = baseurl + 'getUsers/' + EmailID.toString();
-  static String getgivenraf = baseurl + 'getGivenReferral/' + UserID.toString();
-  static String getreciveraf =
-      baseurl + 'getRecievedReferral/' + UserID.toString();
-  static String visitors = baseurl + 'getUserVisitors/' + UserID.toString();
-  static String facetoface = baseurl + 'getGivenOTO/' + UserID.toString();
-  static String deleteface = baseurl + 'deleteOTO/';
-  static String eventsss = baseurl + 'getChapterEvents/1/' + UserID.toString();
-  static String atandence = baseurl + 'getAttendence/1/' + UserID.toString();
-  static String GetallUsers = baseurl + 'getUsers/' + EmailID.toString();
-  static String GetUser = baseurl + 'getUserProfile/' + EmailID.toString();
+  static String dashbord = '${baseurl}getDashboard/$UserID';
+  static String city = '${baseurl}getCity';
+  static String cetagory = '${baseurl}getCategories';
+  static String Rbuiss = '${baseurl}getRecievedBusiness/$UserID';
+  static String Gbuiss = '${baseurl}getGivenBusiness/$UserID';
+  static String addbusiness = '${baseurl}addBusinessRecieved';
+  static String getusers = '${baseurl}getUsers/$EmailID';
+  static String getgivenraf = '${baseurl}getGivenReferral/$UserID';
+  static String getreciveraf = '${baseurl}getRecievedReferral/$UserID';
+  static String visitors = '${baseurl}getUserVisitors/$UserID';
+  static String facetoface = '${baseurl}getGivenOTO/$UserID';
+  static String deleteface = '${baseurl}deleteOTO/';
+  static String eventsss = '${baseurl}getChapterEvents/1/$UserID';
+  static String atandence = '${baseurl}getAttendence/1/$UserID';
+  static String GetallUsers = '${baseurl}getUsers/$EmailID';
+  static String GetUser = '${baseurl}getUserProfile/$EmailID';
 }

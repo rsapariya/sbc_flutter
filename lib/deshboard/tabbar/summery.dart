@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -34,13 +36,13 @@ class _summeryState extends State<summery> {
                     horizontal: Get.width / 20, vertical: Get.width / 40),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Bussiness Received",
                           style: TextStyle(
                               color: Colors.black,
@@ -49,24 +51,24 @@ class _summeryState extends State<summery> {
                         ),
                         Text(
                           "₹${getdata.read("deta")[0]['amount']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Business Given",
                           style: TextStyle(
                               color: Colors.black,
@@ -75,24 +77,24 @@ class _summeryState extends State<summery> {
                         ),
                         Text(
                           "₹${getdata.read("deta")[1]['amount']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Raferral Received",
                           style: TextStyle(
                               color: Colors.black,
@@ -101,24 +103,24 @@ class _summeryState extends State<summery> {
                         ),
                         Text(
                           getdata.read('deta')[2]['amount'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Total Referrel Given",
                           style: TextStyle(
                               color: Colors.black,
@@ -127,24 +129,24 @@ class _summeryState extends State<summery> {
                         ),
                         Text(
                           getdata.read('deta')[3]['amount'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Face to Face",
                           style: TextStyle(
                               color: Colors.black,
@@ -154,24 +156,24 @@ class _summeryState extends State<summery> {
                         Text(
                           overflow: TextOverflow.ellipsis,
                           "${getdata.read('deta')[4]['amount']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(),
-                    SizedBox(
+                    const Divider(),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           "Visitors",
                           style: TextStyle(
                               color: Colors.black,
@@ -180,14 +182,14 @@ class _summeryState extends State<summery> {
                         ),
                         Text(
                           "${getdata.read('deta')[5]['amount']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: "popins Light"),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                   ],

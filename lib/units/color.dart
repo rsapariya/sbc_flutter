@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'color.dart';
 import 'notifire.dart';
 
 class ColorNotifire with ChangeNotifier {

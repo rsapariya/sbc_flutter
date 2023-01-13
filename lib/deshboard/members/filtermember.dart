@@ -1,9 +1,8 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:sbc/deshboard/members/MemberDetails.dart';
 import 'package:sbc/units/storage.dart';
 import '../../splaysh.dart';
@@ -85,7 +84,7 @@ class _FilterMemberState extends State<FilterMember>
 
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drower(),
+      drawer: const Drower(),
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
@@ -96,16 +95,16 @@ class _FilterMemberState extends State<FilterMember>
                   hide = !hide;
                 });
               },
-              icon: Icon(Icons.filter_alt_outlined))
+              icon: const Icon(Icons.filter_alt_outlined))
         ],
-        title: Text(
+        title: const Text(
           "Member List",
           style: TextStyle(color: Colors.white, fontFamily: "popins"),
         ),
       ),
       // drawer: Drower(),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             hide
@@ -127,7 +126,7 @@ class _FilterMemberState extends State<FilterMember>
                                     ? Colors.blue
                                     : Colors.blue.withOpacity(0.1)),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               child: Text(
                                 'Name',
@@ -139,7 +138,7 @@ class _FilterMemberState extends State<FilterMember>
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         InkWell(
@@ -155,7 +154,7 @@ class _FilterMemberState extends State<FilterMember>
                                     ? Colors.blue
                                     : Colors.blue.withOpacity(0.1)),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               child: Text(
                                 'Phone',
@@ -167,18 +166,18 @@ class _FilterMemberState extends State<FilterMember>
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                       ],
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: 10),
               child: TextFormField(
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "popins",
                 ),
                 // controller: code,
@@ -193,6 +192,7 @@ class _FilterMemberState extends State<FilterMember>
             _foundUsers.isNotEmpty
                 ? Container(
                     height: Get.height / 1.2,
+                    color: Colors.transparent,
                     child: ListView.builder(
                       // controller: controller,
                       itemCount: _foundUsers.length,
@@ -205,8 +205,10 @@ class _FilterMemberState extends State<FilterMember>
                             onTap: () {
                               setState(() {});
                               save('userdeta', _foundUsers[index]);
-                              print(getdata.read('userdeta'));
-                              Get.to(() => MemberDetalis());
+                              if (kDebugMode) {
+                                print(getdata.read('userdeta'));
+                              }
+                              Get.to(() => const MemberDetalis());
                             },
                             child: Container(
                               child: Padding(
@@ -227,7 +229,7 @@ class _FilterMemberState extends State<FilterMember>
                                             backgroundImage: _foundUsers[index]
                                                         ['profile'] ==
                                                     null
-                                                ? NetworkImage(
+                                                ? const NetworkImage(
                                                     'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                                                   )
                                                 : NetworkImage(
@@ -246,7 +248,7 @@ class _FilterMemberState extends State<FilterMember>
                                                       "",
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       color: Colors.blue,
                                                       fontSize: 16,
                                                       fontFamily: 'popins'),
@@ -254,13 +256,13 @@ class _FilterMemberState extends State<FilterMember>
                                               ),
                                               _foundUsers[index]['business'] ==
                                                       null
-                                                  ? SizedBox()
+                                                  ? const SizedBox()
                                                   : SizedBox(
                                                       width: Get.width / 1.5,
                                                       child: Text(
                                                         _foundUsers[index]
                                                             ['business'],
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 14,
                                                             fontFamily:
@@ -269,13 +271,13 @@ class _FilterMemberState extends State<FilterMember>
                                                     ),
                                               _foundUsers[index]['cat_name'] ==
                                                       null
-                                                  ? SizedBox()
+                                                  ? const SizedBox()
                                                   : SizedBox(
                                                       width: Get.width / 1.5,
                                                       child: Text(
                                                         _foundUsers[index]
                                                             ['cat_name'],
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 14,
                                                             fontFamily:
@@ -307,8 +309,8 @@ class _FilterMemberState extends State<FilterMember>
                       },
                     ),
                   )
-                : Center(
-                    child: const Text(
+                : const Center(
+                    child: Text(
                       'No results found',
                       style: TextStyle(
                           fontSize: 22,
@@ -332,16 +334,16 @@ class _FilterMemberState extends State<FilterMember>
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
       labelText: lbltext,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
+        borderSide: const BorderSide(
           color: Colors.white,
           width: 1,
         ),

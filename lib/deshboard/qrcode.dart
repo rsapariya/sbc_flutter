@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unnecessary_import
+
 import 'dart:developer';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -190,7 +192,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      Get.off(() => Events());
+      Get.off(() => const Events());
       ApiWrapper.showToastMessage("Attendence Sucsessfuly.");
       print(await response.stream.bytesToString());
     } else {

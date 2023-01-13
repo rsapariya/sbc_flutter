@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../units/storage.dart';
 import 'login.dart';
 
 class BoardingPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class BoardingPage extends StatefulWidget {
 class _BoardingPageState extends State<BoardingPage> {
   @override
   void initState() {
+    save('isOpen', true);
     super.initState();
     _currentPage = 0;
 
@@ -44,7 +46,7 @@ class _BoardingPageState extends State<BoardingPage> {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               child: Container(
                 child: Image.asset(
                   slide.image,
@@ -57,6 +59,11 @@ class _BoardingPageState extends State<BoardingPage> {
               child: Container(
                 height: Get.height / 2.3,
                 width: double.infinity,
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
                 child: Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Column(
@@ -89,11 +96,11 @@ class _BoardingPageState extends State<BoardingPage> {
                     ],
                   ),
                 ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20))),
+                // decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.only(
+                //         topLeft: Radius.circular(20),
+                //         topRight: Radius.circular(20))),
               ),
             )
 
@@ -193,7 +200,7 @@ class _BoardingPageState extends State<BoardingPage> {
                           ),
                         ))
                     : Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: GestureDetector(
                           child: GestureDetector(
                             onTap: () {
@@ -210,7 +217,7 @@ class _BoardingPageState extends State<BoardingPage> {
                               child: Center(
                                   child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   Text(
                                     "Get Started",
                                     style: TextStyle(

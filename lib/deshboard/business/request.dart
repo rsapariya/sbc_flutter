@@ -66,7 +66,7 @@ class _bussnesssState extends State<bussnesss>
                   tabs: [
                     Text(
                       'Received',
-                      style:GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(),
                     ),
                     Text(
                       'Given',
