@@ -79,6 +79,10 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   Get.to(() => Profilepage());
                 } else if (menu == "Change Password") {
                 } else if (menu == "Sign Out") {
+                  setState(() {
+                    save('Login', false);
+                    Get.offAll(() => login());
+                  });
                 } else if (menu == "Rate Us") {
                   LaunchReview.launch(androidAppId: "com.sgcci.sbc");
                 }
@@ -458,8 +462,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getUser() {
-    // print("--------------   USER   ---------------");
-    // print("-------------- $EmailID---------------");
     ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         // print("    USER----->>>>$val");
@@ -532,8 +534,10 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const home()));
+                Get.off(() => home());
+
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => const home()));
               },
             ),
             ListTile(
@@ -550,8 +554,10 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const bussnesss()));
+                Get.off(() => bussnesss());
+
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => const bussnesss()));
               },
             ),
             ListTile(
@@ -568,8 +574,10 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Refferal()));
+                Get.off(() => Refferal());
+
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => const Refferal()));
               },
             ),
             ListTile(
@@ -586,8 +594,10 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Facetoface()));
+                Get.off(() => Facetoface());
+
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => const Facetoface()));
               },
             ),
             ListTile(
@@ -604,8 +614,9 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.of(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Events()));
+                Get.off(() => Events());
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => const Events()));
               },
             ),
             ListTile(
@@ -622,8 +633,9 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Attendance()));
+                Get.off(() => Attendance());
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => const Attendance()));
               },
             ),
             ListTile(
@@ -640,8 +652,9 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Visitors()));
+                Get.off(() => Visitors());
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (context) => const Visitors()));
               },
             ),
             ListTile(
@@ -658,8 +671,10 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const FilterMember()));
+                Get.off(() => FilterMember());
+
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => const FilterMember()));
               },
             ),
           ],

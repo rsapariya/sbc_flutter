@@ -19,12 +19,15 @@ class _BoardingPageState extends State<BoardingPage> {
     _currentPage = 0;
 
     _slides = [
-      Slide("assets/image/b2-min.jpg", "Lorean ipsum doller Sit amet",
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."),
-      Slide("assets/image/b1-min.jpg", "Lorean ipsum doller Sit amet",
-          " will be distracted by the readable content of a page when looking at its layout It is a long established fact that a reader."),
-      Slide("assets/image/b3-min.jpg", "Lorean ipsum doller Sit amet",
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."),
+      Slide("assets/image/4204968-min.jpg", "Connect"),
+      Slide(
+        "assets/image/5803449-min.jpg",
+        "Engage",
+      ),
+      Slide(
+        "assets/image/6736639-min.jpg",
+        "Grow",
+      ),
     ];
     _pageController = PageController(initialPage: _currentPage);
     super.initState();
@@ -67,6 +70,7 @@ class _BoardingPageState extends State<BoardingPage> {
                 child: Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SizedBox(
                         width: Get.width / 1.3,
@@ -79,19 +83,7 @@ class _BoardingPageState extends State<BoardingPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: Get.width / 1.3,
-                        child: Text(
-                          slide.subtitel,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              // overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                              fontFamily: "popins",
-                              fontSize: 14),
-                        ),
+                        height: Get.height /5,
                       ),
                     ],
                   ),
@@ -246,7 +238,6 @@ class _BoardingPageState extends State<BoardingPage> {
 class Slide {
   String image;
   String heading;
-  String subtitel;
 
-  Slide(this.image, this.heading, this.subtitel);
+  Slide(this.image, this.heading);
 }

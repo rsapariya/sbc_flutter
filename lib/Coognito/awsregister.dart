@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/units/api.dart';
+import 'package:sbc/units/storage.dart';
 
 import '../login/login.dart';
 
@@ -25,7 +26,8 @@ class AWSServices {
       session = await cognitoUser.authenticateUser(authDetails);
       debugPrint('Login Success...');
       EmailID = email.toString();
-      Get.off(() => home());
+      Get.offAll(() => home());
+      save('Login', true);
       ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {
       debugPrint('CognitoUserNewPasswordRequiredException $e');
@@ -45,6 +47,7 @@ class AWSServices {
       ApiWrapper.showToastMessage(e.message);
       debugPrint('CognitoClientException ---->>>$e');
     } catch (e) {
+      // ApiWrapper.showToastMessage('Something Went ');
       print(e);
     }
   }

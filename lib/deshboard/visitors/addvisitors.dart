@@ -223,7 +223,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                             if (visitorname.text.isNotEmpty &&
                                 business.text.isNotEmpty &&
                                 phone.text.isNotEmpty &&
-                                _selected == null &&
+                                _selected != null &&
                                 description.text.isNotEmpty) {
                               setState(() {
                                 Loding = true;
@@ -350,7 +350,6 @@ class _AddvisitorsState extends State<Addvisitors> {
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         _myJson.clear();
-
 
         _myJson.clear();
         val.forEach((e) {

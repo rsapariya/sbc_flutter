@@ -90,13 +90,19 @@ class _RecievedState extends State<Recieved>
                                       Icons.delete,
                                       color: Colors.transparent,
                                     ),
-                                    Text(
-                                      recivebuss[index]['username'],
-                                      style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                              color: Colors.blue,
-                                              fontSize: 18,
-                                              fontFamily: "popins")),
+                                    SizedBox(
+                                      width: Get.width / 1.5,
+                                      child: Center(
+                                        child: Text(
+                                          recivebuss[index]['username'],
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: Colors.blue,
+                                                  fontSize: 18,
+                                                  fontFamily: "popins")),
+                                        ),
+                                      ),
                                     ),
                                     InkWell(
                                       onTap: () {

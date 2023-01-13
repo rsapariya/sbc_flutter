@@ -1,8 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:async';
+import 'dart:math';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/storage.dart';
@@ -30,7 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 4),
         () => getdata.read('isOpen') == true
-            ? Get.off(() => login())
+            ? getdata.read('Login') == true
+                ? Get.offAll(() => home())
+                : Get.off(() => login())
             : Get.off(() => const BoardingPage()));
   }
 

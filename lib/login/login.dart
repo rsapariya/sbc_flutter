@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sbc/login/forgotpass.dart';
 import 'package:sbc/login/register.dart';
 import 'package:sbc/units/api.dart';
+import 'package:sbc/units/storage.dart';
 import '../Coognito/awsregister.dart';
 
 String? UserID;
@@ -128,6 +129,8 @@ class _loginState extends State<login> {
                                     if (_formKey.currentState!.validate()) {
                                       setState(() {});
                                       EmailID = emailcontroller.toString();
+                                      save('EmailID',
+                                          emailcontroller.text.toString());
                                       UserID = null;
 
                                       login(emailcontroller.text,

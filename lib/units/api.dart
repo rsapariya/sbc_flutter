@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:sbc/units/storage.dart';
 
 import '../login/login.dart';
 
@@ -95,7 +96,7 @@ class AppUrl {
   static String Rbuiss = '${baseurl}getRecievedBusiness/$UserID';
   static String Gbuiss = '${baseurl}getGivenBusiness/$UserID';
   static String addbusiness = '${baseurl}addBusinessRecieved';
-  static String getusers = '${baseurl}getUsers/$EmailID';
+  static String getusers = '${baseurl}getUsers/${getdata.read('EmailID')}';
   static String getgivenraf = '${baseurl}getGivenReferral/$UserID';
   static String getreciveraf = '${baseurl}getRecievedReferral/$UserID';
   static String visitors = '${baseurl}getUserVisitors/$UserID';
@@ -103,6 +104,6 @@ class AppUrl {
   static String deleteface = '${baseurl}deleteOTO/';
   static String eventsss = '${baseurl}getChapterEvents/1/$UserID';
   static String atandence = '${baseurl}getAttendence/1/$UserID';
-  static String GetallUsers = '${baseurl}getUsers/$EmailID';
-  static String GetUser = '${baseurl}getUserProfile/$EmailID';
+  static String GetallUsers = '${baseurl}getUsers/${getdata.read('EmailID')}';
+  static String GetUser = '${baseurl}getUserProfile/${getdata.read('EmailID')}';
 }

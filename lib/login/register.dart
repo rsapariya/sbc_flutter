@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/Coognito/regiater.dart';
+import 'package:sbc/units/api.dart';
+
+TextEditingController emailcontroller = new TextEditingController();
 
 class register extends StatefulWidget {
   register({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class register extends StatefulWidget {
 }
 
 class _registerState extends State<register> {
+  TextEditingController passcontroller = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -97,6 +101,7 @@ class _registerState extends State<register> {
                             height: 15,
                           ),
                           TextFormField(
+                              controller: emailcontroller,
                               style: const TextStyle(
                                 fontFamily: "popins",
                               ),
@@ -112,6 +117,7 @@ class _registerState extends State<register> {
                             height: 15,
                           ),
                           TextFormField(
+                            controller: passcontroller,
                             style: const TextStyle(
                               fontFamily: "popins",
                             ),
@@ -186,12 +192,13 @@ class _registerState extends State<register> {
                           ),
                           InkWell(
                             onTap: () async {
-                              Register();
-                              // if (_formKey.currentState!.validate()) {
-                              // } else {
-                              //   ApiWrapper.showToastMessage(
-                              //       'Something Went Wrong??');
-                              // }
+                              if (_formKey.currentState!.validate()) {
+                                Register(
+                                    emailcontroller.text, passcontroller.text);
+                              } else {
+                                ApiWrapper.showToastMessage(
+                                    'Something Went Wrong??');
+                              }
                             },
                             child: Container(
                               child: Row(
@@ -274,5 +281,7 @@ class _registerState extends State<register> {
     );
   }
 
-  Register() => NewUSer().createInitialRecord();
+  // sendddd() => Sendotp().createInitialRecord();
+  Register(String Email, Password) =>
+      NewUSer().createInitialRecord(Email.toString(), Password.toString());
 }
