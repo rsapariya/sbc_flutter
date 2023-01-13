@@ -79,7 +79,7 @@ class _BoardingPageState extends State<BoardingPage> {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               textStyle:
-                                  TextStyle(color: Colors.black, fontSize: 26)),
+                                  TextStyle(color: Colors.blue, fontSize: 26)),
                         ),
                       ),
                       SizedBox(
