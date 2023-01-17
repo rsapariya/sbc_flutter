@@ -26,13 +26,15 @@ class _loginState extends State<login> {
   TextEditingController passwordcontroller = new TextEditingController();
   void initState() {
     print("--------------------------------");
-    save('LoginLoding',false);
+    save('LoginLoding', false);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+
+
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -51,7 +53,7 @@ class _loginState extends State<login> {
                     physics: BouncingScrollPhysics(),
                     child: Form(
                         key: _formKey,
-                        autovalidateMode: AutovalidateMode.always,
+                        // autovalidateMode: AutovalidateMode.always,
                         // key: formkey,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +98,12 @@ class _loginState extends State<login> {
                                 height: 15,
                               ),
                               TextFormField(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter Password!!';
+                                    }
+                                    return null;
+                                  },
                                   controller: passwordcontroller,
                                   style: const TextStyle(
                                     fontFamily: "popins",

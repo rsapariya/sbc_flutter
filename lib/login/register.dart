@@ -31,6 +31,17 @@ class _registerState extends State<register> {
   TextEditingController email = TextEditingController();
   TextEditingController pass = TextEditingController();
   TextEditingController fullname = TextEditingController();
+  RegExp pass_valid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
+  bool validatePassword(String pass) {
+    String _password = pass.trim();
+    if (pass_valid.hasMatch(_password)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -68,7 +79,7 @@ class _registerState extends State<register> {
                 physics: const BouncingScrollPhysics(),
                 child: Form(
                     key: _formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    // autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,10 +99,16 @@ class _registerState extends State<register> {
                             height: Get.height / 20,
                           ),
                           TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter Username';
+                                }
+                                return null;
+                              },
                               style: const TextStyle(
                                 fontFamily: "popins",
                               ),
-                              // controller: code,
+                              controller: fullname,
                               autofocus: false,
                               decoration: buildInputDecoration(
                                 hintText: "Enter Your Full Name",
@@ -117,6 +134,20 @@ class _registerState extends State<register> {
                             height: 15,
                           ),
                           TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Please enter password";
+                              } else {
+                                //call function to check password
+                                bool result = validatePassword(value);
+                                if (result) {
+                                  // create account event
+                                  return null;
+                                } else {
+                                  return "Password lenth must 8 charactor like Aa@123wa";
+                                }
+                              }
+                            },
                             controller: passcontroller,
                             style: const TextStyle(
                               fontFamily: "popins",

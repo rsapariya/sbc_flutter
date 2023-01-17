@@ -70,9 +70,12 @@ class NewUSer {
       print(email.toString());
       print(pass.toString());
       data = await userPool.signUp(email.toString(), pass.toString());
+      ApiWrapper.showToastMessage('Register Success.');
+      Get.offAll(() => login());
 
       // Get.to(() => newotp());
     } catch (e) {
+      ApiWrapper.showToastMessage('Email is Already Registered');
       print('---------   else  ----------');
       print(email.toString());
       print(pass.toString());
