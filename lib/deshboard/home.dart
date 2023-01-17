@@ -61,10 +61,10 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   value: "Profile",
                   child: Text('Profile'),
                 ),
-                PopupMenuItem(
-                  value: "Change Password",
-                  child: Text('Change Password'),
-                ),
+                // PopupMenuItem(
+                //   value: "Change Password",
+                //   child: Text('Change Password'),
+                // ),
                 PopupMenuItem(
                   value: "Sign Out",
                   child: Text('Sign Out'),
@@ -77,7 +77,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
               onSelected: (String menu) {
                 if (menu == "Profile") {
                   Get.to(() => Profilepage());
-                } else if (menu == "Change Password") {
                 } else if (menu == "Sign Out") {
                   setState(() {
                     save('Login', false);

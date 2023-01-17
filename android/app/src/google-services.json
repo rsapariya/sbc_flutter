@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "888129631976",
-    "project_id": "sgcci-sbc",
-    "storage_bucket": "sgcci-sbc.appspot.com"
+    "project_number": "825334134537",
+    "project_id": "sgcci-b31f3",
+    "storage_bucket": "sgcci-b31f3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:888129631976:android:c1ddd01b93a64fa269fb5d",
+        "mobilesdk_app_id": "1:825334134537:android:c53edd3efd884de637c5d8",
         "android_client_info": {
-          "package_name": "com.sgcci.sbc"
+          "package_name": "com.sbc.sgcci"
         }
       },
       "oauth_client": [
         {
-          "client_id": "888129631976-9khur4v085r5e2ea5tlvb2l1cmd01md4.apps.googleusercontent.com",
+          "client_id": "825334134537-e8hppmrlj9v7dhfloj8ncphmmms3gvhb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sgcci.sbc",
+            "package_name": "com.sbc.sgcci",
             "certificate_hash": "014aeee396dec321855b89f0e820fd86f807ee94"
           }
         },
         {
-          "client_id": "888129631976-lh9pgo0gmsiuvo9t66tjdq7m6ev868cl.apps.googleusercontent.com",
+          "client_id": "825334134537-s2vnc0i32lbplhenifs68m0jfbhofhg1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAyrwqQpLjlWUnSeFF15gHG4WEjcj_nrAo"
+          "current_key": "AIzaSyAfJlw4hE-xL_ueKwVUHeCx33bVlOiWXVM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "888129631976-lh9pgo0gmsiuvo9t66tjdq7m6ev868cl.apps.googleusercontent.com",
+              "client_id": "825334134537-s2vnc0i32lbplhenifs68m0jfbhofhg1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

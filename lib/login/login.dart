@@ -25,6 +25,8 @@ class _loginState extends State<login> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
   void initState() {
+    print("--------------------------------");
+    save('LoginLoding',false);
     super.initState();
   }
 
@@ -42,7 +44,7 @@ class _loginState extends State<login> {
           ),
         ),
         backgroundColor: Colors.white,
-        body: !loding
+        body: getdata.read('LoginLoding') == false
             ? Padding(
                 padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
                 child: SingleChildScrollView(
@@ -135,6 +137,7 @@ class _loginState extends State<login> {
 
                                       login(emailcontroller.text,
                                           passwordcontroller.text);
+                                      save('LoginLoding', true);
                                     } else {
                                       ApiWrapper.showToastMessage(
                                           'Enter Valid Email??');

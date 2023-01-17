@@ -26,29 +26,57 @@ class AWSServices {
       session = await cognitoUser.authenticateUser(authDetails);
       debugPrint('Login Success...');
       EmailID = email.toString();
+      save('LoginLoding', false);
+
       Get.offAll(() => home());
-      save('Login', true);
+      // save('Login', true);
       ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserNewPasswordRequiredException $e');
     } on CognitoUserMfaRequiredException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserSelectMfaTypeException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserMfaSetupException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserMfaSetupException $e');
     } on CognitoUserTotpRequiredException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserTotpRequiredException $e');
     } on CognitoUserCustomChallengeException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserCustomChallengeException $e');
     } on CognitoUserConfirmationNecessaryException catch (e) {
+      save('LoginLoding', false);
       debugPrint('CognitoUserConfirmationNecessaryException $e');
     } on CognitoClientException catch (e) {
+      save('LoginLoding', false);
+      print('================================');
+      print(getdata.read('LoginLoding'));
+      Get.offAll(() => login());
       ApiWrapper.showToastMessage(e.message);
       debugPrint('CognitoClientException ---->>>$e');
     } catch (e) {
+      save('LoginLoding', false);
       // ApiWrapper.showToastMessage('Something Went ');
       print(e);
     }
+  }
+}
+
+class loginloder extends StatefulWidget {
+  const loginloder({Key? key}) : super(key: key);
+
+  @override
+  State<loginloder> createState() => _loginloderState();
+}
+
+class _loginloderState extends State<loginloder> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }

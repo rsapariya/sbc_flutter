@@ -83,7 +83,7 @@ class _BoardingPageState extends State<BoardingPage> {
                         ),
                       ),
                       SizedBox(
-                        height: Get.height /5,
+                        height: Get.height / 5,
                       ),
                     ],
                   ),
