@@ -83,7 +83,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                     Get.offAll(() => login());
                   });
                 } else if (menu == "Rate Us") {
-                  LaunchReview.launch(androidAppId: "com.sgcci.sbc");
+                  LaunchReview.launch(androidAppId: "com.sbc.sgcci");
                 }
               },
             )

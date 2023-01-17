@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sbc/units/api.dart';
 
 import '../Coognito/regiater.dart';
 import 'otp.dart';
@@ -104,8 +105,14 @@ class _forgetState extends State<forget> {
                           ),
                           InkWell(
                               onTap: () {
-                                Email = email.toString();
-                                Forgot(email.text);
+                                if(_formKey.currentState!.validate()){
+                                  Email = email.toString();
+                                  Forgot(email.text);
+                                }
+                                else{
+                                  return ApiWrapper.showToastMessage('Enter Valid Email');
+                                }
+
                                 // Get.to(() => const verification());
                               },
                               child: Container(
