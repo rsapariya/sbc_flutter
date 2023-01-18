@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, prefer_typing_uninitialized_variables
 
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -80,7 +79,6 @@ class _ProfilepageState extends State<Profilepage> {
       // ignore: unnecessary_cast
       imageFile = pickedFile as PickedFile?;
       profileuplode();
-
     });
   }
 
@@ -114,17 +112,16 @@ class _ProfilepageState extends State<Profilepage> {
                         Center(
                           child: CircleAvatar(
                             backgroundColor: Colors.black,
-                            backgroundImage: NetworkImage(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://sbc.sgcci.in/uploads/profile/" +
-                                    getdata.read('User')['profile']),
+                            backgroundImage: getdata.read('User')['profile'] !=
+                                    null
+                                ? NetworkImage(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://sbc.sgcci.in/uploads/profile/" +
+                                        getdata.read('User')['profile'])
+                                : NetworkImage(
+                                    'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
                             radius: 40,
                           ),
-                          //         CircleAvatar(
-                          //   backgroundColor: Colors.black,
-                          //   backgroundImage: FileImage(File(imageFile!.path)),
-                          //   radius: 40,
-                          // )
                         ),
                         Text(
                           getdata.read('User')['name'] +
@@ -227,8 +224,8 @@ class _ProfilepageState extends State<Profilepage> {
                                     borderRadius: BorderRadius.circular(30)),
                                 child: Center(
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       "Male",
                                       style: TextStyle(
@@ -259,8 +256,8 @@ class _ProfilepageState extends State<Profilepage> {
                                     borderRadius: BorderRadius.circular(30)),
                                 child: Center(
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Text(
                                       "Female",
                                       style: TextStyle(
@@ -302,8 +299,7 @@ class _ProfilepageState extends State<Profilepage> {
                                 Date.text =
                                     formattedDate; //set output date to TextField value.
                               });
-                            } else {
-                            }
+                            } else {}
                           },
                           controller: Date,
                           decoration: buildInputDecoration(
@@ -351,8 +347,7 @@ class _ProfilepageState extends State<Profilepage> {
                                 sDate.text =
                                     formattedDate; //set output date to TextField value.
                               });
-                            } else {
-                            }
+                            } else {}
                           },
                           decoration: buildInputDecoration(
                               hintText: "Anniversry",
@@ -657,9 +652,7 @@ class _ProfilepageState extends State<Profilepage> {
   UpdateUserapi() async {
     var headers = {'Cookie': 'PHPSESSID=96e5eb5258d6ea9e422f81c683fea5f8'};
     var request = http.MultipartRequest(
-        'POST',
-        Uri.parse(
-            'https://sbc.sgcci.in/api-old/updateUser/$EmailID'));
+        'POST', Uri.parse('https://sbc.sgcci.in/api-old/updateUser/$EmailID'));
     request.fields.addAll({
       'name': Fname.text,
       "lname": Lname.text,
@@ -715,7 +708,6 @@ class _ProfilepageState extends State<Profilepage> {
     if (response.statusCode == 200) {
       Get.off(() => const home());
       ApiWrapper.showToastMessage("Profile Update Succesfuly.");
-    } else {
-    }
+    } else {}
   }
 }
