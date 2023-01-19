@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/Coognito/regiater.dart';
 import 'package:sbc/units/api.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 TextEditingController emailcontroller = new TextEditingController();
 
@@ -68,9 +69,11 @@ class _registerState extends State<register> {
                     ))),
             backgroundColor: Colors.white,
             centerTitle: true,
-            title: const Text(
+            title: Text(
               "Register",
-              style: TextStyle(fontFamily: "popins", color: Colors.black),
+              style: GoogleFonts.poppins(
+                  textStyle: GoogleFonts.poppins(
+                      textStyle: const TextStyle(color: Colors.black))),
             )),
         backgroundColor: Colors.white,
         body: Padding(
@@ -105,9 +108,7 @@ class _registerState extends State<register> {
                                 }
                                 return null;
                               },
-                              style: const TextStyle(
-                                fontFamily: "popins",
-                              ),
+                              style: GoogleFonts.poppins(),
                               controller: fullname,
                               autofocus: false,
                               decoration: buildInputDecoration(
@@ -119,9 +120,7 @@ class _registerState extends State<register> {
                           ),
                           TextFormField(
                               controller: emailcontroller,
-                              style: const TextStyle(
-                                fontFamily: "popins",
-                              ),
+                              style: GoogleFonts.poppins(),
                               autofocus: false,
                               validator: (value) => GetUtils.isEmail(value!)
                                   ? null
@@ -149,9 +148,7 @@ class _registerState extends State<register> {
                               }
                             },
                             controller: passcontroller,
-                            style: const TextStyle(
-                              fontFamily: "popins",
-                            ),
+                            style: GoogleFonts.poppins(),
                             // controller: code,
                             autofocus: false,
                             obscureText: npaas,
@@ -210,13 +207,13 @@ class _registerState extends State<register> {
                                 ),
                                 SizedBox(
                                     width: Get.width / 1.3,
-                                    child: const Text(
+                                    child: Text(
                                         "By Countinuing you accept our Privecy policy and turms of use.",
                                         maxLines: 2,
-                                        style: TextStyle(
-                                          fontFamily: "popins",
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
                                           fontSize: 12,
-                                        )))
+                                        ))))
                               ]),
                           SizedBox(
                             height: Get.height / 40,
@@ -238,12 +235,13 @@ class _registerState extends State<register> {
                                     SizedBox(
                                       width: Get.width / 40,
                                     ),
-                                    const Text(
+                                    Text(
                                       "Register",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontFamily: "popins"),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      )),
                                     )
                                   ]),
                               height: Get.height / 15,
@@ -259,21 +257,21 @@ class _registerState extends State<register> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text("Allredy have an account?",
-                                    style: TextStyle(
-                                      fontFamily: "popins",
+                                Text("Allredy have an account?",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
                                       fontSize: 14,
-                                    )),
+                                    ))),
                                 InkWell(
                                     onTap: () {
                                       Get.back();
                                     },
-                                    child: const Text("Login",
-                                        style: TextStyle(
-                                          fontFamily: "popins",
+                                    child: Text("Login",
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
                                           fontSize: 14,
                                           color: Colors.blue,
-                                        )))
+                                        ))))
                               ]),
                           SizedBox(
                             height: Get.height / 20,
@@ -291,8 +289,8 @@ class _registerState extends State<register> {
       prefixIcon: prifix,
       suffixIcon: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

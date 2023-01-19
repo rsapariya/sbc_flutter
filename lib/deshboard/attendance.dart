@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../units/api.dart';
 import 'home.dart';
 
@@ -58,64 +59,64 @@ class _AttendanceState extends State<Attendance>
                             Center(
                               child: Text(
                                 Atandace[index]['ev_title'],
-                                style: const TextStyle(
+                                style: GoogleFonts.poppins(textStyle: const TextStyle(
                                     color: Colors.blue,
                                     fontSize: 18,
-                                    fontFamily: "popins"),
+                                 )),
                               ),
                             ),
                             const Divider(),
-                            const Text(
+                             Text(
                               "Address",
-                              style: TextStyle(
+                              style:GoogleFonts.poppins(textStyle: const  TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
-                                  fontFamily: "popins Light"),
+                                )),
                             ),
                             Text(
                               Atandace[index]['ev_address'],
-                              style: const TextStyle(
+                              style: GoogleFonts.poppins(textStyle:const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
-                                  fontFamily: "popins"),
+                       )),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                            const Text(
+                             Text(
                               "Description",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(textStyle: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
-                                  fontFamily: "popins Light"),
+                              )),
                             ),
                             SizedBox(
                               child: Text(
                                 Atandace[index]['ev_description'],
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: "popins"),
+                                style: GoogleFonts.poppins(textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                )),
                               ),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                            const Text(
+                             Text(
                               "Date & Time",
-                              style: TextStyle(
+                              style:GoogleFonts.poppins(textStyle:const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
-                                  fontFamily: "popins Light"),
+                               )),
                             ),
                             Text(
                               "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']} to ${Atandace[index]['ev_end']})",
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: "popins"),
+                              style:GoogleFonts.poppins(textStyle:  const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),)
                             ),
                             const SizedBox(
                               height: 10,
@@ -146,10 +147,10 @@ class _AttendanceState extends State<Attendance>
                                               '1'
                                           ? "PRESENT"
                                           : "ABSENT",
-                                      style: const TextStyle(
+                                      style: GoogleFonts.poppins(textStyle: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
-                                          fontFamily: "popins"),
+                                      )),
                                     ),
                                   ),
                                 ),
@@ -181,7 +182,6 @@ class _AttendanceState extends State<Attendance>
   }
 
   getatendance() {
-
     ApiWrapper.dataGet(AppUrl.atandence).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         setState(() {

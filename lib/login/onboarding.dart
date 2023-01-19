@@ -181,10 +181,9 @@ class _BoardingPageState extends State<BoardingPage> {
                                 children: [
                                   Text(
                                     "continue",
-                                    style: TextStyle(
-                                        fontFamily: "popins",
+                                    style:GoogleFonts.poppins(textStyle:const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16),
+                                        fontSize: 16)),
                                   ),
                                 ],
                               )),
@@ -209,13 +208,13 @@ class _BoardingPageState extends State<BoardingPage> {
                               child: Center(
                                   child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children:  [
                                   Text(
                                     "Get Started",
-                                    style: TextStyle(
-                                        fontFamily: "popins",
+                                    style:GoogleFonts.poppins(textStyle: const TextStyle(
+
                                         color: Colors.white,
-                                        fontSize: 16),
+                                        fontSize: 16)),
                                   ),
                                 ],
                               )),

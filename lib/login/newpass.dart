@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/login/forgotpass.dart';
 import 'package:sbc/units/api.dart';
 import '../Coognito/regiater.dart';
@@ -48,9 +49,10 @@ class _newpassState extends State<newpass> {
                   ))),
           backgroundColor: Colors.white,
           centerTitle: true,
-          title: const Text(
+          title: Text(
             "New password",
-            style: TextStyle(fontFamily: "popins", color: Colors.black),
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(color: Colors.black)),
           ),
         ),
         backgroundColor: Colors.white,
@@ -66,20 +68,18 @@ class _newpassState extends State<newpass> {
                       SizedBox(
                         height: Get.height / 15,
                       ),
-                      const Text(
+                      Text(
                         "Enter new password",
-                        style: TextStyle(
-                          fontFamily: "popins",
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
                           fontSize: 18,
-                        ),
+                        )),
                       ),
                       SizedBox(
                         height: Get.height / 30,
                       ),
                       TextFormField(
-                        style: const TextStyle(
-                          fontFamily: "popins",
-                        ),
+                        style: GoogleFonts.poppins(),
                         controller: newpass,
                         autofocus: false,
                         onTap: () {
@@ -98,9 +98,7 @@ class _newpassState extends State<newpass> {
                         height: 15,
                       ),
                       TextFormField(
-                        style: const TextStyle(
-                          fontFamily: "popins",
-                        ),
+                        style: GoogleFonts.poppins(),
                         // controller: code,
                         autofocus: false,
                         controller: conpass,
@@ -134,12 +132,13 @@ class _newpassState extends State<newpass> {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Submit",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontFamily: "popins"),
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    )),
                                   )
                                 ]),
                             height: Get.height / 15,
@@ -164,8 +163,8 @@ class _newpassState extends State<newpass> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

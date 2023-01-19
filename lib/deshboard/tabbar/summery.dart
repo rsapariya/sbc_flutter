@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/units/storage.dart';
 
 class summery extends StatefulWidget {
@@ -42,19 +43,19 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Bussiness Received",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle:const  TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                             )),
                         ),
                         Text(
                           "₹${getdata.read("deta")[0]['amount']}",
-                          style: const TextStyle(
+                          style:  GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                             )),
                         ),
                       ],
                     ),
@@ -68,19 +69,19 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Business Given",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           "₹${getdata.read("deta")[1]['amount']}",
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                             )),
                         ),
                       ],
                     ),
@@ -94,19 +95,19 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Raferral Received",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins"),
+                          style:GoogleFonts.poppins(textStyle:const  TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                         Text(
                           getdata.read('deta')[2]['amount'],
-                          style: const TextStyle(
+                          style:GoogleFonts.poppins(textStyle:const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),
@@ -120,19 +121,19 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Referrel Given",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           getdata.read('deta')[3]['amount'],
-                          style: const TextStyle(
+                          style:  GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),
@@ -146,20 +147,20 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Face to Face",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins"),
+                          style:GoogleFonts.poppins(textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                         Text(
                           overflow: TextOverflow.ellipsis,
                           "${getdata.read('deta')[4]['amount']}",
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins Light"),
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                       ],
                     ),
@@ -173,19 +174,19 @@ class _summeryState extends State<summery> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Visitors",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle:const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                          )),
                         ),
                         Text(
                           "${getdata.read('deta')[5]['amount']}",
-                          style: const TextStyle(
+                          style:GoogleFonts.poppins(textStyle:  const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),

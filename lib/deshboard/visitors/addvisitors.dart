@@ -2,6 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
@@ -49,9 +50,9 @@ class _AddvisitorsState extends State<Addvisitors> {
               });
             },
             child: const Icon(Icons.arrow_back)),
-        title: const Text(
+        title:  Text(
           "Add Visitors",
-          style: TextStyle(color: Colors.white, fontFamily: "popins"),
+          style:GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white)),
         ),
       ),
       body: !Loding
@@ -68,9 +69,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: const TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style:GoogleFonts.poppins(),
                       controller: visitorname,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -94,9 +93,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: const TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: business,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -108,9 +105,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: const TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: phone,
                       keyboardType: TextInputType.phone,
                       autofocus: false,
@@ -122,12 +117,12 @@ class _AddvisitorsState extends State<Addvisitors> {
                     const SizedBox(
                       height: 15,
                     ),
-                    const Text(
+                     Text(
                       "Is SGCCI Member ? ",
-                      style: TextStyle(
+                      style:GoogleFonts.poppins(textStyle: TextStyle(
                           color: Colors.blue,
                           fontSize: 16,
-                          fontFamily: "popins"),
+                   )),
                     ),
                     // appbutton(titel: "Request"),
                     const SizedBox(
@@ -154,11 +149,10 @@ class _AddvisitorsState extends State<Addvisitors> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Yes",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style: GoogleFonts.poppins(textStyle: TextStyle(
                                       color: member == "Yes"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -186,11 +180,10 @@ class _AddvisitorsState extends State<Addvisitors> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "No",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style:GoogleFonts.poppins(textStyle:  TextStyle(
                                       color: member == "No"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -203,9 +196,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: const TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style:GoogleFonts.poppins(),
                       controller: description,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -259,8 +250,8 @@ class _AddvisitorsState extends State<Addvisitors> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

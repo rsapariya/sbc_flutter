@@ -57,7 +57,7 @@ class _addfacetofaceState extends State<addfacetoface> {
           "Add Face to Face",
           style: GoogleFonts.poppins(
               textStyle:
-                  const TextStyle(color: Colors.white, fontFamily: "popins")),
+                  const TextStyle(color: Colors.white,)),
         ),
       ),
       body: !Loding
@@ -76,7 +76,6 @@ class _addfacetofaceState extends State<addfacetoface> {
                     TextFormField(
                       style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                        fontFamily: "popins",
                       )),
                       // controller: code,
                       autofocus: false,
@@ -123,7 +122,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                                           style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 16,
-                                              fontFamily: 'popins'),
+                                              ),
                                         ),
                                       ),
                                     ),
@@ -152,7 +151,6 @@ class _addfacetofaceState extends State<addfacetoface> {
                     ),
                     TextFormField(
                       style: const TextStyle(
-                        fontFamily: "popins",
                       ),
                       controller: date,
                       autofocus: false,
@@ -198,7 +196,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
-                          fontFamily: "popins"),
+                        ),
                     ),
                     const SizedBox(
                       height: 15,
@@ -206,7 +204,6 @@ class _addfacetofaceState extends State<addfacetoface> {
                     TextFormField(
                       maxLines: 3,
                       style: const TextStyle(
-                        fontFamily: "popins",
                       ),
                       controller: convertion,
                       autofocus: false,
@@ -268,8 +265,8 @@ class _addfacetofaceState extends State<addfacetoface> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

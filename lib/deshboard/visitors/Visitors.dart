@@ -185,7 +185,7 @@ class _VisitorsState extends State<Visitors> {
                                             textStyle: const TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12,
-                                                fontFamily: "popins Light")),
+                                                )),
                                       ),
                                       Text(
                                         visitors[index]['ev_date'] ?? "",
@@ -193,7 +193,7 @@ class _VisitorsState extends State<Visitors> {
                                             textStyle: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: "popins")),
+                                              )),
                                       ),
                                     ],
                                   ),
@@ -218,7 +218,7 @@ class _VisitorsState extends State<Visitors> {
                                             textStyle: const TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12,
-                                                fontFamily: "popins Light")),
+                                                )),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
@@ -228,7 +228,7 @@ class _VisitorsState extends State<Visitors> {
                                               textStyle: const TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
-                                                  fontFamily: "popins")),
+                                                 )),
                                         ),
                                       ),
                                     ],
@@ -265,7 +265,7 @@ class _VisitorsState extends State<Visitors> {
             'Are you Sure Want to Delete Visitor ?',
             style: GoogleFonts.poppins(
                 textStyle:
-                    const TextStyle(color: Colors.black, fontFamily: "popins")),
+                    const TextStyle(color: Colors.black)),
           ),
           actions: [
             TextButton(
@@ -276,8 +276,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Cancel',
                   style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                          color: Colors.black, fontFamily: "popins")),
+                      textStyle:GoogleFonts.poppins(textStyle: const TextStyle(
+                          color: Colors.black))),
                 )),
             TextButton(
                 onPressed: () {
@@ -290,8 +290,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Delete',
                   style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                          color: Colors.red, fontFamily: "popins")),
+                      textStyle:GoogleFonts.poppins(textStyle: const TextStyle(
+                          color: Colors.red))),
                 )),
           ],
         );

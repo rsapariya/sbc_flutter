@@ -7,6 +7,7 @@ import 'package:sbc/login/register.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/storage.dart';
 import '../Coognito/awsregister.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 String? UserID;
 String? EmailID;
@@ -34,7 +35,6 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
-
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -42,7 +42,8 @@ class _loginState extends State<login> {
           centerTitle: true,
           title: Text(
             "Login",
-            style: TextStyle(fontFamily: "popins", color: Colors.black),
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(color: Colors.black)),
           ),
         ),
         backgroundColor: Colors.white,
@@ -71,21 +72,18 @@ class _loginState extends State<login> {
                               SizedBox(
                                 height: Get.height / 20,
                               ),
-                              const Text(
+                              Text(
                                 "Welcome",
-                                style: TextStyle(
-                                    fontFamily: "popins",
-                                    color: Colors.blue,
-                                    fontSize: 24),
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                        color: Colors.blue, fontSize: 24)),
                               ),
                               SizedBox(
                                 height: Get.height / 20,
                               ),
                               TextFormField(
                                   controller: emailcontroller,
-                                  style: const TextStyle(
-                                    fontFamily: "popins",
-                                  ),
+                                  style: GoogleFonts.poppins(),
                                   validator: (value) => GetUtils.isEmail(value!)
                                       ? null
                                       : "Email Not Valid !",
@@ -105,9 +103,7 @@ class _loginState extends State<login> {
                                     return null;
                                   },
                                   controller: passwordcontroller,
-                                  style: const TextStyle(
-                                    fontFamily: "popins",
-                                  ),
+                                  style: GoogleFonts.poppins(),
                                   autofocus: false,
                                   decoration: buildInputDecoration(
                                     hintText: "Password",
@@ -123,12 +119,12 @@ class _loginState extends State<login> {
                                         onTap: () {
                                           Get.to(() => forget());
                                         },
-                                        child: const Text(
+                                        child: Text(
                                           "Forgot your password?",
-                                          style: TextStyle(
-                                              fontFamily: "popins",
-                                              fontSize: 14,
-                                              color: Colors.blue),
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.blue)),
                                         ))
                                   ]),
                               const SizedBox(
@@ -159,12 +155,13 @@ class _loginState extends State<login> {
                                           SizedBox(
                                             width: Get.width / 40,
                                           ),
-                                          const Text(
+                                          Text(
                                             "Login",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontFamily: "popins"),
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                            )),
                                           )
                                         ]),
                                     height: Get.height / 15,
@@ -180,23 +177,23 @@ class _loginState extends State<login> {
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text(
+                                    Text(
                                       "Don't have an account yet?",
-                                      style: TextStyle(
-                                        fontFamily: "popins",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
                                         fontSize: 14,
-                                      ),
+                                      )),
                                     ),
                                     InkWell(
                                         onTap: () {
                                           Get.to(() => register());
                                         },
-                                        child: const Text("Register",
-                                            style: TextStyle(
-                                              fontFamily: "popins",
+                                        child: Text("Register",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
                                               fontSize: 14,
                                               color: Colors.blue,
-                                            )))
+                                            ))))
                                   ])
                             ]))))
             : const Center(
@@ -217,8 +214,8 @@ class _loginState extends State<login> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

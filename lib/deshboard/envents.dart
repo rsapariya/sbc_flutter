@@ -32,7 +32,8 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                 child: Text(
                   'No Event Found',
                   style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(color: Colors.red, fontSize: 20)),
+                      textStyle:
+                          const TextStyle(color: Colors.red, fontSize: 20)),
                 ),
               )
             : ListView.builder(
@@ -56,60 +57,64 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             Center(
                               child: Text(
                                 event[index]['ev_title'],
-                                style: const TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
-                                    fontFamily: "popins"),
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 18,
+                                )),
                               ),
                             ),
                             const Divider(),
-                            const Text(
+                            Text(
                               "Address",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontFamily: "popins Light"),
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                             Text(
                               event[index]['ev_address'],
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: "popins"),
+                              style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              )),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                            const Text(
+                            Text(
                               "Description",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontFamily: "popins Light"),
+                              style: GoogleFonts.poppins(
+                                  textStyle:TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                      )),
                             ),
                             Text(
                               event[index]['ev_description'],
-                              style: const TextStyle(
+                              style:GoogleFonts.poppins(textStyle: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
-                                  fontFamily: "popins"),
+                              )),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                            const Text(
+                             Text(
                               "Date & Time",
-                              style: TextStyle(
+                              style:GoogleFonts.poppins(textStyle:const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
-                                  fontFamily: "popins Light"),
+                              )) ,
                             ),
                             Text(
                               "${event[index]['ev_date']} (${event[index]['ev_start']} to ${event[index]['ev_end']})",
-                              style: const TextStyle(
+                              style:GoogleFonts.poppins(textStyle:const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
-                                  fontFamily: "popins"),
+                              )),
                             ),
                             const SizedBox(
                               height: 10,
@@ -133,13 +138,13 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                         event[index]['ev_status'] == "OPEN"
                                             ? "JOIN NOW"
                                             : event[index]['ev_status'],
-                                        style: const TextStyle(
+                                        style:GoogleFonts.poppins(textStyle:const TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            ),
                                       ),
                                     ),
-                                  ),
+                                  ),),
                                   decoration: BoxDecoration(
                                       boxShadow: [
                                         BoxShadow(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/deshboard/members/MemberDetails.dart';
 import 'package:sbc/units/storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../splaysh.dart';
 import '../home.dart';
 
@@ -97,9 +98,10 @@ class _FilterMemberState extends State<FilterMember>
               },
               icon: const Icon(Icons.filter_alt_outlined))
         ],
-        title: const Text(
+        title: Text(
           "Member List",
-          style: TextStyle(color: Colors.white, fontFamily: "popins"),
+          style: GoogleFonts.poppins(
+              textStyle: const TextStyle(color: Colors.white)),
         ),
       ),
       // drawer: Drower(),
@@ -130,10 +132,11 @@ class _FilterMemberState extends State<FilterMember>
                                   horizontal: 10, vertical: 5),
                               child: Text(
                                 'Name',
-                                style: TextStyle(
-                                    color: Filter == "Name"
-                                        ? Colors.white
-                                        : Colors.blue),
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        color: Filter == "Name"
+                                            ? Colors.white
+                                            : Colors.blue)),
                               ),
                             ),
                           ),
@@ -177,9 +180,7 @@ class _FilterMemberState extends State<FilterMember>
               padding: EdgeInsets.symmetric(
                   horizontal: Get.width / 30, vertical: 10),
               child: TextFormField(
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false,
                 onChanged: (value) =>
@@ -243,16 +244,18 @@ class _FilterMemberState extends State<FilterMember>
                                               SizedBox(
                                                 width: Get.width / 2,
                                                 child: Text(
-                                                  _foundUsers[index]
-                                                          ['username'] ??
-                                                      "",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: const TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize: 16,
-                                                      fontFamily: 'popins'),
-                                                ),
+                                                    _foundUsers[index]
+                                                            ['username'] ??
+                                                        "",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: GoogleFonts.poppins(
+                                                      textStyle:
+                                                          const TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 16,
+                                                      ),
+                                                    )),
                                               ),
                                               _foundUsers[index]['business'] ==
                                                       null
@@ -262,11 +265,13 @@ class _FilterMemberState extends State<FilterMember>
                                                       child: Text(
                                                         _foundUsers[index]
                                                             ['business'],
-                                                        style: const TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 14,
-                                                            fontFamily:
-                                                                'popins'),
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                textStyle:
+                                                                    const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 14,
+                                                        )),
                                                       ),
                                                     ),
                                               _foundUsers[index]['cat_name'] ==
@@ -277,11 +282,13 @@ class _FilterMemberState extends State<FilterMember>
                                                       child: Text(
                                                         _foundUsers[index]
                                                             ['cat_name'],
-                                                        style: const TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 14,
-                                                            fontFamily:
-                                                                'popins'),
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                textStyle:
+                                                                    const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 14,
+                                                        )),
                                                       ),
                                                     ),
                                             ],
@@ -309,13 +316,13 @@ class _FilterMemberState extends State<FilterMember>
                       },
                     ),
                   )
-                : const Center(
+                :  Center(
                     child: Text(
                       'No results found',
-                      style: TextStyle(
+                      style:GoogleFonts.poppins(textStyle: const TextStyle(
                           fontSize: 22,
                           color: Colors.red,
-                          fontFamily: "popins"),
+                         )),
                     ),
                   ),
           ],
@@ -334,8 +341,8 @@ class _FilterMemberState extends State<FilterMember>
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

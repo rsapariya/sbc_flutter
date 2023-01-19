@@ -88,9 +88,9 @@ class _FacetofaceState extends State<Facetoface> {
                                     Face[index]['username'],
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: 18,
-                                            fontFamily: "popins")),
+                                      color: Colors.blue,
+                                      fontSize: 18,
+                                    )),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -119,17 +119,17 @@ class _FacetofaceState extends State<Facetoface> {
                                         "Location",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                                fontFamily: "popins Light")),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
                                       ),
                                       Text(
                                         Face[index]['oto_location'],
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                                fontFamily: "popins")),
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                        )),
                                       ),
                                     ],
                                   ),
@@ -142,17 +142,17 @@ class _FacetofaceState extends State<Facetoface> {
                                         "Date",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                                fontFamily: "popins Light")),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
                                       ),
                                       Text(
                                         Face[index]['oto_date'],
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                                fontFamily: "popins")),
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                        )),
                                       ),
                                     ],
                                   ),
@@ -175,9 +175,9 @@ class _FacetofaceState extends State<Facetoface> {
                                         "Conversion",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                                fontFamily: "popins Light")),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
@@ -185,9 +185,9 @@ class _FacetofaceState extends State<Facetoface> {
                                           Face[index]["oto_conversation"],
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontFamily: "popins")),
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                          )),
                                         ),
                                       ),
                                     ],

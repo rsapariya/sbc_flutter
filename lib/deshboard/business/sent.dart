@@ -67,7 +67,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                     textStyle: const TextStyle(
                                         color: Colors.blue,
                                         fontSize: 18,
-                                        fontFamily: "popins")),
+                                       )),
                               ),
                             ),
                             const Divider(),
@@ -83,7 +83,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                           textStyle: const TextStyle(
                                               color: Colors.grey,
                                               fontSize: 12,
-                                              fontFamily: "popins Light")),
+                                              )),
                                     ),
                                     Text(
                                       getbuss[index]['entry_date'],
@@ -91,7 +91,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                           textStyle: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins")),
+                                              )),
                                     ),
                                   ],
                                 ),
@@ -107,7 +107,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                           textStyle: const TextStyle(
                                               color: Colors.grey,
                                               fontSize: 12,
-                                              fontFamily: "popins Light")),
+                                              )),
                                     ),
                                     Text(
                                       getbuss[index]['amount'],
@@ -115,7 +115,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                           textStyle: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 14,
-                                              fontFamily: "popins")),
+                                              )),
                                     ),
                                   ],
                                 )
@@ -135,7 +135,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                       style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 12,
-                                          fontFamily: "popins Light"),
+                                          ),
                                     ),
                                     SizedBox(
                                       width: Get.width / 1.2,
@@ -144,7 +144,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                         style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily: "popins"),
+                                            ),
                                       ),
                                     ),
                                   ],

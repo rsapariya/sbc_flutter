@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:sbc/deshboard/Profile.dart';
 import 'package:sbc/deshboard/attendance.dart';
@@ -15,6 +16,7 @@ import '../units/api.dart';
 import '../units/storage.dart';
 import 'business/request.dart';
 import 'members/filtermember.dart';
+
 
 List getbuss = [];
 List recivebuss = [];
@@ -59,7 +61,10 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
               itemBuilder: (context) => [
                 PopupMenuItem(
                   value: "Profile",
-                  child: Text('Profile'),
+                  child: Text(
+                    'Profile',
+                    style: GoogleFonts.poppins(),
+                  ),
                 ),
                 // PopupMenuItem(
                 //   value: "Change Password",
@@ -67,11 +72,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                 // ),
                 PopupMenuItem(
                   value: "Sign Out",
-                  child: Text('Sign Out'),
+                  child: Text('Sign Out', style: GoogleFonts.poppins()),
                 ),
                 PopupMenuItem(
                   value: "Rate Us",
-                  child: Text('Rate Us'),
+                  child: Text('Rate Us', style: GoogleFonts.poppins()),
                 ),
               ],
               onSelected: (String menu) {
@@ -91,7 +96,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           centerTitle: true,
           title: Text(
             "Dashbord",
-            style: TextStyle(color: Colors.white, fontFamily: "popins"),
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(color: Colors.white)),
           ),
         ),
         body: !loding
@@ -137,17 +143,19 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                               children: [
                                 Text(
                                   getdata.read('User')['username'] ?? "",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                                 Text(
                                   "Status : ${getdata.read('User')['status'] ?? ""}",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 )
                               ],
                             )
@@ -182,21 +190,23 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
+                                Text(
                                   "Next Meeting Date",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                                 Text(
                                   getdata.read("dashboard")['next_event']
                                           ['date'] ??
                                       "",
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins Light"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                               ],
                             ),
@@ -210,21 +220,23 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
+                                Text(
                                   "Visitor",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                                 Text(
                                   getdata.read("dashboard")['next_event']
                                           ['visitors'] ??
                                       "",
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins Light"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                               ],
                             ),
@@ -238,21 +250,23 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
+                                Text(
                                   "Speakers",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                                 Text(
                                   getdata.read("dashboard")['next_event']
                                           ['speakers'] ??
                                       "",
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontFamily: "popins Light"),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          )),
                                 ),
                               ],
                             ),
@@ -290,15 +304,15 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           tabs: [
                             Text(
                               'Summary',
-                              style: TextStyle(fontFamily: 'popins'),
+                              style: GoogleFonts.poppins(),
                             ),
                             Text(
                               'All time',
-                              style: TextStyle(fontFamily: 'popins'),
+                              style: GoogleFonts.poppins(),
                             ),
                             Text(
                               '12 Month',
-                              style: TextStyle(fontFamily: 'popins'),
+                              style:GoogleFonts.poppins(),
                             ),
                           ]),
                     ),
@@ -524,12 +538,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Dashboard",
-                style: TextStyle(
+                style:GoogleFonts.poppins(textStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                    )),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -544,12 +558,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/growth.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Business",
-                style: TextStyle(
+                style:GoogleFonts.poppins(textStyle:const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                    )),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -564,12 +578,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/team.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Referral",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontFamily: "popins light"),
+                style:GoogleFonts.poppins(textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                ),)
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -584,12 +598,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/discussion.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Face to Face",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontFamily: "popins light"),
+                style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -604,16 +618,16 @@ class _DrowerState extends State<Drower> {
                 'assets/image/calendar.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Events",
-                style: TextStyle(
+                style: GoogleFonts.poppins(textStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                )),
               ),
               onTap: () {
                 Navigator.of(context);
-                Get.off(() => Events());
+                Get.off(() => const Events());
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Events()));
               },
@@ -623,12 +637,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/attendance.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Attendance",
-                style: TextStyle(
+                style: GoogleFonts.poppins(textStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -642,12 +656,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/visitor.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Visitors",
-                style: TextStyle(
+                style:GoogleFonts.poppins(textStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                   )),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -661,12 +675,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title: const Text(
+              title:  Text(
                 "Members List",
-                style: TextStyle(
+                style:GoogleFonts.poppins(textStyle:const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
-                    fontFamily: "popins light"),
+                  )),
               ),
               onTap: () {
                 Navigator.pop(context);

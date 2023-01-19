@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:sbc/units/storage.dart';
 
@@ -111,9 +112,9 @@ class _MemberDetalisState extends State<MemberDetalis> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text(
+        title:  Text(
           "Profile",
-          style: TextStyle(fontFamily: "popins"),
+          style:GoogleFonts.poppins(),
         ),
       ),
       body: Padding(
@@ -138,26 +139,24 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               Text(
                 getdata.read('userdeta')['username'],
-                style: const TextStyle(
-                    color: Colors.black, fontSize: 16, fontFamily: "popins"),
+                style:GoogleFonts.poppins(textStyle:const TextStyle(
+                    color: Colors.black, fontSize: 16)),
               ),
-              const Text(
+               Text(
                 'About',
-                style: TextStyle(
-                    color: Colors.grey, fontSize: 14, fontFamily: "popins"),
+                style: GoogleFonts.poppins(textStyle:const TextStyle(
+                    color: Colors.grey, fontSize: 14)),
               ),
               Text(
                 getdata.read('userdeta')['role_type'],
-                style: const TextStyle(
-                    color: Colors.black, fontSize: 16, fontFamily: "popins"),
+                style:GoogleFonts.poppins(textStyle:const TextStyle(
+                    color: Colors.black, fontSize: 16)),
               ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:  GoogleFonts.poppins(),
                 controller: Fname,
                 readOnly: true,
                 autofocus: false,
@@ -171,9 +170,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Lname,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:  GoogleFonts.poppins(),
                 autofocus: false,
                 readOnly: true,
                 decoration: buildInputDecoration(
@@ -186,9 +183,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Email,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -201,9 +196,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:  GoogleFonts.poppins(),
                 controller: Phone,
                 autofocus: false, readOnly: true,
                 keyboardType: TextInputType.phone,
@@ -212,39 +205,12 @@ class _MemberDetalisState extends State<MemberDetalis> {
                   lbltext: "Phone No.",
                 ),
               ),
-              // SizedBox(
-              //   height: Get.height / 60,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: [
-              //     Container(
-              //       height: Get.height / 25,
-              //       width: Get.width / 3.5,
-              //       decoration: BoxDecoration(
-              //           color: Colors.blue,
-              //           borderRadius: BorderRadius.circular(30)),
-              //       child: Center(
-              //         child: Padding(
-              //           padding: EdgeInsets.symmetric(horizontal: 20),
-              //           child: Text(
-              //             member,
-              //             style: TextStyle(
-              //                 fontFamily: 'popins', color: Colors.white),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Date,
                 autofocus: false, readOnly: true,
                 keyboardType: TextInputType.number,
@@ -256,10 +222,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     "   yyyy-MM-dd",
-                    style: TextStyle(
-                        color: Colors.grey, fontSize: 12, fontFamily: "popins"),
+                    style: GoogleFonts.poppins(textStyle:const TextStyle(
+                        color: Colors.grey, fontSize: 12)),
                   ),
                 ],
               ),
@@ -268,9 +234,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: sDate,
                 autofocus: false, readOnly: true,
                 keyboardType: TextInputType.number,
@@ -282,10 +246,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     "   yyyy-MM-dd",
-                    style: TextStyle(
-                        color: Colors.grey, fontSize: 12, fontFamily: "popins"),
+                    style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                        color: Colors.grey, fontSize: 12)),
                   ),
                 ],
               ),
@@ -294,9 +258,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:GoogleFonts.poppins(),
                 controller: Pcode,
                 autofocus: false, readOnly: true,
                 keyboardType: TextInputType.number,
@@ -310,9 +272,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Address,
                 autofocus: false, readOnly: true,
                 maxLines: 3,
@@ -326,9 +286,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Achivments,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 maxLines: 3,
@@ -342,9 +300,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Business,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -357,9 +313,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Website,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -372,9 +326,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Businessinfo,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style:GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 maxLines: 3,
@@ -388,9 +340,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Businessadd,
                 autofocus: false, readOnly: true,
                 maxLines: 3,
@@ -404,9 +354,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: BusinessWhatt,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -419,9 +367,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Fb,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -434,9 +380,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Insta,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -449,9 +393,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Linkdin,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -464,9 +406,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Twiter,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -479,9 +419,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 controller: Googlemap,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -494,9 +432,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style: const TextStyle(
-                  fontFamily: "popins",
-                ),
+                style: GoogleFonts.poppins(),
                 maxLines: 3,
                 controller: Keywords,
                 autofocus: false, readOnly: true,
@@ -530,8 +466,8 @@ class _MemberDetalisState extends State<MemberDetalis> {
       disabledBorder: InputBorder.none,
       hintText: hintText,
       focusColor: Colors.transparent,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

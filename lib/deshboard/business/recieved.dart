@@ -100,7 +100,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.blue,
                                                   fontSize: 18,
-                                                  fontFamily: "popins")),
+                                                 )),
                                         ),
                                       ),
                                     ),
@@ -134,7 +134,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 12,
-                                                  fontFamily: "popins Light")),
+                                                  )),
                                         ),
                                         Text(
                                           recivebuss[index]['entry_date'],
@@ -142,7 +142,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
-                                                  fontFamily: "popins")),
+                                                 )),
                                         ),
                                       ],
                                     ),
@@ -159,7 +159,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 12,
-                                                  fontFamily: "popins Light")),
+                                                  )),
                                         ),
                                         Text(
                                           recivebuss[index]['amount'],
@@ -167,7 +167,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
-                                                  fontFamily: "popins")),
+                                               )),
                                         ),
                                       ],
                                     )
@@ -189,7 +189,7 @@ class _RecievedState extends State<Recieved>
                                               textStyle: const TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 12,
-                                                  fontFamily: "popins Light")),
+                                                  )),
                                         ),
                                         SizedBox(
                                           width: Get.width / 1.2,
@@ -199,7 +199,7 @@ class _RecievedState extends State<Recieved>
                                                 textStyle: const TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 14,
-                                                    fontFamily: "popins")),
+                                                    )),
                                           ),
                                         ),
                                       ],
@@ -235,7 +235,7 @@ class _RecievedState extends State<Recieved>
         return AlertDialog(
           title: const Text(
             'Are you Sure Want to Delete Business ?',
-            style: TextStyle(color: Colors.black, fontFamily: "popins"),
+            style: TextStyle(color: Colors.black),
           ),
           actions: [
             TextButton(
@@ -245,7 +245,7 @@ class _RecievedState extends State<Recieved>
                 },
                 child: const Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black, fontFamily: "popins"),
+                  style: TextStyle(color: Colors.black, ),
                 )),
             TextButton(
                 onPressed: () {
@@ -257,7 +257,7 @@ class _RecievedState extends State<Recieved>
                 },
                 child: const Text(
                   'Delete',
-                  style: TextStyle(color: Colors.red, fontFamily: "popins"),
+                  style: TextStyle(color: Colors.red,),
                 )),
           ],
         );

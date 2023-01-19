@@ -21,7 +21,6 @@ class Addrequest extends StatefulWidget {
 
 class _AddrequestState extends State<Addrequest> {
   TextEditingController city = TextEditingController();
-
   bool loding = false;
   List _foundUsers = [];
   var bussiness = "New";
@@ -57,7 +56,7 @@ class _AddrequestState extends State<Addrequest> {
           "Add Business",
           style: GoogleFonts.poppins(
               textStyle:
-                  const TextStyle(color: Colors.white, fontFamily: "popins")),
+                  GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white))),
         ),
       ),
       body: !loding
@@ -113,10 +112,9 @@ class _AddrequestState extends State<Addrequest> {
                                           _foundUsers[index]['username'] ?? "",
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
+                                              textStyle:GoogleFonts.poppins(textStyle:  const TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 16,
-                                                  fontFamily: 'popins')),
+                                                  fontSize: 16))),
                                         ),
                                       ),
                                     ),
@@ -190,10 +188,10 @@ class _AddrequestState extends State<Addrequest> {
                     Text(
                       "   yyyy-MM-dd",
                       style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                              fontFamily: "popins")),
+                          textStyle:GoogleFonts.poppins(textStyle: const   TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -201,10 +199,10 @@ class _AddrequestState extends State<Addrequest> {
                     Text(
                       "Bussiness Type",
                       style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                              fontFamily: "popins")),
+                          textStyle: GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 16,
+                          ))),
                     ),
                     // appbutton(titel: "Request"),
                     const SizedBox(
@@ -232,11 +230,11 @@ class _AddrequestState extends State<Addrequest> {
                                 child: Text(
                                   "New",
                                   style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                          fontFamily: 'popins',
+                                      textStyle:GoogleFonts.poppins(textStyle: TextStyle(
+
                                           color: bussiness == "New"
                                               ? Colors.white
-                                              : Colors.blue)),
+                                              : Colors.blue))),
                                 ),
                               ),
                             ),
@@ -264,11 +262,11 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Repeat",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style: GoogleFonts.poppins(textStyle:  TextStyle(
+
                                       color: bussiness == "repet"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -282,12 +280,12 @@ class _AddrequestState extends State<Addrequest> {
                     const SizedBox(
                       height: 15,
                     ),
-                    const Text(
+                     Text(
                       "Connection Type",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontFamily: "popins"),
+                      style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
+                      )),
                     ),
 
                     const SizedBox(
@@ -314,11 +312,10 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Inside",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style: GoogleFonts.poppins(textStyle:  TextStyle(
                                       color: conaction == "Inside"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -346,11 +343,10 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Outside",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style: GoogleFonts.poppins(textStyle: TextStyle(
                                       color: conaction == "Outside"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -378,11 +374,10 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Tier3+",
-                                  style: TextStyle(
-                                      fontFamily: 'popins',
+                                  style:GoogleFonts.poppins(textStyle: TextStyle(
                                       color: conaction == "Tier3+"
                                           ? Colors.white
-                                          : Colors.blue),
+                                          : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -395,9 +390,7 @@ class _AddrequestState extends State<Addrequest> {
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: const TextStyle(
-                        fontFamily: "popins",
-                      ),
+                      style: GoogleFonts.poppins(),
                       controller: remark,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -456,8 +449,8 @@ class _AddrequestState extends State<Addrequest> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

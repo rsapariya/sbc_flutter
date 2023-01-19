@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 
@@ -44,19 +45,19 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Business Received",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle:const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["life_time_detailes"]['business_recieved']}",
-                          style: const TextStyle(
+                          style:GoogleFonts.poppins(textStyle:   const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),
@@ -70,19 +71,19 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Business Given",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                          )),
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["life_time_detailes"]['business_given']}",
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                          )),
                         ),
                       ],
                     ),
@@ -96,20 +97,20 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Referral Received",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins"),
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          )),
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['connection_received'],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins Light"),
+                          style:GoogleFonts.poppins(textStyle: const   TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          )),
                         ),
                       ],
                     ),
@@ -120,20 +121,20 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Referral Given",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                          )),
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['connection_given'],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins Light"),
+                          style: GoogleFonts.poppins(textStyle:const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          )),
                         ),
                       ],
                     ),
@@ -144,20 +145,20 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Face-to-Face",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['p2p'],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins Light"),
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                       ],
                     ),
@@ -168,20 +169,20 @@ class _mittingState extends State<mitting> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Visitors",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins"),
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
                               ['visitor'],
-                          style: const TextStyle(
+                          style:GoogleFonts.poppins(textStyle:  TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),

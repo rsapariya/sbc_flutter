@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/units/api.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../Coognito/regiater.dart';
 import 'otp.dart';
 
@@ -46,9 +46,10 @@ class _forgetState extends State<forget> {
                     ))),
             backgroundColor: Colors.white,
             centerTitle: true,
-            title: const Text(
+            title: Text(
               "Forgot password",
-              style: TextStyle(fontFamily: "popins", color: Colors.black),
+              style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(color: Colors.black)),
             )),
         backgroundColor: Colors.white,
         body: Padding(
@@ -65,12 +66,12 @@ class _forgetState extends State<forget> {
                           SizedBox(
                             height: Get.height / 15,
                           ),
-                          const Text(
+                          Text(
                             "Enter your Email Adresss",
-                            style: TextStyle(
-                              fontFamily: "popins Medium",
+                            style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
                               fontSize: 18,
-                            ),
+                            )),
                           ),
                           SizedBox(
                             height: Get.height / 30,
@@ -79,9 +80,7 @@ class _forgetState extends State<forget> {
                               validator: (value) => GetUtils.isEmail(value!)
                                   ? null
                                   : "Email Not Valid !",
-                              style: const TextStyle(
-                                fontFamily: "popins",
-                              ),
+                              style: GoogleFonts.poppins(),
                               controller: email,
                               autofocus: false,
                               decoration: buildInputDecoration(
@@ -95,22 +94,22 @@ class _forgetState extends State<forget> {
                               onTap: () {
                                 Get.back();
                               },
-                              child: const Text("Back to sign in",
-                                  style: TextStyle(
-                                    fontFamily: "popins",
+                              child: Text("Back to sign in",
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
                                     fontSize: 14,
-                                  ))),
+                                  )))),
                           const SizedBox(
                             height: 25,
                           ),
                           InkWell(
                               onTap: () {
-                                if(_formKey.currentState!.validate()){
+                                if (_formKey.currentState!.validate()) {
                                   Email = email.toString();
                                   Forgot(email.text);
-                                }
-                                else{
-                                  return ApiWrapper.showToastMessage('Enter Valid Email');
+                                } else {
+                                  return ApiWrapper.showToastMessage(
+                                      'Enter Valid Email');
                                 }
 
                                 // Get.to(() => const verification());
@@ -118,13 +117,14 @@ class _forgetState extends State<forget> {
                               child: Container(
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
+                                    children: [
                                       Text(
                                         "Submit",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontFamily: "popins"),
+                                        style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                        )),
                                       )
                                     ]),
                                 height: Get.height / 15,
@@ -146,8 +146,8 @@ class _forgetState extends State<forget> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

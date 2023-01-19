@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../units/storage.dart';
 
@@ -42,19 +43,19 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Business Received",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["last_one_year"]['business_recieved']}",
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: "popins Light"),
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),)
                         ),
                       ],
                     ),
@@ -68,19 +69,19 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Business Given",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle:const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                          ),)
                         ),
                         Text(
                           "₹${getdata.read("dashboard")["last_one_year"]['business_given']}",
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                           )),
                         ),
                       ],
                     ),
@@ -94,20 +95,20 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Referral Received",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]
                               ['connection_received'],
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),
@@ -118,20 +119,20 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Total Referral Given",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                          )),
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]
                               ['connection_given'],
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )) ,
                         ),
                       ],
                     ),
@@ -142,19 +143,19 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Face-to-Face",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                              )),
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]['p2p'],
-                          style: const TextStyle(
+                          style:GoogleFonts.poppins(textStyle:  const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                            )),
                         ),
                       ],
                     ),
@@ -165,19 +166,19 @@ class _statesState extends State<states> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                         Text(
                           "Visitors",
-                          style: TextStyle(
+                          style:GoogleFonts.poppins(textStyle:  TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins"),
+                            )),
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]['visitor'],
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "popins Light"),
+                              )),
                         ),
                       ],
                     ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:sbc/units/api.dart';
 
@@ -56,9 +57,9 @@ class _verificationState extends State<verification> {
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text(
+        title:  Text(
           "Verification",
-          style: TextStyle(fontFamily: "popins", color: Colors.black),
+          style: GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.black)),
         ),
       ),
       backgroundColor: Colors.white,
@@ -73,34 +74,31 @@ class _verificationState extends State<verification> {
               SizedBox(
                 height: Get.height / 15,
               ),
-              const Text(
+               Text(
                 "We have sent a 4 digit OTP to",
-                style: TextStyle(
-                  fontFamily: "popins",
+                style:GoogleFonts.poppins(textStyle: const  TextStyle(
                   fontSize: 18,
-                ),
+                ))
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                   Text(
                     "test123@gmail.com",
-                    style: TextStyle(
-                      fontFamily: "popins Medium",
+                    style:GoogleFonts.poppins(textStyle: const TextStyle(
                       fontSize: 18,
-                    ),
+                    ))
                   ),
                   InkWell(
                     onTap: () {
                       Get.back();
                     },
-                    child: const Text(
+                    child: Text(
                       "Edit Email",
-                      style: TextStyle(
-                        fontFamily: "popins Medium",
+                      style: GoogleFonts.poppins(textStyle:const TextStyle(
                         color: Colors.blue,
                         fontSize: 18,
-                      ),
+                      ),)
                     ),
                   ),
                 ],
@@ -150,24 +148,22 @@ class _verificationState extends State<verification> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                   Text(
                     "If you don't recive code",
-                    style: TextStyle(
-                      fontFamily: "popins",
+                    style: GoogleFonts.poppins(textStyle: const TextStyle(
                       fontSize: 14,
-                    ),
+                    )),
                   ),
                   InkWell(
                     onTap: () {
                       Get.back();
                     },
-                    child: const Text(
+                    child:  Text(
                       "Resend",
-                      style: TextStyle(
-                        fontFamily: "popins",
+                      style:GoogleFonts.poppins(textStyle: const  TextStyle(
                         color: Colors.blue,
                         fontSize: 14,
-                      ),
+                      ),)
                     ),
                   ),
                 ],
@@ -186,12 +182,12 @@ class _verificationState extends State<verification> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                       Text(
                         "Submit",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontFamily: "popins"),
+                        style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        )),
                       ),
                     ],
                   ),
@@ -222,8 +218,8 @@ class _verificationState extends State<verification> {
       prefixIcon: Icon(icon, color: Colors.blue),
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

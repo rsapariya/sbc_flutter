@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
@@ -94,9 +95,9 @@ class _ProfilepageState extends State<Profilepage> {
             },
             child: const Icon(Icons.arrow_back)),
         centerTitle: true,
-        title: const Text(
+        title: Text(
           "Profile",
-          style: TextStyle(fontFamily: "popins"),
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: !Lodin
@@ -126,32 +127,33 @@ class _ProfilepageState extends State<Profilepage> {
                         Text(
                           getdata.read('User')['name'] +
                               getdata.read('User')['lname'],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: "popins"),
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          )),
                         ),
-                        const Text(
+                        Text(
                           'About',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 14,
-                              fontFamily: "popins"),
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          )),
                         ),
                         Text(
                           getdata.read('User')['role_type'],
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: "popins"),
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          )),
                         ),
                         SizedBox(
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Fname,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -164,9 +166,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Lname,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           autofocus: false,
                           decoration: buildInputDecoration(
                             hintText: "Last Name",
@@ -177,10 +177,9 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
+                          readOnly: true,
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Email,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -193,9 +192,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Phone,
                           autofocus: false,
                           keyboardType: TextInputType.phone,
@@ -228,11 +225,11 @@ class _ProfilepageState extends State<Profilepage> {
                                         horizontal: 20),
                                     child: Text(
                                       "Male",
-                                      style: TextStyle(
-                                          fontFamily: 'popins',
-                                          color: member == "Male"
-                                              ? Colors.white
-                                              : Colors.blue),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              color: member == "Male"
+                                                  ? Colors.white
+                                                  : Colors.blue)),
                                     ),
                                   ),
                                 ),
@@ -260,11 +257,11 @@ class _ProfilepageState extends State<Profilepage> {
                                         horizontal: 20),
                                     child: Text(
                                       "Female",
-                                      style: TextStyle(
-                                          fontFamily: 'popins',
-                                          color: member == "Female"
-                                              ? Colors.white
-                                              : Colors.blue),
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              color: member == "Female"
+                                                  ? Colors.white
+                                                  : Colors.blue)),
                                     ),
                                   ),
                                 ),
@@ -276,9 +273,7 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           autofocus: false,
                           readOnly: true,
                           onTap: () async {
@@ -309,13 +304,15 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "   yyyy-MM-dd",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontFamily: "popins"),
+                              style: GoogleFonts.poppins(
+                                  textStyle: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ))),
                             ),
                           ],
                         ),
@@ -323,9 +320,8 @@ class _ProfilepageState extends State<Profilepage> {
                           height: Get.height / 60,
                         ),
                         TextFormField(
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style:
+                              GoogleFonts.poppins(textStyle: const TextStyle()),
                           controller: sDate,
                           autofocus: false,
                           readOnly: true,
@@ -356,13 +352,14 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "   yyyy-MM-dd",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontFamily: "popins"),
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                           ],
                         ),
@@ -371,9 +368,11 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          )),
                           controller: Pcode,
                           autofocus: false,
                           keyboardType: TextInputType.number,
@@ -387,9 +386,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style:GoogleFonts.poppins(),
                           controller: Address,
                           autofocus: false,
                           maxLines: 3,
@@ -403,9 +400,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Achivments,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           maxLines: 3,
@@ -419,9 +414,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Business,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style:GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -434,9 +427,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Website,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -449,9 +440,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Businessinfo,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           maxLines: 3,
@@ -465,9 +454,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style:GoogleFonts.poppins(),
                           controller: Businessadd,
                           autofocus: false,
                           maxLines: 3,
@@ -481,9 +468,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: BusinessWhatt,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style:GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -496,9 +481,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Fb,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -511,9 +494,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Insta,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -526,9 +507,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Linkdin,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -541,9 +520,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Twiter,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -556,9 +533,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           controller: Googlemap,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -571,9 +546,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style: const TextStyle(
-                            fontFamily: "popins",
-                          ),
+                          style: GoogleFonts.poppins(),
                           maxLines: 3,
                           controller: Keywords,
                           autofocus: false,
@@ -630,8 +603,8 @@ class _ProfilepageState extends State<Profilepage> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
-      labelStyle: const TextStyle(fontFamily: "popins", fontSize: 14),
+      hintStyle:GoogleFonts.poppins(textStyle:const TextStyle(fontSize: 14)),
+      labelStyle:GoogleFonts.poppins(textStyle:const  TextStyle( fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
