@@ -1,3 +1,6 @@
+// ignore_for_file: non_constant_identifier_names, annotate_overrides, prefer_interpolation_to_compose_strings, avoid_print, override_on_non_overriding_member, camel_case_types
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +20,6 @@ import '../units/storage.dart';
 import 'business/request.dart';
 import 'members/filtermember.dart';
 
-
 List getbuss = [];
 List recivebuss = [];
 List visitors = [];
@@ -34,7 +36,7 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> with SingleTickerProviderStateMixin {
   @override
-  List screens = [summery(), mitting(), states()];
+  List screens = [const summery(), const mitting(), const states()];
   late TabController _tabController;
   bool loding = true;
   @override
@@ -81,7 +83,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
               ],
               onSelected: (String menu) {
                 if (menu == "Profile") {
-                  Get.to(() => Profilepage());
+                  Get.to(() => const Profilepage());
                 } else if (menu == "Sign Out") {
                   setState(() {
                     save('Login', false);
@@ -95,7 +97,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           ],
           centerTitle: true,
           title: Text(
-            "Dashbord",
+            "Dashboard",
             style: GoogleFonts.poppins(
                 textStyle: const TextStyle(color: Colors.white)),
           ),
@@ -124,18 +126,18 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         child: Row(
                           children: [
                             CircleAvatar(
-                              backgroundColor: Colors.black,
+                              backgroundColor: Colors.white,
                               backgroundImage: getdata
                                           .read('User')['profile'] !=
                                       null
                                   ? NetworkImage(
                                       "https://sbc.sgcci.in/uploads/profile/" +
                                           getdata.read('User')['profile'])
-                                  : NetworkImage(
+                                  : const NetworkImage(
                                       'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
                               radius: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 15,
                             ),
                             Column(
@@ -145,7 +147,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   getdata.read('User')['username'] ?? "",
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.black,fontWeight:FontWeight.w500,
                                     fontSize: 14,
                                   )),
                                 ),
@@ -253,7 +255,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                 Text(
                                   "Speakers",
                                   style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
+                                      textStyle: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 14,
                                   )),
@@ -264,9 +266,9 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                       "",
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                          )),
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  )),
                                 ),
                               ],
                             ),
@@ -304,15 +306,15 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           tabs: [
                             Text(
                               'Summary',
-                              style: GoogleFonts.poppins(),
+                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
                             ),
                             Text(
                               'All time',
-                              style: GoogleFonts.poppins(),
+                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
                             ),
                             Text(
                               '12 Month',
-                              style:GoogleFonts.poppins(),
+                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
                             ),
                           ]),
                     ),
@@ -320,10 +322,10 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children: [
-                        const summery(),
-                        const mitting(),
-                        const states()
+                      children: const [
+                        summery(),
+                        mitting(),
+                        states()
                       ],
                     ),
                   )
@@ -380,7 +382,9 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         });
         print("           BUSINESSSSSSSSSSSS          ----->>>>$getbuss");
       } else {
-        print(val);
+        if (kDebugMode) {
+          print(val);
+        }
       }
     });
   }
@@ -538,16 +542,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Dashboard",
-                style:GoogleFonts.poppins(textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    )),
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => home());
+                Get.off(() => const home());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const home()));
@@ -558,16 +563,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/growth.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Business",
-                style:GoogleFonts.poppins(textStyle:const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    )),
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => bussnesss());
+                Get.off(() => const bussnesss());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const bussnesss()));
@@ -578,16 +584,16 @@ class _DrowerState extends State<Drower> {
                 'assets/image/team.png',
                 scale: 18,
               ),
-              title:  Text(
-                "Referral",
-                style:GoogleFonts.poppins(textStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),)
-              ),
+              title: Text("Referral",
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  )),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => Refferal());
+                Get.off(() => const Refferal());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Refferal()));
@@ -598,16 +604,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/discussion.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Face to Face",
-                style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
                   color: Colors.black,
-                  fontSize: 14,
+                  fontSize: 16,
                 )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => Facetoface());
+                Get.off(() => const Facetoface());
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Facetoface()));
@@ -618,11 +625,12 @@ class _DrowerState extends State<Drower> {
                 'assets/image/calendar.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Events",
-                style: GoogleFonts.poppins(textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 )),
               ),
               onTap: () {
@@ -637,16 +645,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/attendance.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Attendance",
-                style: GoogleFonts.poppins(textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => Attendance());
+                Get.off(() => const Attendance());
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Attendance()));
               },
@@ -656,16 +665,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/visitor.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Visitors",
-                style:GoogleFonts.poppins(textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                   )),
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => Visitors());
+                Get.off(() => const Visitors());
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Visitors()));
               },
@@ -675,16 +685,17 @@ class _DrowerState extends State<Drower> {
                 'assets/image/business.png',
                 scale: 18,
               ),
-              title:  Text(
+              title: Text(
                 "Members List",
-                style:GoogleFonts.poppins(textStyle:const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                  )),
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                )),
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => FilterMember());
+                Get.off(() => const FilterMember());
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const FilterMember()));

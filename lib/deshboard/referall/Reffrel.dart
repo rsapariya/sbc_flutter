@@ -71,11 +71,11 @@ class _RefferalState extends State<Refferal>
                   tabs: [
                     Text(
                       'Recevied',
-                      style: GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
                     ),
                     Text(
                       'Given',
-                      style: GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
                     ),
                   ]),
             ),

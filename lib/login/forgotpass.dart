@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, camel_case_types
+// ignore_for_file: sort_child_properties_last, camel_case_types, unnecessary_new, prefer_const_constructors_in_immutables, void_checks, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -146,8 +146,8 @@ class _forgetState extends State<forget> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
-      labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(

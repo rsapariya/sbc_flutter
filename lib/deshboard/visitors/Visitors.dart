@@ -183,17 +183,17 @@ class _VisitorsState extends State<Visitors> {
                                         "Date",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                                )),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
                                       ),
                                       Text(
                                         visitors[index]['ev_date'] ?? "",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                              )),
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                        )),
                                       ),
                                     ],
                                   ),
@@ -216,9 +216,9 @@ class _VisitorsState extends State<Visitors> {
                                         "Phone No.",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                                )),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
                                       ),
                                       SizedBox(
                                         width: Get.width / 1.2,
@@ -226,9 +226,9 @@ class _VisitorsState extends State<Visitors> {
                                           visitors[index]["visitor_contact"],
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                 )),
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                          )),
                                         ),
                                       ),
                                     ],
@@ -264,8 +264,7 @@ class _VisitorsState extends State<Visitors> {
           title: Text(
             'Are you Sure Want to Delete Visitor ?',
             style: GoogleFonts.poppins(
-                textStyle:
-                    const TextStyle(color: Colors.black)),
+                textStyle: const TextStyle(color: Colors.black)),
           ),
           actions: [
             TextButton(
@@ -276,8 +275,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Cancel',
                   style: GoogleFonts.poppins(
-                      textStyle:GoogleFonts.poppins(textStyle: const TextStyle(
-                          color: Colors.black))),
+                      textStyle: GoogleFonts.poppins(
+                          textStyle: const TextStyle(color: Colors.black))),
                 )),
             TextButton(
                 onPressed: () {
@@ -290,8 +289,8 @@ class _VisitorsState extends State<Visitors> {
                 child: Text(
                   'Delete',
                   style: GoogleFonts.poppins(
-                      textStyle:GoogleFonts.poppins(textStyle: const TextStyle(
-                          color: Colors.red))),
+                      textStyle: GoogleFonts.poppins(
+                          textStyle: const TextStyle(color: Colors.red))),
                 )),
           ],
         );
