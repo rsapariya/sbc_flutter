@@ -41,15 +41,12 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   bool loding = true;
   @override
   void initState() {
-    // homeapi();
+    setState(() {});
+    save('Login', true);
+    print('--------nnnnnnnnnnnnnnnnnnnn-----------');
+    print(getdata.read('USERID'));
     _tabController = TabController(vsync: this, length: 3);
-    // getbiss();
-    // recibiss();
-    // Visitors();
-    // getevents();
     getUser();
-    // getallusers();
-
     super.initState();
   }
 
@@ -88,6 +85,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   setState(() {
                     save('Login', false);
                     Get.offAll(() => login());
+                    save('EMAIL', 'aaaa');
+                    print(">>>>>>>>>>>>${getdata.read('EMAIL')}");
                   });
                 } else if (menu == "Rate Us") {
                   LaunchReview.launch(androidAppId: "com.sbc.sgcci");
@@ -147,7 +146,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   getdata.read('User')['username'] ?? "",
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
-                                    color: Colors.black,fontWeight:FontWeight.w500,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 14,
                                   )),
                                 ),
@@ -306,15 +306,21 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           tabs: [
                             Text(
                               'Summary',
-                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
+                              style: GoogleFonts.poppins(
+                                  textStyle:
+                                      TextStyle(fontWeight: FontWeight.w500)),
                             ),
                             Text(
                               'All time',
-                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
+                              style: GoogleFonts.poppins(
+                                  textStyle:
+                                      TextStyle(fontWeight: FontWeight.w500)),
                             ),
                             Text(
                               '12 Month',
-                              style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
+                              style: GoogleFonts.poppins(
+                                  textStyle:
+                                      TextStyle(fontWeight: FontWeight.w500)),
                             ),
                           ]),
                     ),
@@ -322,11 +328,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
-                      children: const [
-                        summery(),
-                        mitting(),
-                        states()
-                      ],
+                      children: const [summery(), mitting(), states()],
                     ),
                   )
                 ],
@@ -369,7 +371,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
     print(">>>>>>>>>>>>       GETBUSINESS     >>>>>>>>>>>>");
 
     ApiWrapper.dataGet(AppUrl.Gbuiss).then((val) {
-      print(UserID.toString());
+      print(getdata.read('USERID'));
 
       if ((val != null) && (val.isNotEmpty)) {
         print("           GETBUSINESS          $val");
@@ -390,19 +392,15 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getallusers() {
-    // print(">>>>>>>>>>>>       USERSSSSS     >>>>>>>>>>>>");
-
-    ApiWrapper.dataGet(AppUrl.GetallUsers).then((val) {
+    ApiWrapper.dataGet(AppUrl.GetallUsers + getdata.read('EMAIL').toString())
+        .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        // print("----------->>>>$val");
         setState(() {
           Userss.clear();
         });
         val.forEach((e) {
           Userss.add(e);
-          // print(e);
         });
-        // print("Get>>>>>>----->>>>$Userss");
       } else {
         setState(() {
           Userss.clear();
@@ -412,38 +410,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   Visitors() {
-    // print(">>>>>>>>>>>>>       VISITORS      >>>>>>>>>>>>");
-
     ApiWrapper.dataGet(AppUrl.visitors).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        // print("VISITORS--->>>>$val");
         setState(() {
           visitors.clear();
         });
         val.forEach((e) {
           visitors.add(e);
-          // print(e);
         });
-        // print("VISITORS>>>>>>----->>>>$visitors");
       }
     });
   }
 
   recibiss() {
-    // print(">>>>>>>>>>>>         RECIVE        >>>>>>>>>>>>");
-
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         print("----------->>>>$val");
         recivebuss.clear();
-        // print("--------------------------????????????$recivebuss");
         val.forEach((e) {
           recivebuss.add(e);
-          // print(e);
-          // print("**********************>>>>>>>>>>$recivebuss");
         });
         setState(() {});
-        // print("**********************$recivebuss");
       } else {
         recivebuss.clear();
       }
@@ -451,26 +438,19 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getevents() {
-    // print("--------------   EVENTS   ---------------");
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         print("----------->>>>$val");
         events.clear();
 
-        // print("------------????????????$events");
         val.forEach((e) {
           events.add(e['ev_title']);
-          // print(e);
-          // print("**********************>>>>>>>>>>$events");
         });
         event.clear();
         val.forEach((e) {
           event.add(e);
-          // print(e);
-          // print("**********************>>>>>>>>>>$events");
         });
         setState(() {});
-        // print("**********************$events");
       } else {
         setState(() {});
         events.clear();
@@ -479,30 +459,36 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getUser() {
-    ApiWrapper.dataGet(AppUrl.GetUser).then((val) {
+    print(
+        "---------------------------------------------------------------cccccccccccccccccc");
+    print(getdata.read('EMAIL'));
+    print(AppUrl.GetUser + getdata.read('EMAIL').toString());
+    print(AppUrl.GetUser + getdata.read('EMAIL').toString());
+    ApiWrapper.dataGet(AppUrl.GetUser + getdata.read('EMAIL').toString())
+        .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        // print("    USER----->>>>$val");
-        save('User', val);
-        UserID = getdata.read('User')['id'].toString();
-        setState(() {});
-        // print("**********************${getdata.read('User')}");
+        setState(() {
+          save('User', val);
+          save('USERID', getdata.read('User')['id'].toString());
+        });
+        print(getdata.read('User'));
+        print('???????????????????????????');
+
         homeapi();
-      } else {
-        // print('XXXXXXXXXXXX');
-      }
+      } else {}
     });
   }
 
   homeapi() {
-    // print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
+    print(
+        "---------------------------------------------------------------cccccccccccccccccc");
+    print(getdata.read('EmailID'));
+    print(getdata.read('USERID'));
     ApiWrapper.dataGet(AppUrl.dashbord).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         save('dashboard', val);
         save('deta', val['data']);
 
-        // print("----------->>>${getdata.read('dashboard')}");
-        // print(val);
         setState(() {});
 
         loding = false;

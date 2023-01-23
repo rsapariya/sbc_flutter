@@ -23,7 +23,10 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Events"),
+        title: Text(
+          "Events",
+          style: GoogleFonts.poppins(),
+        ),
       ),
       drawer: const Drower(),
       body: Container(
@@ -87,33 +90,36 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             Text(
                               "Description",
                               style: GoogleFonts.poppins(
-                                  textStyle:TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      )),
+                                  textStyle: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                             Text(
                               event[index]['ev_description'],
-                              style:GoogleFonts.poppins(textStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               )),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                             Text(
+                            Text(
                               "Date & Time",
-                              style:GoogleFonts.poppins(textStyle:const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                              )) ,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                             Text(
                               "${event[index]['ev_date']} (${event[index]['ev_start']} to ${event[index]['ev_end']})",
-                              style:GoogleFonts.poppins(textStyle:const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               )),
                             ),
                             const SizedBox(
@@ -138,13 +144,15 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                         event[index]['ev_status'] == "OPEN"
                                             ? "JOIN NOW"
                                             : event[index]['ev_status'],
-                                        style:GoogleFonts.poppins(textStyle:const TextStyle(
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,
-                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),),
+                                  ),
                                   decoration: BoxDecoration(
                                       boxShadow: [
                                         BoxShadow(

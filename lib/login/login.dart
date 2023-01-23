@@ -9,8 +9,8 @@ import 'package:sbc/units/storage.dart';
 import '../Coognito/awsregister.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-String? UserID;
-String? EmailID;
+// String? UserID;
+// String? EmailID;
 String? Message;
 
 class login extends StatefulWidget {
@@ -28,6 +28,8 @@ class _loginState extends State<login> {
   void initState() {
     print("--------------------------------");
     save('LoginLoding', false);
+    save('EMAIL', 'aaaa');
+    setState(() {});
     super.initState();
   }
 
@@ -132,16 +134,22 @@ class _loginState extends State<login> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      setState(() {});
-                                      EmailID = emailcontroller.toString();
-                                      save('EmailID',
-                                          emailcontroller.text.toString());
-                                      UserID = null;
+                                    print(
+                                        ">>>>>>>>>>>>${getdata.read('EMAIL')}");
 
-                                      login(emailcontroller.text,
-                                          passwordcontroller.text);
-                                      save('LoginLoding', true);
+                                    if (_formKey.currentState!.validate()) {
+                                      print(
+                                          ">>>>>>>>>>>>${getdata.read('EMAIL')}");
+
+                                      setState(() {
+                                        print('.......................');
+                                        print(getdata.read('EMAIL'));
+                                        login(emailcontroller.text,
+                                            passwordcontroller.text);
+                                        save('LoginLoding', true);
+                                      });
+                                      // EmailID = emailcontroller.toString();
+
                                     } else {
                                       ApiWrapper.showToastMessage(
                                           'Enter Valid Email??');

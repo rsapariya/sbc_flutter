@@ -25,7 +25,8 @@ class AWSServices {
     try {
       session = await cognitoUser.authenticateUser(authDetails);
       debugPrint('Login Success...');
-      EmailID = email.toString();
+      save('EMAIL',email.toString());
+      // EmailID = email.toString();
       save('LoginLoding', false);
 
       Get.offAll(() => home());
@@ -61,7 +62,7 @@ class AWSServices {
       debugPrint('CognitoClientException ---->>>$e');
     } catch (e) {
       save('LoginLoding', false);
-      // ApiWrapper.showToastMessage('Something Went ');
+      ApiWrapper.showToastMessage('Something Went ');
       print(e);
     }
   }

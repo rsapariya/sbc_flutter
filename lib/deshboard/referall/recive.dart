@@ -33,7 +33,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
         child: Recivereffrel.isEmpty
             ? Center(
                 child: Text(
-                  "Requests Not Found",
+                  "Referral Not Found",
                   style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                     color: Colors.red,

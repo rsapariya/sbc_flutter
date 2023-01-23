@@ -41,7 +41,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
         child: Givenreffrel.isEmpty
             ? Center(
                 child: Text(
-                  "Raferral Not Found",
+                  "Referral Not Found",
                   style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                     color: Colors.red,

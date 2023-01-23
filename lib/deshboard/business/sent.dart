@@ -23,7 +23,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
         child: getbuss.isEmpty
             ? Center(
                 child: Text(
-                  getbuss.toString(),
+                  "Business Not Found",
                   style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                           color: Colors.red,
@@ -65,9 +65,9 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                 getbuss[index]['username'],
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
-                                        color: Colors.blue,
-                                        fontSize: 18,
-                                       )),
+                                  color: Colors.blue,
+                                  fontSize: 18,
+                                )),
                               ),
                             ),
                             const Divider(),
@@ -81,17 +81,17 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                       "Date",
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 12,
-                                              )),
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
                                     ),
                                     Text(
                                       getbuss[index]['entry_date'],
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              )),
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
                                     ),
                                   ],
                                 ),
@@ -105,17 +105,17 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                       "Amount",
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 12,
-                                              )),
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      )),
                                     ),
                                     Text(
                                       getbuss[index]['amount'],
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              )),
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
                                     ),
                                   ],
                                 )
@@ -133,18 +133,18 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                     const Text(
                                       "Remark",
                                       style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                          ),
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: Get.width / 1.2,
                                       child: Text(
                                         getbuss[index]['remarks'],
                                         style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            ),
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                        ),
                                       ),
                                     ),
                                   ],

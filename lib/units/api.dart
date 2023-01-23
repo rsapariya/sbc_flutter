@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:sbc/units/storage.dart';
 
-import '../login/login.dart';
 
 var id;
 
@@ -90,20 +91,26 @@ class ApiWrapper {
 class AppUrl {
   static const String baseurl = 'https://sbc.sgcci.in/api-old/';
   static String Imageurl = 'https://sbc.sgcci.in/uploads/profile/';
-  static String dashbord = '${baseurl}getDashboard/$UserID';
+  static String dashbord = '${baseurl}getDashboard/${getdata.read('USERID')}';
   static String city = '${baseurl}getCity';
   static String cetagory = '${baseurl}getCategories';
-  static String Rbuiss = '${baseurl}getRecievedBusiness/$UserID';
-  static String Gbuiss = '${baseurl}getGivenBusiness/$UserID';
+  static String Rbuiss =
+      '${baseurl}getRecievedBusiness/${getdata.read('USERID')}';
+  static String Gbuiss = '${baseurl}getGivenBusiness/${getdata.read('USERID')}';
   static String addbusiness = '${baseurl}addBusinessRecieved';
-  static String getusers = '${baseurl}getUsers/${getdata.read('EmailID')}';
-  static String getgivenraf = '${baseurl}getGivenReferral/$UserID';
-  static String getreciveraf = '${baseurl}getRecievedReferral/$UserID';
-  static String visitors = '${baseurl}getUserVisitors/$UserID';
-  static String facetoface = '${baseurl}getGivenOTO/$UserID';
+  static String getusers = '${baseurl}getUsers/';
+  static String getgivenraf =
+      '${baseurl}getGivenReferral/${getdata.read('USERID')}"';
+  static String getreciveraf =
+      '${baseurl}getRecievedReferral/${getdata.read('USERID')}';
+  static String visitors =
+      '${baseurl}getUserVisitors/${getdata.read('USERID')}';
+  static String facetoface = '${baseurl}getGivenOTO/${getdata.read('USERID')}';
   static String deleteface = '${baseurl}deleteOTO/';
-  static String eventsss = '${baseurl}getChapterEvents/1/$UserID';
-  static String atandence = '${baseurl}getAttendence/1/$UserID';
-  static String GetallUsers = '${baseurl}getUsers/${getdata.read('EmailID')}';
-  static String GetUser = '${baseurl}getUserProfile/${getdata.read('EmailID')}';
+  static String eventsss =
+      '${baseurl}getChapterEvents/1/${getdata.read('USERID')}';
+  static String atandence =
+      '${baseurl}getAttendence/1/${getdata.read('USERID')}';
+  static String GetallUsers = '${baseurl}getUsers/';
+  static String GetUser = '${baseurl}getUserProfile/';
 }

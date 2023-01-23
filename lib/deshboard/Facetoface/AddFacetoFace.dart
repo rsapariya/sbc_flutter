@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import 'package:http/http.dart' as http;
+import '../../units/storage.dart';
 import '../home.dart';
 import 'facetoface.dart';
 
@@ -56,8 +56,9 @@ class _addfacetofaceState extends State<addfacetoface> {
         title: Text(
           "Add Face to Face",
           style: GoogleFonts.poppins(
-              textStyle:
-                  const TextStyle(color: Colors.white,)),
+              textStyle: const TextStyle(
+            color: Colors.white,
+          )),
         ),
       ),
       body: !Loding
@@ -74,9 +75,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                       height: 15,
                     ),
                     TextFormField(
-                      style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                      )),
+                      style: GoogleFonts.poppins(textStyle: const TextStyle()),
                       // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
@@ -120,9 +119,9 @@ class _addfacetofaceState extends State<addfacetoface> {
                                           _foundUsers[index]['username'] ?? "",
                                           overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                              ),
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -142,16 +141,15 @@ class _addfacetofaceState extends State<addfacetoface> {
                       controller: location,
                       autofocus: false,
                       decoration: buildInputDecoration(
-                        hintText: "Person Name",
-                        lbltext: "Person Name",
+                        hintText: "Location",
+                        lbltext: "Location",
                       ),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
-                      style: const TextStyle(
-                      ),
+                      style: const TextStyle(),
                       controller: date,
                       autofocus: false,
                       readOnly: true,
@@ -194,17 +192,16 @@ class _addfacetofaceState extends State<addfacetoface> {
                     const Text(
                       "   yyyy-MM-dd",
                       style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
+                        color: Colors.grey,
+                        fontSize: 12,
+                      ),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style: const TextStyle(
-                      ),
+                      style: const TextStyle(),
                       controller: convertion,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -292,7 +289,7 @@ class _addfacetofaceState extends State<addfacetoface> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addOTO'));
     request.fields.addAll({
-      'oto_from': UserID.toString(),
+      'oto_from': getdata.read('USERID').toString(),
       'oto_to': userid.toString(),
       'oto_location': location.text,
       'oto_date': date.text,

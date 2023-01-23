@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
+import '../../units/storage.dart';
 import '../business/request.dart';
 import '../home.dart';
 import 'package:http/http.dart' as http;
@@ -425,7 +425,7 @@ class _addrefrelState extends State<addrefrel> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addReferral'));
     request.fields.addAll({
-      'ref_from': UserID.toString(),
+      'ref_from': getdata.read('USERID').toString(),
       'ref_to': userid.toString(),
       'person_name': parson.text,
       'person_contact': phone.text,

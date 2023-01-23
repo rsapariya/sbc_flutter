@@ -6,10 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
-import 'package:sbc/login/login.dart';
 import 'package:sbc/units/customwidget.dart';
 import '../../units/api.dart';
 import 'package:http/http.dart' as http;
+
+import '../../units/storage.dart';
 
 class Addvisitors extends StatefulWidget {
   final formkey = GlobalKey<FormState>();
@@ -277,7 +278,7 @@ class _AddvisitorsState extends State<Addvisitors> {
       'visitor_name': visitorname.text,
       'visitor_contact': phone.text,
       'business': business.text,
-      'added_by': UserID.toString(),
+      'added_by': getdata.read('USERID').toString(),
       'event_id': _selected.toString(),
       'ch_id': '1',
       'is_member': member.toString()

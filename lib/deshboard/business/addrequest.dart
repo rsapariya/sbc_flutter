@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:sbc/deshboard/business/request.dart';
 import 'package:sbc/units/customwidget.dart';
-import '../../login/login.dart';
 import '../../units/api.dart';
+import '../../units/storage.dart';
 import '../home.dart';
 import 'package:http/http.dart' as http;
 
@@ -55,8 +55,8 @@ class _AddrequestState extends State<Addrequest> {
         title: Text(
           "Add Business",
           style: GoogleFonts.poppins(
-              textStyle:
-                  GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white))),
+              textStyle: GoogleFonts.poppins(
+                  textStyle: const TextStyle(color: Colors.white))),
         ),
       ),
       body: !loding
@@ -83,10 +83,8 @@ class _AddrequestState extends State<Addrequest> {
                     ),
                     list == true
                         ? SizedBox(
-                            height: Get.height / 1.5,
+                            // height: Get.height / 1.5,
                             child: ListView.builder(
-                              // controller: controller,
-
                               itemCount: _foundUsers.length,
                               itemBuilder: (_, index) {
                                 return Padding(
@@ -94,14 +92,16 @@ class _AddrequestState extends State<Addrequest> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
-                                      setState(() {});
+                                      list = false;
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();
                                       userid =
                                           _foundUsers[index]['id'].toString();
                                       print(userid);
-                                      list = false;
+
+                                      print(list);
+                                      setState(() {});
                                     },
                                     child: SizedBox(
                                       width: Get.width / 2,
@@ -112,9 +112,10 @@ class _AddrequestState extends State<Addrequest> {
                                           _foundUsers[index]['username'] ?? "",
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.poppins(
-                                              textStyle:GoogleFonts.poppins(textStyle:  const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16))),
+                                              textStyle: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 16))),
                                         ),
                                       ),
                                     ),
@@ -123,18 +124,10 @@ class _AddrequestState extends State<Addrequest> {
                               },
                             ),
                           )
-                        : _foundUsers.isEmpty
-                            ? Center(
-                                child: Text(
-                                  "User Not Found",
-                                  style: GoogleFonts.poppins(
-                                      textStyle:
-                                          const TextStyle(color: Colors.red)),
-                                ),
-                              )
-                            : Container(
-                                color: Colors.red,
-                              ),
+                        : Container(
+                            height: 10,
+                            color: Colors.grey,
+                          ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -188,10 +181,11 @@ class _AddrequestState extends State<Addrequest> {
                     Text(
                       "   yyyy-MM-dd",
                       style: GoogleFonts.poppins(
-                          textStyle:GoogleFonts.poppins(textStyle: const   TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ))),
+                          textStyle: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                      ))),
                     ),
                     const SizedBox(
                       height: 15,
@@ -199,10 +193,11 @@ class _AddrequestState extends State<Addrequest> {
                     Text(
                       "Bussiness Type",
                       style: GoogleFonts.poppins(
-                          textStyle: GoogleFonts.poppins(textStyle: const TextStyle(
-                            color: Colors.blue,
-                            fontSize: 16,
-                          ))),
+                          textStyle: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
+                      ))),
                     ),
                     // appbutton(titel: "Request"),
                     const SizedBox(
@@ -230,11 +225,11 @@ class _AddrequestState extends State<Addrequest> {
                                 child: Text(
                                   "New",
                                   style: GoogleFonts.poppins(
-                                      textStyle:GoogleFonts.poppins(textStyle: TextStyle(
-
-                                          color: bussiness == "New"
-                                              ? Colors.white
-                                              : Colors.blue))),
+                                      textStyle: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              color: bussiness == "New"
+                                                  ? Colors.white
+                                                  : Colors.blue))),
                                 ),
                               ),
                             ),
@@ -262,11 +257,11 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Repeat",
-                                  style: GoogleFonts.poppins(textStyle:  TextStyle(
-
-                                      color: bussiness == "repet"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: bussiness == "repet"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -280,9 +275,10 @@ class _AddrequestState extends State<Addrequest> {
                     const SizedBox(
                       height: 15,
                     ),
-                     Text(
+                    Text(
                       "Connection Type",
-                      style:GoogleFonts.poppins(textStyle: const  TextStyle(
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
                         color: Colors.blue,
                         fontSize: 16,
                       )),
@@ -312,10 +308,11 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Inside",
-                                  style: GoogleFonts.poppins(textStyle:  TextStyle(
-                                      color: conaction == "Inside"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: conaction == "Inside"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -343,10 +340,11 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Outside",
-                                  style: GoogleFonts.poppins(textStyle: TextStyle(
-                                      color: conaction == "Outside"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: conaction == "Outside"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -374,10 +372,11 @@ class _AddrequestState extends State<Addrequest> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Tier3+",
-                                  style:GoogleFonts.poppins(textStyle: TextStyle(
-                                      color: conaction == "Tier3+"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: conaction == "Tier3+"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -449,7 +448,7 @@ class _AddrequestState extends State<Addrequest> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -500,7 +499,7 @@ class _AddrequestState extends State<Addrequest> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/addBusinessRecieved'));
     request.fields.addAll({
-      'user': UserID.toString(),
+      'user': getdata.read('USERID').toString(),
       'user_from': userid.toString(),
       'amount': amount.text.toString(),
       'ch_id': '1',

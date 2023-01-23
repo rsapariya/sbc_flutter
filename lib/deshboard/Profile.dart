@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/customwidget.dart';
 import 'package:sbc/units/storage.dart';
@@ -386,7 +385,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style:GoogleFonts.poppins(),
+                          style: GoogleFonts.poppins(),
                           controller: Address,
                           autofocus: false,
                           maxLines: 3,
@@ -414,7 +413,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: Business,
-                          style:GoogleFonts.poppins(),
+                          style: GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -454,7 +453,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           // controller: emailcontroller,
-                          style:GoogleFonts.poppins(),
+                          style: GoogleFonts.poppins(),
                           controller: Businessadd,
                           autofocus: false,
                           maxLines: 3,
@@ -468,7 +467,7 @@ class _ProfilepageState extends State<Profilepage> {
                         ),
                         TextFormField(
                           controller: BusinessWhatt,
-                          style:GoogleFonts.poppins(),
+                          style: GoogleFonts.poppins(),
                           // controller: code,
                           autofocus: false,
                           decoration: buildInputDecoration(
@@ -603,8 +602,8 @@ class _ProfilepageState extends State<Profilepage> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle:GoogleFonts.poppins(textStyle:const TextStyle(fontSize: 14)),
-      labelStyle:GoogleFonts.poppins(textStyle:const  TextStyle( fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
       border: OutlineInputBorder(
@@ -625,7 +624,9 @@ class _ProfilepageState extends State<Profilepage> {
   UpdateUserapi() async {
     var headers = {'Cookie': 'PHPSESSID=96e5eb5258d6ea9e422f81c683fea5f8'};
     var request = http.MultipartRequest(
-        'POST', Uri.parse('https://sbc.sgcci.in/api-old/updateUser/$EmailID'));
+        'POST',
+        Uri.parse(
+            'https://sbc.sgcci.in/api-old/updateUser/${getdata.read('EMAIL').toString()}'));
     request.fields.addAll({
       'name': Fname.text,
       "lname": Lname.text,
@@ -671,7 +672,7 @@ class _ProfilepageState extends State<Profilepage> {
     var headers = {'Cookie': 'PHPSESSID=1dfd04b2e90396cdff14902457261edf'};
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/profile'));
-    request.fields.addAll({'email': EmailID.toString()});
+    request.fields.addAll({'email': getdata.read('EMAIL').toString()});
     request.files.add(await http.MultipartFile.fromPath(
         'profile', imageFile!.path.toString()));
     request.headers.addAll(headers);

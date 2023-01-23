@@ -43,12 +43,12 @@ class _RecievedState extends State<Recieved>
         child: recivebuss.isEmpty
             ? Center(
                 child: Text(
-                  "Requests Not Found",
+                  "Business Not Found",
                   style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                           color: Colors.red,
                           fontSize: 18,
-                          fontFamily: "popinns")),
+                      )),
                 ),
               )
             : !loding

@@ -26,17 +26,16 @@ class _AttendanceState extends State<Attendance>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Attendance"),
+        title:  Text("Attendance",style:GoogleFonts.poppins(),),
       ),
       drawer: const Drower(),
       body: Container(
         child: Atandace.isEmpty
-            ? const Center(
-                child: Text(
-                  "Data Not Found",
-                  style: TextStyle(
-                      color: Colors.red, fontSize: 18, fontFamily: "popinns"),
-                ),
+            ? Center(
+                child: Text("Data Not Found",
+                    style: GoogleFonts.poppins(
+                        textStyle:
+                            const TextStyle(color: Colors.red, fontSize: 18))),
               )
             : ListView.builder(
                 // controller: controller,
@@ -59,35 +58,39 @@ class _AttendanceState extends State<Attendance>
                             Center(
                               child: Text(
                                 Atandace[index]['ev_title'],
-                                style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
-                                 )),
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 18,
+                                )),
                               ),
                             ),
                             const Divider(),
-                             Text(
+                            Text(
                               "Address",
-                              style:GoogleFonts.poppins(textStyle: const  TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                )),
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                             Text(
                               Atandace[index]['ev_address'],
-                              style: GoogleFonts.poppins(textStyle:const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                       )),
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              )),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                             Text(
+                            Text(
                               "Description",
-                              style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
                               )),
                             ),
                             SizedBox(
@@ -95,7 +98,8 @@ class _AttendanceState extends State<Attendance>
                                 Atandace[index]['ev_description'],
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.poppins(textStyle: const TextStyle(
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                 )),
@@ -104,20 +108,22 @@ class _AttendanceState extends State<Attendance>
                             const SizedBox(
                               height: 8,
                             ),
-                             Text(
+                            Text(
                               "Date & Time",
-                              style:GoogleFonts.poppins(textStyle:const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                               )),
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              )),
                             ),
                             Text(
-                              "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']} to ${Atandace[index]['ev_end']})",
-                              style:GoogleFonts.poppins(textStyle:  const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),)
-                            ),
+                                "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']} to ${Atandace[index]['ev_end']})",
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
+                                )),
                             const SizedBox(
                               height: 10,
                             ),
@@ -147,9 +153,10 @@ class _AttendanceState extends State<Attendance>
                                               '1'
                                           ? "PRESENT"
                                           : "ABSENT",
-                                      style: GoogleFonts.poppins(textStyle: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
                                       )),
                                     ),
                                   ),

@@ -11,6 +11,7 @@ import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/splaysh.dart';
 
 import '../../units/api.dart';
+import '../../units/storage.dart';
 
 class bussnesss extends StatefulWidget {
   const bussnesss({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _bussnesssState extends State<bussnesss>
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: const Text("Business"),
+        title:  Text("Business",style:GoogleFonts.poppins(),),
       ),
       drawer: const Drower(),
       body: Column(
@@ -66,11 +67,13 @@ class _bussnesssState extends State<bussnesss>
                   tabs: [
                     Text(
                       'Received',
-                      style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(fontWeight: FontWeight.w500)),
                     ),
                     Text(
                       'Given',
-                      style: GoogleFonts.poppins(textStyle:TextStyle(fontWeight:FontWeight.w500)),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(fontWeight: FontWeight.w500)),
                     ),
                   ]),
             ),
@@ -112,7 +115,8 @@ class _bussnesssState extends State<bussnesss>
       print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
-    ApiWrapper.dataGet(AppUrl.getusers).then((val) {
+    ApiWrapper.dataGet(AppUrl.getusers + getdata.read('EMAIL').toString())
+        .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         Users.clear();
         Usersid.clear();

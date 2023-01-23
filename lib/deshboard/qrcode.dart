@@ -9,8 +9,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:sbc/deshboard/envents.dart';
-import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
+import 'package:sbc/units/storage.dart';
 
 class QRViewExample extends StatefulWidget {
   const QRViewExample({Key? key}) : super(key: key);
@@ -182,7 +182,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/updateAttendence'));
     request.fields.addAll({
-      'id': UserID.toString(),
+      'id': getdata.read('USERID'),
       'ch_id': '1',
       'ev_id': result!.code.toString()
     });
