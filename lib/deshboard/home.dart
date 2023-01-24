@@ -52,6 +52,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
 
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 0,
           actions: [

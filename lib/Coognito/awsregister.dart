@@ -25,7 +25,7 @@ class AWSServices {
     try {
       session = await cognitoUser.authenticateUser(authDetails);
       debugPrint('Login Success...');
-      save('EMAIL',email.toString());
+      save('EMAIL', email.toString());
       // EmailID = email.toString();
       save('LoginLoding', false);
 

@@ -74,16 +74,14 @@ class _AddrequestState extends State<Addrequest> {
                     ),
                     TextFormField(
                       style: GoogleFonts.poppins(),
-                      // controller: code,
                       autofocus: false,
                       onChanged: (value) => _runFilterr(value),
-
                       controller: menber,
                       decoration: buildInputDecoration(hintText: "Members"),
                     ),
                     list == true
                         ? SizedBox(
-                            // height: Get.height / 1.5,
+                            height: Get.height / 1.5,
                             child: ListView.builder(
                               itemCount: _foundUsers.length,
                               itemBuilder: (_, index) {
@@ -92,6 +90,7 @@ class _AddrequestState extends State<Addrequest> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
+                                      setState(() {});
                                       list = false;
                                       menber.text = _foundUsers[index]
                                               ['username']
@@ -101,7 +100,6 @@ class _AddrequestState extends State<Addrequest> {
                                       print(userid);
 
                                       print(list);
-                                      setState(() {});
                                     },
                                     child: SizedBox(
                                       width: Get.width / 2,
@@ -124,10 +122,7 @@ class _AddrequestState extends State<Addrequest> {
                               },
                             ),
                           )
-                        : Container(
-                            height: 10,
-                            color: Colors.grey,
-                          ),
+                        : const SizedBox(),
                     const SizedBox(
                       height: 15,
                     ),
@@ -529,14 +524,18 @@ class _AddrequestState extends State<Addrequest> {
   }
 
   void _runFilterr(String enteredKeyword) {
+    print("---------------${list}----------------");
     List results = [];
-    setState(() {
-      list = true;
-    });
+    // setState(() {
+    //   list = true;
+    // });
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       // results = Userss.cast<Map<String, dynamic>>();
     } else {
+      setState(() {
+        list = true;
+      });
       results = Userss.where((user) => user['username']
               .toLowerCase()
               .contains(enteredKeyword.toLowerCase()))
