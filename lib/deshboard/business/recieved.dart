@@ -39,192 +39,201 @@ class _RecievedState extends State<Recieved>
           Icons.add,
         ),
       ),
-      body: Container(
-        child: recivebuss.isEmpty
-            ? Center(
-                child: Text(
-                  "Business Not Found",
-                  style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                          color: Colors.red,
-                          fontSize: 18,
-                      )),
-                ),
-              )
-            : !loding
-                ? ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: recivebuss.length,
-                    itemBuilder: (_, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: Get.width / 30,
-                            vertical: Get.height / 80),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  // offset: Offset(9,7),
-                                  spreadRadius: 4,
-                                  blurRadius: 5,
-                                  color: Colors.grey.withOpacity(0.1),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: Get.width / 30),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(
-                                      Icons.delete,
-                                      color: Colors.transparent,
-                                    ),
-                                    SizedBox(
-                                      width: Get.width / 1.5,
-                                      child: Center(
-                                        child: Text(
-                                          recivebuss[index]['username'],
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.blue,
-                                                  fontSize: 18,
-                                                 )),
-                                        ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        entruid = recivebuss[index]['entry_id'];
-                                        setState(() {});
-                                        if (kDebugMode) {
-                                          print(">>>>$delatebiss");
-                                        }
-                                        _showMyDialog();
-                                      },
-                                      child: const Icon(
+      body: RefreshIndicator(
+        child: Container(
+          child: recivebuss.isEmpty
+              ? Center(
+                  child: Text(
+                    "Business Not Found",
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                      color: Colors.red,
+                      fontSize: 18,
+                    )),
+                  ),
+                )
+              : !loding
+                  ? ListView.builder(
+                      itemCount: recivebuss.length,
+                      itemBuilder: (_, index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Get.width / 30,
+                              vertical: Get.height / 80),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    // offset: Offset(9,7),
+                                    spreadRadius: 4,
+                                    blurRadius: 5,
+                                    color: Colors.grey.withOpacity(0.1),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Get.width / 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Icon(
                                         Icons.delete,
-                                        color: Colors.black45,
+                                        color: Colors.transparent,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                const Divider(),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Date",
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 12,
-                                                  )),
-                                        ),
-                                        Text(
-                                          recivebuss[index]['entry_date'],
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                 )),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 25,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Amount",
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 12,
-                                                  )),
-                                        ),
-                                        Text(
-                                          recivebuss[index]['amount'],
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                               )),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Remark",
-                                          style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 12,
-                                                  )),
-                                        ),
-                                        SizedBox(
-                                          width: Get.width / 1.2,
+                                      SizedBox(
+                                        width: Get.width / 1.5,
+                                        child: Center(
                                           child: Text(
-                                            recivebuss[index]['remarks'],
+                                            recivebuss[index]['username'],
+                                            overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 14,
-                                                    )),
+                                              color: Colors.blue,
+                                              fontSize: 18,
+                                            )),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                              ],
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          entruid =
+                                              recivebuss[index]['entry_id'];
+                                          setState(() {});
+                                          if (kDebugMode) {
+                                            print(">>>>$delatebiss");
+                                          }
+                                          _showMyDialog();
+                                        },
+                                        child: const Icon(
+                                          Icons.delete,
+                                          color: Colors.black45,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const Divider(),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Date",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 12,
+                                            )),
+                                          ),
+                                          Text(
+                                            recivebuss[index]['entry_date'],
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        width: 25,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Amount",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 12,
+                                            )),
+                                          ),
+                                          Text(
+                                            recivebuss[index]['amount'],
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Remark",
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 12,
+                                            )),
+                                          ),
+                                          SizedBox(
+                                            width: Get.width / 1.2,
+                                            child: Text(
+                                              recivebuss[index]['remarks'],
+                                              style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 14,
+                                              )),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  )
-                : const Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.transparent,
-                      value: null,
-                      strokeWidth: 3.0,
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.transparent,
+                        value: null,
+                        strokeWidth: 3.0,
+                      ),
                     ),
-                  ),
+        ),
+        onRefresh: regresher,
       ),
     );
+  }
+
+  Future<void> regresher() async {
+    recibiss();
   }
 
   Future<void> _showMyDialog() async {
@@ -245,7 +254,9 @@ class _RecievedState extends State<Recieved>
                 },
                 child: const Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black, ),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
                 )),
             TextButton(
                 onPressed: () {
@@ -257,7 +268,9 @@ class _RecievedState extends State<Recieved>
                 },
                 child: const Text(
                   'Delete',
-                  style: TextStyle(color: Colors.red,),
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
                 )),
           ],
         );
@@ -320,6 +333,11 @@ class _RecievedState extends State<Recieved>
         val.forEach((e) {
           recivebuss.add(e);
           print(e);
+        });
+        recivebuss.sort((a, b) {
+          var adate = a['entry_date']; //before -> var adate = a.expiry;
+          var bdate = b['entry_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
         });
         setState(() {});
         loding = false;

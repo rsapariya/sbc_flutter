@@ -91,6 +91,7 @@ class _AddrequestState extends State<Addrequest> {
                                   child: InkWell(
                                     onTap: () {
                                       setState(() {});
+                                      FocusScope.of(context).unfocus();
                                       list = false;
                                       menber.text = _foundUsers[index]
                                               ['username']

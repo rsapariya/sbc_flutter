@@ -51,9 +51,10 @@ class _AddvisitorsState extends State<Addvisitors> {
               });
             },
             child: const Icon(Icons.arrow_back)),
-        title:  Text(
+        title: Text(
           "Add Visitors",
-          style:GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white)),
+          style: GoogleFonts.poppins(
+              textStyle: const TextStyle(color: Colors.white)),
         ),
       ),
       body: !Loding
@@ -70,7 +71,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                       height: 15,
                     ),
                     TextFormField(
-                      style:GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(),
                       controller: visitorname,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -118,12 +119,13 @@ class _AddvisitorsState extends State<Addvisitors> {
                     const SizedBox(
                       height: 15,
                     ),
-                     Text(
+                    Text(
                       "Is SGCCI Member ? ",
-                      style:GoogleFonts.poppins(textStyle: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                   )),
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
+                      )),
                     ),
                     // appbutton(titel: "Request"),
                     const SizedBox(
@@ -150,10 +152,11 @@ class _AddvisitorsState extends State<Addvisitors> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Yes",
-                                  style: GoogleFonts.poppins(textStyle: TextStyle(
-                                      color: member == "Yes"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: member == "Yes"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -181,10 +184,11 @@ class _AddvisitorsState extends State<Addvisitors> {
                                     const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "No",
-                                  style:GoogleFonts.poppins(textStyle:  TextStyle(
-                                      color: member == "No"
-                                          ? Colors.white
-                                          : Colors.blue)),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          color: member == "No"
+                                              ? Colors.white
+                                              : Colors.blue)),
                                 ),
                               ),
                             ),
@@ -197,7 +201,7 @@ class _AddvisitorsState extends State<Addvisitors> {
                     ),
                     TextFormField(
                       maxLines: 3,
-                      style:GoogleFonts.poppins(),
+                      style: GoogleFonts.poppins(),
                       controller: description,
                       autofocus: false,
                       decoration: buildInputDecoration(
@@ -251,7 +255,7 @@ class _AddvisitorsState extends State<Addvisitors> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
-      hintStyle:GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
+      hintStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelStyle: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14)),
       labelText: lbltext,
       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

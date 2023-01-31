@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, prefer_typing_uninitialized_variables, prefer_const_literals_to_create_immutables
+// ignore_for_file: unnecessary_import, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, prefer_typing_uninitialized_variables, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:sbc/units/storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MemberDetalis extends StatefulWidget {
   const MemberDetalis({Key? key}) : super(key: key);
@@ -112,9 +113,9 @@ class _MemberDetalisState extends State<MemberDetalis> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title:  Text(
+        title: Text(
           "Profile",
-          style:GoogleFonts.poppins(),
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: Padding(
@@ -139,24 +140,27 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               Text(
                 getdata.read('userdeta')['username'],
-                style:GoogleFonts.poppins(textStyle:const TextStyle(
-                    color: Colors.black, fontSize: 16)),
+                style: GoogleFonts.poppins(
+                    textStyle:
+                        const TextStyle(color: Colors.black, fontSize: 16)),
               ),
-               Text(
+              Text(
                 'About',
-                style: GoogleFonts.poppins(textStyle:const TextStyle(
-                    color: Colors.grey, fontSize: 14)),
+                style: GoogleFonts.poppins(
+                    textStyle:
+                        const TextStyle(color: Colors.grey, fontSize: 14)),
               ),
               Text(
                 getdata.read('userdeta')['role_type'],
-                style:GoogleFonts.poppins(textStyle:const TextStyle(
-                    color: Colors.black, fontSize: 16)),
+                style: GoogleFonts.poppins(
+                    textStyle:
+                        const TextStyle(color: Colors.black, fontSize: 16)),
               ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
-                style:  GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 controller: Fname,
                 readOnly: true,
                 autofocus: false,
@@ -170,7 +174,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Lname,
-                style:  GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 autofocus: false,
                 readOnly: true,
                 decoration: buildInputDecoration(
@@ -184,6 +188,9 @@ class _MemberDetalisState extends State<MemberDetalis> {
               TextFormField(
                 // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
+                onTap: () {
+                  emaiollaunch();
+                },
                 controller: Email,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -195,10 +202,13 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
-                style:  GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 controller: Phone,
-                autofocus: false, readOnly: true,
+                onTap: () {
+                  _makingPhoneCall();
+                },
+                autofocus: false,
+                readOnly: true,
                 keyboardType: TextInputType.phone,
                 decoration: buildInputDecoration(
                   hintText: "Phone No.",
@@ -222,10 +232,11 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                   Text(
+                  Text(
                     "   yyyy-MM-dd",
-                    style: GoogleFonts.poppins(textStyle:const TextStyle(
-                        color: Colors.grey, fontSize: 12)),
+                    style: GoogleFonts.poppins(
+                        textStyle:
+                            const TextStyle(color: Colors.grey, fontSize: 12)),
                   ),
                 ],
               ),
@@ -246,10 +257,11 @@ class _MemberDetalisState extends State<MemberDetalis> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                   Text(
+                  Text(
                     "   yyyy-MM-dd",
-                    style:GoogleFonts.poppins(textStyle: const  TextStyle(
-                        color: Colors.grey, fontSize: 12)),
+                    style: GoogleFonts.poppins(
+                        textStyle:
+                            const TextStyle(color: Colors.grey, fontSize: 12)),
                   ),
                 ],
               ),
@@ -258,7 +270,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 // controller: emailcontroller,
-                style:GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 controller: Pcode,
                 autofocus: false, readOnly: true,
                 keyboardType: TextInputType.number,
@@ -300,7 +312,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Business,
-                style:GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 decoration: buildInputDecoration(
@@ -326,7 +338,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               TextFormField(
                 controller: Businessinfo,
-                style:GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false, readOnly: true,
                 maxLines: 3,
@@ -483,5 +495,43 @@ class _MemberDetalisState extends State<MemberDetalis> {
       filled: true,
       fillColor: Colors.grey.withOpacity(0.1),
     );
+  }
+
+  _makingPhoneCall() async {
+    String num = Phone.text;
+    if (num.toString().length == 10) {
+      var url = Uri.parse("tel:+91$num");
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } else {
+      var url = Uri.parse("tel:$num");
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+  }
+
+  _wahtt() async {
+    String number = getdata.read('details')['person_contact'].toString();
+
+    final Uri uri = number.toString().length == 10
+        ? Uri.parse("whatsapp://send?phone=" + "91" + number)
+        : Uri.parse("whatsapp://send?phone=" + number);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      print("error");
+      throw "ERROR ";
+    }
+  }
+
+  emaiollaunch() async {
+    String email = Email.text;
+    launch('mailto:$email');
   }
 }

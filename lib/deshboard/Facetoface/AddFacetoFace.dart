@@ -98,6 +98,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                                       if (kDebugMode) {
                                         print(list);
                                       }
+                                      FocusScope.of(context).unfocus();
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();

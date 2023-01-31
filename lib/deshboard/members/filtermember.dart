@@ -7,6 +7,7 @@ import 'package:sbc/deshboard/members/MemberDetails.dart';
 import 'package:sbc/units/storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../splaysh.dart';
+import '../../units/api.dart';
 import '../home.dart';
 
 class FilterMember extends StatefulWidget {
@@ -64,25 +65,9 @@ class _FilterMemberState extends State<FilterMember>
       _foundUsers = results;
     });
   }
-
-  // void _runFilterrr(String enteredKeyword) {
-  //   List results = [];
-  //   if (enteredKeyword.isEmpty) {
-  //     // if the search field is empty or only contains white-space, we'll display all users
-  //     results = Userss.cast<Map<String, dynamic>>();
-  //   } else {
-  //     results = Userss.where((user) => user['cat_name']
-  //             .toLowerCase()
-  //             .contains(enteredKeyword.toLowerCase()))
-  //         .cast<Map<String, dynamic>>()
-  //         .toList();
-  //     // we use the toLowerCase() method to make it case-insensitive
-  //   }
-  //   setState(() {
-  //     _foundUsers = results;
-  //   });
-  // }
-
+Future<void> rfresher()async{
+    return getallusers();
+}
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drower(),
@@ -106,7 +91,6 @@ class _FilterMemberState extends State<FilterMember>
       ),
       // drawer: Drower(),
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             hide
@@ -191,138 +175,139 @@ class _FilterMemberState extends State<FilterMember>
               ),
             ),
             _foundUsers.isNotEmpty
-                ? Container(
-                    height: Get.height / 1.2,
-                    color: Colors.transparent,
-                    child: ListView.builder(
-                      // controller: controller,
-                      itemCount: _foundUsers.length,
-                      itemBuilder: (_, index) {
-                        return Padding(
+                ? RefreshIndicator(child:Container(
+              height: Get.height / 1.2,
+              color: Colors.transparent,
+              child: ListView.builder(
+                // controller: controller,
+                itemCount: _foundUsers.length,
+                itemBuilder: (_, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Get.width / 30,
+                        vertical: Get.height / 80),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {});
+                        save('userdeta', _foundUsers[index]);
+                        if (kDebugMode) {
+                          print(getdata.read('userdeta'));
+                        }
+                        Get.to(() => const MemberDetalis());
+                      },
+                      child: Container(
+                        child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: Get.width / 30,
-                              vertical: Get.height / 80),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {});
-                              save('userdeta', _foundUsers[index]);
-                              if (kDebugMode) {
-                                print(getdata.read('userdeta'));
-                              }
-                              Get.to(() => const MemberDetalis());
-                            },
-                            child: Container(
-                              child: Padding(
+                              horizontal: Get.width / 30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: Get.width / 30),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                    vertical: Get.height / 60),
+                                child: Row(
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: Get.height / 60),
-                                      child: Row(
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 30,
-                                            backgroundColor: Colors.grey,
-                                            backgroundImage: _foundUsers[index]
-                                                        ['profile'] ==
-                                                    null
-                                                ? const NetworkImage(
-                                                    'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-                                                  )
-                                                : NetworkImage(
-                                                    'https://sbc.sgcci.in/uploads/profile/${_foundUsers[index]['profile']}'),
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: Colors.grey,
+                                      backgroundImage: _foundUsers[index]
+                                      ['profile'] ==
+                                          null
+                                          ? const NetworkImage(
+                                        'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                                      )
+                                          : NetworkImage(
+                                          'https://sbc.sgcci.in/uploads/profile/${_foundUsers[index]['profile']}'),
+                                    ),
+                                    SizedBox(width: Get.width / 30),
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: Get.width / 2,
+                                          child: Text(
+                                              _foundUsers[index]
+                                              ['username'] ??
+                                                  "",
+                                              overflow:
+                                              TextOverflow.ellipsis,
+                                              style: GoogleFonts.poppins(
+                                                textStyle:
+                                                const TextStyle(
+                                                  color: Colors.blue,
+                                                  fontSize: 16,
+                                                ),
+                                              )),
+                                        ),
+                                        _foundUsers[index]['business'] ==
+                                            null
+                                            ? const SizedBox()
+                                            : SizedBox(
+                                          width: Get.width / 1.5,
+                                          child: Text(
+                                            _foundUsers[index]
+                                            ['business'],
+                                            style:
+                                            GoogleFonts.poppins(
+                                                textStyle:
+                                                const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 14,
+                                                )),
                                           ),
-                                          SizedBox(width: Get.width / 30),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(
-                                                width: Get.width / 2,
-                                                child: Text(
-                                                    _foundUsers[index]
-                                                            ['username'] ??
-                                                        "",
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: GoogleFonts.poppins(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                        color: Colors.blue,
-                                                        fontSize: 16,
-                                                      ),
-                                                    )),
-                                              ),
-                                              _foundUsers[index]['business'] ==
-                                                      null
-                                                  ? const SizedBox()
-                                                  : SizedBox(
-                                                      width: Get.width / 1.5,
-                                                      child: Text(
-                                                        _foundUsers[index]
-                                                            ['business'],
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                textStyle:
-                                                                    const TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 14,
-                                                        )),
-                                                      ),
-                                                    ),
-                                              _foundUsers[index]['cat_name'] ==
-                                                      null
-                                                  ? const SizedBox()
-                                                  : SizedBox(
-                                                      width: Get.width / 1.5,
-                                                      child: Text(
-                                                        _foundUsers[index]
-                                                            ['cat_name'],
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                textStyle:
-                                                                    const TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 14,
-                                                        )),
-                                                      ),
-                                                    ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                                        ),
+                                        _foundUsers[index]['cat_name'] ==
+                                            null
+                                            ? const SizedBox()
+                                            : SizedBox(
+                                          width: Get.width / 1.5,
+                                          child: Text(
+                                            _foundUsers[index]
+                                            ['cat_name'],
+                                            style:
+                                            GoogleFonts.poppins(
+                                                textStyle:
+                                                const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 14,
+                                                )),
+                                          ),
+                                        ),
+                                      ],
                                     )
                                   ],
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      // offset: Offset(9,7),
-                                      spreadRadius: 4,
-                                      blurRadius: 5,
-                                      color: Colors.grey.withOpacity(0.1),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
+                              )
+                            ],
                           ),
-                        );
-                      },
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                // offset: Offset(9,7),
+                                spreadRadius: 4,
+                                blurRadius: 5,
+                                color: Colors.grey.withOpacity(0.1),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
                     ),
-                  )
-                :  Center(
+                  );
+                },
+              ),
+            ), onRefresh:rfresher)
+                : Center(
                     child: Text(
                       'No results found',
-                      style:GoogleFonts.poppins(textStyle: const TextStyle(
-                          fontSize: 22,
-                          color: Colors.red,
-                         )),
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                        fontSize: 22,
+                        color: Colors.red,
+                      )),
                     ),
                   ),
           ],
@@ -360,38 +345,22 @@ class _FilterMemberState extends State<FilterMember>
     );
   }
 
-  // Dropdown() {
-  //   return Padding(
-  //     padding: EdgeInsets.only(left: Get.width / 30),
-  //     child: DropdownButton<String>(
-  //       style: Theme.of(context).textTheme.button,
-  //       value: dropdownValue,
-  //       icon: Icon(
-  //         Icons.keyboard_arrow_down,
-  //         size: 20,
-  //         color: Color(0xff828294),
-  //       ),
-  //       elevation: 1,
-  //       dropdownColor: Color(0xffFFFFFF),
-  //       underline: Container(
-  //         height: 0,
-  //       ),
-  //       onChanged: (value) => _runFilterrr(value!),
-  //       items: cat.map((value) {
-  //         return DropdownMenuItem<String>(
-  //           value: value,
-  //           child: Text(
-  //             value,
-  //             style: TextStyle(
-  //                 fontFamily: 'popins',
-  //                 color: Colors.black,
-  //                 fontSize: 14,
-  //                 fontWeight: FontWeight.w400),
-  //           ),
-  //         );
-  //       }).toList(),
-  //       borderRadius: BorderRadius.circular(20),
-  //     ),
-  //   );
-  // }
+  getallusers() {
+    ApiWrapper.dataGet(AppUrl.GetallUsers + getdata.read('EMAIL').toString())
+        .then((val) {
+      if ((val != null) && (val.isNotEmpty)) {
+        setState(() {
+          Userss.clear();
+        });
+        val.forEach((e) {
+          Userss.add(e);
+        });
+      } else {
+        setState(() {
+          Userss.clear();
+        });
+      }
+    });
+  }
+
 }

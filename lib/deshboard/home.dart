@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, annotate_overrides, prefer_interpolation_to_compose_strings, avoid_print, override_on_non_overriding_member, camel_case_types
 
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -103,268 +104,278 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           ),
         ),
         body: !loding
-            ? Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Get.width / 30, vertical: Get.height / 80),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
+            ? DoubleBackToCloseApp(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Get.width / 30,
+                          vertical: Get.height / 80),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  spreadRadius: 2,
+                                  color: Colors.grey.withOpacity(0.1),
+                                  blurRadius: 4)
+                            ]),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Get.width / 20,
+                              vertical: Get.height / 80),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                backgroundImage: getdata
+                                            .read('User')['profile'] !=
+                                        null
+                                    ? NetworkImage(
+                                        "https://sbc.sgcci.in/uploads/profile/" +
+                                            getdata.read('User')['profile'])
+                                    : const NetworkImage(
+                                        'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
+                                radius: 30,
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getdata.read('User')['username'] ?? "",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                  Text(
+                                    "Status : ${getdata.read('User')['status'] ?? ""}",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 spreadRadius: 2,
                                 color: Colors.grey.withOpacity(0.1),
+                                blurRadius: 4),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Get.width / 20,
+                              vertical: Get.width / 40),
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Next Meeting Date",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                  Text(
+                                    getdata.read("dashboard")['next_event']
+                                            ['date'] ??
+                                        "",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Divider(),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Visitor",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                  Text(
+                                    getdata.read("dashboard")['next_event']
+                                            ['visitors'] ??
+                                        "",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Divider(),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Speakers",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                  Text(
+                                    getdata.read("dashboard")['next_event']
+                                            ['speakers'] ??
+                                        "",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    )),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Get.width / 30,
+                          vertical: Get.height / 80),
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                color: Colors.grey.withOpacity(0.1),
                                 blurRadius: 4)
-                          ]),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: Get.width / 20,
-                            vertical: Get.height / 80),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              backgroundImage: getdata
-                                          .read('User')['profile'] !=
-                                      null
-                                  ? NetworkImage(
-                                      "https://sbc.sgcci.in/uploads/profile/" +
-                                          getdata.read('User')['profile'])
-                                  : const NetworkImage(
-                                      'https://cdn-icons-png.flaticon.com/512/149/149071.png'),
-                              radius: 30,
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  getdata.read('User')['username'] ?? "",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                                Text(
-                                  "Status : ${getdata.read('User')['status'] ?? ""}",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                )
-                              ],
-                            )
                           ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(40),
                         ),
+                        child: TabBar(
+                            unselectedLabelColor: Colors.black,
+                            indicatorColor: Colors.blue,
+                            controller: _tabController,
+                            indicatorPadding: const EdgeInsets.all(4),
+                            indicator: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(40)),
+                            tabs: [
+                              Text(
+                                'Summary',
+                                style: GoogleFonts.poppins(
+                                    textStyle:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                              ),
+                              Text(
+                                'All time',
+                                style: GoogleFonts.poppins(
+                                    textStyle:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                              ),
+                              Text(
+                                '12 Month',
+                                style: GoogleFonts.poppins(
+                                    textStyle:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                              ),
+                            ]),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              color: Colors.grey.withOpacity(0.1),
-                              blurRadius: 4),
-                        ],
+                    Expanded(
+                      child: TabBarView(
+                        controller: _tabController,
+                        children: const [summery(), mitting(), states()],
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: Get.width / 20,
-                            vertical: Get.width / 40),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Next Meeting Date",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                                Text(
-                                  getdata.read("dashboard")['next_event']
-                                          ['date'] ??
-                                      "",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            const Divider(),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Visitor",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                                Text(
-                                  getdata.read("dashboard")['next_event']
-                                          ['visitors'] ??
-                                      "",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            const Divider(),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Speakers",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                                Text(
-                                  getdata.read("dashboard")['next_event']
-                                          ['speakers'] ??
-                                      "",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                  )),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Get.width / 30, vertical: Get.height / 80),
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              color: Colors.grey.withOpacity(0.1),
-                              blurRadius: 4)
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: TabBar(
-                          unselectedLabelColor: Colors.black,
-                          indicatorColor: Colors.blue,
-                          controller: _tabController,
-                          indicatorPadding: const EdgeInsets.all(4),
-                          indicator: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(40)),
-                          tabs: [
-                            Text(
-                              'Summary',
-                              style: GoogleFonts.poppins(
-                                  textStyle:
-                                      TextStyle(fontWeight: FontWeight.w500)),
-                            ),
-                            Text(
-                              'All time',
-                              style: GoogleFonts.poppins(
-                                  textStyle:
-                                      TextStyle(fontWeight: FontWeight.w500)),
-                            ),
-                            Text(
-                              '12 Month',
-                              style: GoogleFonts.poppins(
-                                  textStyle:
-                                      TextStyle(fontWeight: FontWeight.w500)),
-                            ),
-                          ]),
-                    ),
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: const [summery(), mitting(), states()],
-                    ),
-                  )
-                ],
-              )
-            : Padding(
-                padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Skeltel(
-                      height: Get.height / 15,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Skeltel(
-                      height: Get.height / 8,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Skeltel(
-                      height: Get.height / 15,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Skeltel(
-                      height: Get.height / 3,
-                    ),
+                    )
                   ],
                 ),
-              ),
+                snackBar: SnackBar(content: Text('Tap back again to Exit.')),
+              )
+            : DoubleBackToCloseApp(
+                snackBar: SnackBar(content: Text('Tap back again to Exit.')),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Skeltel(
+                        height: Get.height / 15,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Skeltel(
+                        height: Get.height / 8,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Skeltel(
+                        height: Get.height / 15,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Skeltel(
+                        height: Get.height / 3,
+                      ),
+                    ],
+                  ),
+                )),
         drawer: const Drower());
   }
 
@@ -382,6 +393,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         val.forEach((e) {
           getbuss.add(e);
           print(e);
+        });
+        getbuss.sort((a, b) {
+          var adate = a['entry_date']; //before -> var adate = a.expiry;
+          var bdate = b['entry_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
         });
         print("           BUSINESSSSSSSSSSSS          ----->>>>$getbuss");
       } else {
@@ -419,6 +435,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         val.forEach((e) {
           visitors.add(e);
         });
+        visitors.sort((a, b) {
+          var adate = a['ev_date']; //before -> var adate = a.expiry;
+          var bdate = b['ev_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
+        });
       }
     });
   }
@@ -430,6 +451,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         recivebuss.clear();
         val.forEach((e) {
           recivebuss.add(e);
+        });
+        recivebuss.sort((a, b) {
+          var adate = a['entry_date']; //before -> var adate = a.expiry;
+          var bdate = b['entry_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
         });
         setState(() {});
       } else {
@@ -455,6 +481,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
       } else {
         setState(() {});
         events.clear();
+      }
+    });
+  }
+
+  getrecivereffrel() {
+    ApiWrapper.dataGet(AppUrl.getreciveraf).then((val) {
+      if ((val != null) && (val.isNotEmpty)) {
+        Recivereffrel.clear();
+        setState(() {});
+        val.forEach((e) {
+          Recivereffrel.add(e);
+        });
+        Recivereffrel.sort((a, b) {
+          var adate = a['ref_date']; //before -> var adate = a.expiry;
+          var bdate = b['ref_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
+        });
+        setState(() {});
+      } else {
+        setState(() {});
+        Recivereffrel.clear();
       }
     });
   }
@@ -495,6 +542,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         loding = false;
         getevents();
         recibiss();
+        getrecivereffrel();
         getbiss();
         getallusers();
         Visitors();
@@ -539,7 +587,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const home());
+                Get.to(() => const home());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const home()));
@@ -560,7 +608,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const bussnesss());
+                Get.to(() => const bussnesss());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const bussnesss()));
@@ -580,7 +628,7 @@ class _DrowerState extends State<Drower> {
                   )),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const Refferal());
+                Get.to(() => const Refferal());
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Refferal()));
@@ -601,7 +649,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const Facetoface());
+                Get.to(() => const Facetoface());
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Facetoface()));
@@ -622,7 +670,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.of(context);
-                Get.off(() => const Events());
+                Get.to(() => const Events());
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Events()));
               },
@@ -642,7 +690,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const Attendance());
+                Get.to(() => const Attendance());
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Attendance()));
               },
@@ -662,7 +710,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const Visitors());
+                Get.to(() => const Visitors());
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Visitors()));
               },
@@ -682,7 +730,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.off(() => const FilterMember());
+                Get.to(() => const FilterMember());
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const FilterMember()));

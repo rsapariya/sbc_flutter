@@ -99,6 +99,7 @@ class _addrefrelState extends State<addrefrel> {
                                       horizontal: Get.width / 20),
                                   child: InkWell(
                                     onTap: () {
+                                      FocusScope.of(context).unfocus();
                                       menber.text = _foundUsers[index]
                                               ['username']
                                           .toString();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sbc/deshboard/referall/Reffrel.dart';
 import 'package:sbc/units/api.dart';
@@ -23,146 +22,124 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
   var refid;
   TextEditingController search = TextEditingController();
   void initState() {
+    getgivenrefrel();
     super.initState();
+  }
+
+  Future<void> refresher() async {
+    return getgivenrefrel();
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.to(() => addrefrel());
-        },
-        backgroundColor: Colors.blue,
-        child: const Icon(
-          Icons.add,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Get.to(() => addrefrel());
+          },
+          backgroundColor: Colors.blue,
+          child: const Icon(
+            Icons.add,
+          ),
         ),
-      ),
-      body: Container(
-        child: Givenreffrel.isEmpty
-            ? Center(
-                child: Text(
-                  "Referral Not Found",
-                  style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 18,
-                  )),
-                ),
-              )
-            : !Loding
-                ? SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      children: [
-                        // Padding(
-                        //   padding:
-                        //       EdgeInsets.symmetric(horizontal: Get.width / 30),
-                        //   child: SizedBox(
-                        //     height: Get.height / 14,
-                        //     child: TextFormField(
-                        //       style: TextStyle(
-                        //         ,
-                        //       ),
-                        //       // controller: code,
-                        //       autofocus: false,
-                        //       // onChanged: searh,
-                        //       controller: search,
-                        //       decoration:
-                        //           buildInputDecoration(hintText: "Search"),
-                        //     ),
-                        //   ),
-                        // ),
-                        Container(
-                          height: Get.height / 1.4,
-                          child: ListView.builder(
-                            itemCount: Givenreffrel.length,
-                            itemBuilder: (_, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Get.width / 30,
-                                    vertical: Get.height / 80),
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      save('details', Givenreffrel[index]);
-                                      _showMyDialog();
-                                    });
-                                  },
-                                  child: Container(
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: Get.height / 50,
-                                          vertical: Get.height / 100),
-                                      child: Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                Givenreffrel[index]
-                                                    ['person_name'],
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 18,
-                                                )),
-                                              ),
-                                              Text(
-                                                Givenreffrel[index]["ref_date"],
-                                                style: GoogleFonts.poppins(
-                                                    textStyle: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                )),
-                                              ),
-                                            ],
-                                          ),
-                                          Spacer(),
-                                          IconButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                refid = Givenreffrel[index]
-                                                    ["ref_id"];
-                                                _showMyDialogg();
-                                              },
-                                              icon: Icon(
-                                                Icons.delete,
-                                                color: Colors.black38,
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            // offset: Offset(9,7),
-                                            spreadRadius: 4,
-                                            blurRadius: 5,
-                                            color: Colors.grey.withOpacity(0.1),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+        body: RefreshIndicator(
+          child: Container(
+            height: Get.height / 1,
+            child: Givenreffrel.isEmpty
+                ? Center(
+                    child: Text(
+                      "Referral Not Found",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                        color: Colors.red,
+                        fontSize: 18,
+                      )),
                     ),
                   )
-                : Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.transparent,
-                      value: null,
-                      strokeWidth: 3.0,
-                    ),
-                  ),
-      ),
-    );
+                : !Loding
+                    ? ListView.builder(
+                        itemCount: Givenreffrel.length,
+                        itemBuilder: (_, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width / 30,
+                                vertical: Get.height / 80),
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  save('details', Givenreffrel[index]);
+                                  _showMyDialog();
+                                });
+                              },
+                              child: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Get.height / 50,
+                                      vertical: Get.height / 100),
+                                  child: Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            Givenreffrel[index]['username'],
+                                            style: GoogleFonts.poppins(
+                                                textStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                            )),
+                                          ),
+                                          Text(
+                                            Givenreffrel[index]["ref_date"],
+                                            style: GoogleFonts.poppins(
+                                                textStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacer(),
+                                      IconButton(
+                                          onPressed: () {
+                                            setState(() {});
+                                            refid =
+                                                Givenreffrel[index]["ref_id"];
+                                            _showMyDialogg();
+                                          },
+                                          icon: Icon(
+                                            Icons.delete,
+                                            color: Colors.black38,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        // offset: Offset(9,7),
+                                        spreadRadius: 4,
+                                        blurRadius: 5,
+                                        color: Colors.grey.withOpacity(0.1),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          );
+                        },
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.transparent,
+                          value: null,
+                          strokeWidth: 3.0,
+                        ),
+                      ),
+          ),
+          onRefresh: refresher,
+        ));
   }
 
   InputDecoration buildInputDecoration({
@@ -194,15 +171,6 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
     );
   }
 
-  // void searh(String qury) {
-  //   final suggestion = event.where((event) {
-  //     final bookTitle = event['name'].toLowerCase();
-  //     final input = qury.toLowerCase();
-  //     return bookTitle.contains(input);
-  //   }).toList();
-  //   setState(() => event = suggestion);
-  // }
-
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -213,7 +181,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                getdata.read('details')["person_name"],
+                getdata.read('details')["username"],
                 style: GoogleFonts.poppins(),
               ),
               IconButton(
@@ -234,6 +202,25 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        "Person Name",
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 14,
+                            )),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          getdata.read('details')["person_name"],
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              )),
+                        ),
+                      ),
                       Text(
                         "Remarks",
                         style: GoogleFonts.poppins(
@@ -396,7 +383,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
     }
   }
 
-  getgivenrefrel() {
+  void getgivenrefrel() async {
     print("GIVEN___REFREEEEL____________________");
     ApiWrapper.dataGet(AppUrl.getgivenraf).then((val) {
       print("GIVEN____REFREEEEL____________________");
@@ -405,6 +392,11 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
         setState(() {});
         val.forEach((e) {
           Givenreffrel.add(e);
+        });
+        Givenreffrel.sort((a, b) {
+          var adate = a['ref_date']; //before -> var adate = a.expiry;
+          var bdate = b['ref_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
         });
         Loding = false;
         setState(() {});

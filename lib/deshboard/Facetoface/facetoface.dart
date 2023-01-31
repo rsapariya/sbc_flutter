@@ -57,164 +57,165 @@ class _FacetofaceState extends State<Facetoface> {
               ),
             )
           : !Loding
-              ? ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: Face.length,
-                  itemBuilder: (_, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: Get.width / 30,
-                          vertical: Get.height / 80),
-                      child: Container(
-                        child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: Get.width / 30),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Icon(
-                                    Icons.delete,
-                                    color: Colors.transparent,
-                                  ),
-                                  Text(
-                                    Face[index]['username'],
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: 18,
-                                    )),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      //
-                                      setState(() {
-                                        faceis = Face[index]['oto_id'];
-                                        _showMyDialogg();
-                                      });
-                                    },
-                                    child: const Icon(
+              ? RefreshIndicator(
+                  child: ListView.builder(
+                    itemCount: Face.length,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Get.width / 30,
+                            vertical: Get.height / 80),
+                        child: Container(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width / 30),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Icon(
                                       Icons.delete,
-                                      color: Colors.black45,
+                                      color: Colors.transparent,
                                     ),
-                                  )
-                                ],
-                              ),
-                              const Divider(),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Location",
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                        )),
+                                    Text(
+                                      Face[index]['username'],
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 18,
+                                      )),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        //
+                                        setState(() {
+                                          faceis = Face[index]['oto_id'];
+                                          _showMyDialogg();
+                                        });
+                                      },
+                                      child: const Icon(
+                                        Icons.delete,
+                                        color: Colors.black45,
                                       ),
-                                      Text(
-                                        Face[index]['oto_location'],
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                        )),
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Date",
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                        )),
-                                      ),
-                                      Text(
-                                        Face[index]['oto_date'],
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                        )),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: Get.width / 20,
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Conversion",
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                        )),
-                                      ),
-                                      SizedBox(
-                                        width: Get.width / 1.2,
-                                        child: Text(
-                                          Face[index]["oto_conversation"],
+                                    )
+                                  ],
+                                ),
+                                const Divider(),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Location",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          )),
+                                        ),
+                                        Text(
+                                          Face[index]['oto_location'],
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
                                           )),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                            ],
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Date",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          )),
+                                        ),
+                                        Text(
+                                          Face[index]['oto_date'],
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                          )),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: Get.width / 20,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Conversion",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          )),
+                                        ),
+                                        SizedBox(
+                                          width: Get.width / 1.2,
+                                          child: Text(
+                                            Face[index]["oto_conversation"],
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
                           ),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  // offset: Offset(9,7),
+                                  spreadRadius: 4,
+                                  blurRadius: 5,
+                                  color: Colors.grey.withOpacity(0.1),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                // offset: Offset(9,7),
-                                spreadRadius: 4,
-                                blurRadius: 5,
-                                color: Colors.grey.withOpacity(0.1),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    );
-                  },
-                )
+                      );
+                    },
+                  ),
+                  onRefresh: refresher)
               : const Center(
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.transparent,
@@ -223,6 +224,10 @@ class _FacetofaceState extends State<Facetoface> {
                   ),
                 ),
     );
+  }
+
+  Future<void> refresher() async {
+    return facetofaceapi();
   }
 
   facetofaceapi() {
@@ -238,6 +243,11 @@ class _FacetofaceState extends State<Facetoface> {
         val.forEach((e) {
           Face.add(e);
           print(e);
+        });
+        Face.sort((a, b) {
+          var adate = a['oto_date']; //before -> var adate = a.expiry;
+          var bdate = b['oto_date']; //var bdate = b.expiry;
+          return -adate.compareTo(bdate);
         });
         setState(() {});
         Loding = false;
