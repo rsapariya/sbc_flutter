@@ -15,6 +15,8 @@ class MemberDetalis extends StatefulWidget {
   State<MemberDetalis> createState() => _MemberDetalisState();
 }
 
+var url;
+
 class _MemberDetalisState extends State<MemberDetalis> {
   @override
   TextEditingController Fname = TextEditingController();
@@ -109,6 +111,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
   var member = getdata.read('userdeta')['gender'].toString();
   var date;
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -186,17 +189,20 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 onTap: () {
                   emaiollaunch();
                 },
                 controller: Email,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
-                  hintText: "Email",
-                  lbltext: "Email",
-                ),
+                    hintText: "Email",
+                    lbltext: "Email",
+                    prifix: Icon(
+                      Icons.email_outlined,
+                      color: Colors.blue,
+                    )),
               ),
               SizedBox(
                 height: Get.height / 60,
@@ -211,18 +217,21 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 readOnly: true,
                 keyboardType: TextInputType.phone,
                 decoration: buildInputDecoration(
-                  hintText: "Phone No.",
-                  lbltext: "Phone No.",
-                ),
+                    hintText: "Phone No.",
+                    lbltext: "Phone No.",
+                    prifix: Icon(
+                      Icons.call,
+                      color: Colors.blue,
+                    )),
               ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 controller: Date,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 keyboardType: TextInputType.number,
                 decoration: buildInputDecoration(
                   hintText: "Birthdate",
@@ -244,10 +253,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 controller: sDate,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 keyboardType: TextInputType.number,
                 decoration: buildInputDecoration(
                   hintText: "Eniversry",
@@ -269,10 +278,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 controller: Pcode,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 keyboardType: TextInputType.number,
                 decoration: buildInputDecoration(
                   hintText: "Postal Code",
@@ -283,10 +292,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 controller: Address,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 maxLines: 3,
                 decoration: buildInputDecoration(
                   hintText: "Address",
@@ -299,8 +308,8 @@ class _MemberDetalisState extends State<MemberDetalis> {
               TextFormField(
                 controller: Achivments,
                 style: GoogleFonts.poppins(),
-                // controller: code,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 maxLines: 3,
                 decoration: buildInputDecoration(
                   hintText: "Achievements",
@@ -313,8 +322,8 @@ class _MemberDetalisState extends State<MemberDetalis> {
               TextFormField(
                 controller: Business,
                 style: GoogleFonts.poppins(),
-                // controller: code,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Business",
                   lbltext: "Business",
@@ -324,10 +333,17 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
+                onTap: () {
+                  setState(() {});
+                  if (Website.text.isNotEmpty) {
+                    url = Website.text;
+                    launchURL(url);
+                  }
+                },
                 style: GoogleFonts.poppins(),
                 controller: Website,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Website",
                   lbltext: "Website",
@@ -339,8 +355,8 @@ class _MemberDetalisState extends State<MemberDetalis> {
               TextFormField(
                 controller: Businessinfo,
                 style: GoogleFonts.poppins(),
-                // controller: code,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 maxLines: 3,
                 decoration: buildInputDecoration(
                   hintText: "Business Info",
@@ -351,10 +367,10 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 controller: Businessadd,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 maxLines: 3,
                 decoration: buildInputDecoration(
                   hintText: "Business Address",
@@ -365,11 +381,20 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
+                onTap: () {
+                  if (BusinessWhatt.text.isNotEmpty) {
+                    _wahtt();
+                  }
+                },
                 controller: BusinessWhatt,
                 style: GoogleFonts.poppins(),
-                // controller: code,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
+                  prifix: Icon(
+                    Icons.whatsapp,
+                    color: Colors.green,
+                  ),
                   hintText: "Business Whattsapp",
                   lbltext: "Business Whattsapp",
                 ),
@@ -378,10 +403,16 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
+                onTap: () {
+                  if (Fb.text.isNotEmpty) {
+                    url = Fb.text;
+                    launchURL(url);
+                  }
+                },
                 controller: Fb,
                 style: GoogleFonts.poppins(),
-                // controller: code,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Facebook Link",
                   lbltext: "Facebook Link",
@@ -391,10 +422,17 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
+                onTap: () {
+                  setState(() {});
+                  if (Insta.text.isNotEmpty) {
+                    url = Insta.text;
+                    launchURL(url);
+                  }
+                },
                 style: GoogleFonts.poppins(),
                 controller: Insta,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Intagram Link",
                   lbltext: "Intagram Link",
@@ -404,23 +442,37 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
+                onTap: () {
+                  setState(() {});
+                  if (Linkdin.text.isNotEmpty) {
+                    url = Linkdin.text;
+                    launchURL(url);
+                  }
+                },
                 style: GoogleFonts.poppins(),
                 controller: Linkdin,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
-                  hintText: "Linkdin Link",
-                  lbltext: "Linkdin Link",
+                  hintText: "Linkedin Link",
+                  lbltext: "Linkedin Link",
                 ),
               ),
               SizedBox(
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
+                onTap: () {
+                  setState(() {});
+                  if (Twiter.text.isNotEmpty) {
+                    url = Twiter.text;
+                    launchURL(url);
+                  }
+                },
                 style: GoogleFonts.poppins(),
                 controller: Twiter,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Twitter Link",
                   lbltext: "Twitter Link",
@@ -430,10 +482,17 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
+                onTap: () {
+                  setState(() {});
+                  if (Googlemap.text.isNotEmpty) {
+                    url = Googlemap.text;
+                    launchURL(url);
+                  }
+                },
                 style: GoogleFonts.poppins(),
                 controller: Googlemap,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "Google Map Link",
                   lbltext: "Google Map Link",
@@ -443,11 +502,11 @@ class _MemberDetalisState extends State<MemberDetalis> {
                 height: Get.height / 60,
               ),
               TextFormField(
-                // controller: emailcontroller,
                 style: GoogleFonts.poppins(),
                 maxLines: 3,
                 controller: Keywords,
-                autofocus: false, readOnly: true,
+                autofocus: false,
+                readOnly: true,
                 decoration: buildInputDecoration(
                   hintText: "KeyWords",
                   lbltext: "KeyWords",
@@ -455,6 +514,79 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               SizedBox(
                 height: Get.height / 60,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: Container(
+                    height: Get.height / 6,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                            image: getdata.read('userdeta')['biz_img1'] != "" ||
+                                    getdata.read('userdeta')['biz_img1'] != null
+                                ? NetworkImage("https://sbc.sgcci.in/" +
+                                    getdata.read('userdeta')['biz_img1'])
+                                : NetworkImage(
+                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
+                  )),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                      child: Container(
+                        height: Get.height / 6,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                                image: getdata.read('userdeta')['biz_img2'] != "" ||
+                                    getdata.read('userdeta')['biz_img2'] != null
+                                    ? NetworkImage("https://sbc.sgcci.in/" +
+                                    getdata.read('userdeta')['biz_img2'])
+                                    : NetworkImage(
+                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
+                      )),
+                ],
+              ),
+              SizedBox(
+                height: Get.height / 60,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: Container(
+                        height: Get.height / 6,
+                        decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                                image: getdata.read('userdeta')['biz_img3'] != "" ||
+                                    getdata.read('userdeta')['biz_img3'] != null
+                                    ? NetworkImage("https://sbc.sgcci.in/" +
+                                    getdata.read('userdeta')['biz_img3'])
+                                    :const NetworkImage(
+                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
+                      )),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                      child: Container(
+                        height: Get.height / 6,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(5),
+                            image: DecorationImage(
+                                image: getdata.read('userdeta')['biz_img4'] != "" ||
+                                    getdata.read('userdeta')['biz_img4'] != null
+                                    ? NetworkImage("https://sbc.sgcci.in/" +
+                                    getdata.read('userdeta')['biz_img4'])
+                                    : NetworkImage(
+                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
+                      )),
+                ],
               ),
             ],
           ),
@@ -472,9 +604,6 @@ class _MemberDetalisState extends State<MemberDetalis> {
     return InputDecoration(
       prefixIcon: prifix,
       suffix: surfix,
-      // border: InputBorder.none,,
-      // enabledBorder: InputBorder.none,
-      // errorBorder: InputBorder.none,
       disabledBorder: InputBorder.none,
       hintText: hintText,
       focusColor: Colors.transparent,
@@ -517,7 +646,7 @@ class _MemberDetalisState extends State<MemberDetalis> {
   }
 
   _wahtt() async {
-    String number = getdata.read('details')['person_contact'].toString();
+    String number = BusinessWhatt.text;
 
     final Uri uri = number.toString().length == 10
         ? Uri.parse("whatsapp://send?phone=" + "91" + number)
@@ -533,5 +662,13 @@ class _MemberDetalisState extends State<MemberDetalis> {
   emaiollaunch() async {
     String email = Email.text;
     launch('mailto:$email');
+  }
+
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

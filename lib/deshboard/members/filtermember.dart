@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:sbc/deshboard/members/MemberDetails.dart';
 import 'package:sbc/units/storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,9 +66,28 @@ class _FilterMemberState extends State<FilterMember>
       _foundUsers = results;
     });
   }
-Future<void> rfresher()async{
+
+  void _runFilterk(String enteredKeyword) {
+    List results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = Userss.cast<Map<String, dynamic>>();
+    } else {
+      results = Userss.where((user) => user['keywords'].toString().toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .cast<Map<String, dynamic>>()
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+    }
+    setState(() {
+      _foundUsers = results;
+    });
+  }
+
+  Future<void> rfresher() async {
     return getallusers();
-}
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drower(),
@@ -156,6 +176,31 @@ Future<void> rfresher()async{
                         const SizedBox(
                           width: 10,
                         ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              Filter = "keywords";
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Filter == "keywords"
+                                    ? Colors.blue
+                                    : Colors.blue.withOpacity(0.1)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: Text(
+                                'Keywords',
+                                style: TextStyle(
+                                    color: Filter == "keywords"
+                                        ? Colors.white
+                                        : Colors.blue),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   )
@@ -167,139 +212,149 @@ Future<void> rfresher()async{
                 style: GoogleFonts.poppins(),
                 // controller: code,
                 autofocus: false,
-                onChanged: (value) =>
-                    Filter == 'Name' ? _runFilter(value) : _runFilterr(value),
+                onChanged: (value) => Filter == 'Name'
+                    ? _runFilter(value)
+                    : Filter == "keywords"
+                        ? _runFilterk(value)
+                        : _runFilterr(value),
 
                 controller: search,
                 decoration: buildInputDecoration(hintText: "Search"),
               ),
             ),
             _foundUsers.isNotEmpty
-                ? RefreshIndicator(child:Container(
-              height: Get.height / 1.2,
-              color: Colors.transparent,
-              child: ListView.builder(
-                // controller: controller,
-                itemCount: _foundUsers.length,
-                itemBuilder: (_, index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Get.width / 30,
-                        vertical: Get.height / 80),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {});
-                        save('userdeta', _foundUsers[index]);
-                        if (kDebugMode) {
-                          print(getdata.read('userdeta'));
-                        }
-                        Get.to(() => const MemberDetalis());
-                      },
-                      child: Container(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Get.width / 30),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: Get.height / 60),
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 30,
-                                      backgroundColor: Colors.grey,
-                                      backgroundImage: _foundUsers[index]
-                                      ['profile'] ==
-                                          null
-                                          ? const NetworkImage(
-                                        'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-                                      )
-                                          : NetworkImage(
-                                          'https://sbc.sgcci.in/uploads/profile/${_foundUsers[index]['profile']}'),
-                                    ),
-                                    SizedBox(width: Get.width / 30),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: Get.width / 2,
-                                          child: Text(
-                                              _foundUsers[index]
-                                              ['username'] ??
-                                                  "",
-                                              overflow:
-                                              TextOverflow.ellipsis,
-                                              style: GoogleFonts.poppins(
-                                                textStyle:
-                                                const TextStyle(
-                                                  color: Colors.blue,
-                                                  fontSize: 16,
+                ? RefreshIndicator(
+                    child: Container(
+                      height: Get.height / 1.2,
+                      color: Colors.transparent,
+                      child: Padding(padding:EdgeInsets.only(bottom:20),child: ListView.builder(
+                        // controller: controller,
+                        itemCount: _foundUsers.length,
+                        itemBuilder: (_, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width / 30,
+                                vertical: Get.height / 80),
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {});
+                                save('userdeta', _foundUsers[index]);
+                                if (kDebugMode) {
+                                  print(getdata.read('userdeta'));
+                                }
+                                Get.to(() => const MemberDetalis());
+                              },
+                              child: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Get.width / 30),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: Get.height / 60),
+                                        child: Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 30,
+                                              backgroundColor: Colors.grey,
+                                              backgroundImage: _foundUsers[
+                                              index]['profile'] ==
+                                                  null
+                                                  ? const NetworkImage(
+                                                'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                                              )
+                                                  : NetworkImage(
+                                                  'https://sbc.sgcci.in/uploads/profile/${_foundUsers[index]['profile']}'),
+                                            ),
+                                            SizedBox(width: Get.width / 30),
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  width: Get.width / 2,
+                                                  child: Text(
+                                                      _foundUsers[index]
+                                                      ['username'] ??
+                                                          "",
+                                                      overflow:
+                                                      TextOverflow.ellipsis,
+                                                      style:
+                                                      GoogleFonts.poppins(
+                                                        textStyle:
+                                                        const TextStyle(
+                                                          color: Colors.blue,
+                                                          fontSize: 16,
+                                                        ),
+                                                      )),
                                                 ),
-                                              )),
+                                                _foundUsers[index]
+                                                ['business'] ==
+                                                    null || _foundUsers[index]
+                                                ['business'] == ""
+                                                    ? const SizedBox()
+                                                    : SizedBox(
+                                                  width: Get.width / 1.5,
+                                                  child: Text(
+                                                    _foundUsers[index]
+                                                    ['business'],
+                                                    style: GoogleFonts
+                                                        .poppins(
+                                                        textStyle:
+                                                        const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 14,
+                                                        )),
+                                                  ),
+                                                ),
+                                                _foundUsers[index]
+                                                ['cat_name'] ==
+                                                    null
+                                                    ? const SizedBox()
+                                                    : SizedBox(
+                                                  width: Get.width / 1.5,
+                                                  child: Text(
+                                                    _foundUsers[index]
+                                                    ['cat_name'],
+                                                    style: GoogleFonts
+                                                        .poppins(
+                                                        textStyle:
+                                                        const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 14,
+                                                        )),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
                                         ),
-                                        _foundUsers[index]['business'] ==
-                                            null
-                                            ? const SizedBox()
-                                            : SizedBox(
-                                          width: Get.width / 1.5,
-                                          child: Text(
-                                            _foundUsers[index]
-                                            ['business'],
-                                            style:
-                                            GoogleFonts.poppins(
-                                                textStyle:
-                                                const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                )),
-                                          ),
-                                        ),
-                                        _foundUsers[index]['cat_name'] ==
-                                            null
-                                            ? const SizedBox()
-                                            : SizedBox(
-                                          width: Get.width / 1.5,
-                                          child: Text(
-                                            _foundUsers[index]
-                                            ['cat_name'],
-                                            style:
-                                            GoogleFonts.poppins(
-                                                textStyle:
-                                                const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                // offset: Offset(9,7),
-                                spreadRadius: 4,
-                                blurRadius: 5,
-                                color: Colors.grey.withOpacity(0.1),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        // offset: Offset(9,7),
+                                        spreadRadius: 4,
+                                        blurRadius: 5,
+                                        color: Colors.grey.withOpacity(0.1),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          );
+                        },
+                      ),),
                     ),
-                  );
-                },
-              ),
-            ), onRefresh:rfresher)
+                    onRefresh: rfresher)
                 : Center(
                     child: Text(
                       'No results found',
@@ -349,6 +404,7 @@ Future<void> rfresher()async{
     ApiWrapper.dataGet(AppUrl.GetallUsers + getdata.read('EMAIL').toString())
         .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
+        print(val);
         setState(() {
           Userss.clear();
         });
@@ -362,5 +418,4 @@ Future<void> rfresher()async{
       }
     });
   }
-
 }

@@ -105,6 +105,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         ),
         body: !loding
             ? DoubleBackToCloseApp(
+                snackBar: SnackBar(content: Text('Tap back again to Exit.')),
                 child: Column(
                   children: [
                     Padding(
@@ -155,16 +156,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                       fontSize: 14,
                                     )),
                                   ),
+                                  getdata.read('User')['due_date']!=""||getdata.read('User')['due_date']!=null?
                                   Text(
-                                    "Status : ${getdata.read('User')['status'] ?? ""}",
+                                    "Dute : ${getdata.read('User')['due_date'] ?? ""}",
                                     style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
                                     )),
-                                  )
+                                  ):SizedBox(),
                                 ],
-                              )
+                              ),
+                              Spacer(),
+                              Text(
+                                "${getdata.read('User')['status'] ?? ""}",
+                                style: GoogleFonts.poppins(
+                                    textStyle:  TextStyle(
+                                  color:getdata.read('User')['status']=="active"?Colors.blue:Colors.red,
+                                  fontSize: 16,
+                                      fontWeight:FontWeight.w500
+                                )),
+                              ),
                             ],
                           ),
                         ),
@@ -188,101 +200,103 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                           padding: EdgeInsets.symmetric(
                               horizontal: Get.width / 20,
                               vertical: Get.width / 40),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Next Meeting Date",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                  Text(
-                                    getdata.read("dashboard")['next_event']
-                                            ['date'] ??
-                                        "",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              const Divider(),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Visitor",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                  Text(
-                                    getdata.read("dashboard")['next_event']
-                                            ['visitors'] ??
-                                        "",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              const Divider(),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Speakers",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                  Text(
-                                    getdata.read("dashboard")['next_event']
-                                            ['speakers'] ??
-                                        "",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Next Meeting Date",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                    Text(
+                                      getdata.read("dashboard")['next_event']
+                                              ['date'] ??
+                                          "",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Divider(),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Visitor",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                    Text(
+                                      getdata.read("dashboard")['next_event']
+                                              ['visitors'] ??
+                                          "",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Divider(),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Speakers",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                    Text(
+                                      getdata.read("dashboard")['next_event']
+                                              ['speakers'] ??
+                                          "",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                      )),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -341,42 +355,47 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                     )
                   ],
                 ),
-                snackBar: SnackBar(content: Text('Tap back again to Exit.')),
               )
             : DoubleBackToCloseApp(
                 snackBar: SnackBar(content: Text('Tap back again to Exit.')),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Skeltel(
-                        height: Get.height / 15,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Skeltel(
-                        height: Get.height / 8,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Skeltel(
-                        height: Get.height / 15,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Skeltel(
-                        height: Get.height / 3,
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Skeltel(
+                          height: Get.height / 15,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Skeltel(
+                          height: Get.height / 8,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Skeltel(
+                          height: Get.height / 15,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Skeltel(
+                          height: Get.height / 3,
+                        ),
+                      ],
+                    ),
                   ),
                 )),
         drawer: const Drower());
+  }
+
+  Future<void> refresher() async {
+    return getUser();
   }
 
   getbiss() {
@@ -520,6 +539,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           save('USERID', getdata.read('User')['id'].toString());
         });
         print(getdata.read('User'));
+        print('???????????????????????????');
+        print(getdata.read('USERID'));
         print('???????????????????????????');
 
         homeapi();

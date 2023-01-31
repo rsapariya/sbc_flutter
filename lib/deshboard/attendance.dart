@@ -69,46 +69,6 @@ class _AttendanceState extends State<Attendance>
                                   )),
                                 ),
                               ),
-                              const Divider(),
-                              Text(
-                                "Address",
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                )),
-                              ),
-                              Text(
-                                Atandace[index]['ev_address'],
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                )),
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Description",
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                )),
-                              ),
-                              SizedBox(
-                                child: Text(
-                                  Atandace[index]['ev_description'],
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                  )),
-                                ),
-                              ),
                               const SizedBox(
                                 height: 8,
                               ),
@@ -120,21 +80,20 @@ class _AttendanceState extends State<Attendance>
                                   fontSize: 12,
                                 )),
                               ),
-                              Text(
-                                  "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']} to ${Atandace[index]['ev_end']})",
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                    ),
-                                  )),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Center(
-                                child: Container(
-                                  width: Get.width / 1.5,
-                                  decoration: BoxDecoration(
+                              Row(
+                                children: [
+                                  Text(
+                                      "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']}-${Atandace[index]['ev_end']})",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                        ),
+                                      )),
+                                  Spacer(),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
                                       boxShadow: [
                                         BoxShadow(
                                             spreadRadius: 2,
@@ -146,27 +105,29 @@ class _AttendanceState extends State<Attendance>
                                               "1"
                                           ? Colors.green
                                           : Colors.red.withOpacity(0.8),
-                                      borderRadius: BorderRadius.circular(5)),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: Get.width / 20,
-                                        vertical: 8),
-                                    child: Center(
-                                      child: Text(
-                                        Atandace[index]['user_attendence']
-                                                    .toString() ==
-                                                '1'
-                                            ? "PRESENT"
-                                            : "ABSENT",
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                        )),
+                                      // borderRadius: BorderRadius.circular(5)
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: Get.width / 20,
+                                          vertical: 8),
+                                      child: Center(
+                                        child: Text(
+                                          Atandace[index]['user_attendence']
+                                                      .toString() ==
+                                                  '1'
+                                              ? "P"
+                                              : "A",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          )),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                               const SizedBox(
                                 height: 10,

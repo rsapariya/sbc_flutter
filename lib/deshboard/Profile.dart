@@ -279,8 +279,7 @@ class _ProfilepageState extends State<Profilepage> {
                             DateTime? pickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(
-                                    2000), //DateTime.now() - not to allow to choose before today.
+                                firstDate: DateTime(1950), //DateTime.now() - not to allow to choose before today.
                                 lastDate: DateTime(2101));
                             if (pickedDate != null) {
                               //pickedDate output format => 2021-03-10 00:00:00.000

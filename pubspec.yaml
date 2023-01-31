@@ -58,6 +58,7 @@ dependencies:
   launch_review: ^3.0.1
   pinput: ^1.2.0
   double_back_to_close_app: ^2.1.0
+  firebase_core: ^2.4.1
 
 dev_dependencies:
   flutter_test:

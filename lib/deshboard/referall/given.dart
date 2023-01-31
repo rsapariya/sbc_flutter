@@ -220,6 +220,54 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                                 fontSize: 18,
                               )),
                         ),
+                      ),Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Contact",
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                )),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                getdata.read('details')["person_contact"],
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                    )),
+                              ),
+                              Spacer(),
+                              InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      _makingPhoneCall();
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.call,
+                                    color: Colors.green,
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                  onTap: () async {
+                                    _wahtt();
+
+                                    setState(() {});
+                                  },
+                                  child: Icon(
+                                    Icons.whatsapp,
+                                    color: Colors.green,
+                                  )),
+                            ],
+                          ),
+                        ],
                       ),
                       Text(
                         "Remarks",
@@ -242,55 +290,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Contact",
-                        style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
-                        )),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            getdata.read('details')["person_contact"],
-                            style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                            )),
-                          ),
-                          Spacer(),
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  _makingPhoneCall();
-                                });
-                              },
-                              child: Icon(
-                                Icons.call,
-                                color: Colors.green,
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                              onTap: () async {
-                                _wahtt();
 
-                                setState(() {});
-                              },
-                              child: Icon(
-                                Icons.whatsapp,
-                                color: Colors.green,
-                              )),
-                        ],
-                      ),
-                    ],
-                  ),
                 ],
               )),
         );

@@ -23,6 +23,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   @override
   bool loding = false;
+  bool npass = true;
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
   void initState() {
@@ -91,6 +92,7 @@ class _loginState extends State<login> {
                                       : "Email Not Valid !",
                                   autofocus: false,
                                   decoration: buildInputDecoration(
+                                    prifix: Icon(Icons.email_outlined),
                                     hintText: "Email",
                                     lbltext: "Email",
                                   )),
@@ -107,9 +109,20 @@ class _loginState extends State<login> {
                                   controller: passwordcontroller,
                                   style: GoogleFonts.poppins(),
                                   autofocus: false,
+                                  obscureText: npass,
                                   decoration: buildInputDecoration(
                                     hintText: "Password",
                                     lbltext: "Password",
+                                    prifix: InkWell(
+                                      child: npass == true
+                                          ? Icon(Icons.remove_red_eye_outlined)
+                                          : Icon(Icons.remove_red_eye),
+                                      onTap: () {
+                                        setState(() {
+                                          npass = !npass;
+                                        });
+                                      },
+                                    ),
                                   )),
                               const SizedBox(
                                 height: 10,
@@ -182,27 +195,27 @@ class _loginState extends State<login> {
                               SizedBox(
                                 height: Get.height / 10,
                               ),
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Don't have an account yet?",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                        fontSize: 14,
-                                      )),
-                                    ),
-                                    InkWell(
-                                        onTap: () {
-                                          Get.to(() => register());
-                                        },
-                                        child: Text("Register",
-                                            style: GoogleFonts.poppins(
-                                                textStyle: const TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.blue,
-                                            ))))
-                                  ])
+                              // Row(
+                              //     mainAxisAlignment: MainAxisAlignment.center,
+                              //     children: [
+                              //       Text(
+                              //         "Don't have an account yet?",
+                              //         style: GoogleFonts.poppins(
+                              //             textStyle: const TextStyle(
+                              //           fontSize: 14,
+                              //         )),
+                              //       ),
+                              //       InkWell(
+                              //           onTap: () {
+                              //             Get.to(() => register());
+                              //           },
+                              //           child: Text("Register",
+                              //               style: GoogleFonts.poppins(
+                              //                   textStyle: const TextStyle(
+                              //                 fontSize: 14,
+                              //                 color: Colors.blue,
+                              //               ))))
+                              //     ])
                             ]))))
             : const Center(
                 child: CircularProgressIndicator(
@@ -222,6 +235,8 @@ class _loginState extends State<login> {
       prefixIcon: prifix,
       suffix: surfix,
       hintText: hintText,
+      // focusedBorder: OutlineInputBorder(),
+      focusColor: Colors.red,
       hintStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelStyle: GoogleFonts.poppins(textStyle: TextStyle(fontSize: 14)),
       labelText: lbltext,

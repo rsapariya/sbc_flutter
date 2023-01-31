@@ -16,6 +16,7 @@ class Sent extends StatefulWidget {
 class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
   @override
   void initState() {
+    getbiss();
     super.initState();
   }
 
@@ -125,15 +126,10 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                         )),
                                       ),
                                     ],
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                  ),
+                                  const SizedBox(
+                                    width: 25,
+                                  ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -145,10 +141,12 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                           fontSize: 12,
                                         ),
                                       ),
+                                      SizedBox(height:5,),
                                       SizedBox(
-                                        width: Get.width / 1.2,
+                                        width:Get.width/3,
                                         child: Text(
                                           getbuss[index]['remarks'],
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
@@ -156,12 +154,21 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                         ),
                                       ),
                                     ],
-                                  ),
+                                  )
                                 ],
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 8,
                               ),
+                              // Row(
+                              //   crossAxisAlignment: CrossAxisAlignment.start,
+                              //   children: [
+                              //     ,
+                              //   ],
+                              // ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
                             ],
                           ),
                         ),

@@ -74,7 +74,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  Recivereffrel[index]['person_name'],
+                                  Recivereffrel[index]['name'],
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
                                     color: Colors.black,
@@ -145,7 +145,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                getdata.read('details')["person_name"],
+                getdata.read('details')["name"],
                 style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
                   color: Colors.black,
@@ -168,7 +168,73 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: [Text(
+                      "Person Name",
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          )),
+                    ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          getdata.read('details')["person_name"],
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              )),
+                        ),
+                      ),Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Contact",
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                              )),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              getdata.read('details')["person_contact"],
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                  )),
+                            ),
+                            const Spacer(),
+                            InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    _makingPhoneCall();
+                                  });
+                                },
+                                child: const Icon(
+                                  Icons.call,
+                                  color: Colors.green,
+                                )),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                                onTap: () async {
+                                  _wahtt();
+
+                                  setState(() {});
+                                },
+                                child: const Icon(
+                                  Icons.whatsapp,
+                                  color: Colors.green,
+                                )),
+                          ],
+                        ),
+                      ],
+                    ),
                       Text(
                         "Remarks",
                         style: GoogleFonts.poppins(
@@ -187,55 +253,6 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
                             fontSize: 18,
                           )),
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Contact",
-                        style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
-                        )),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            getdata.read('details')["person_contact"],
-                            style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                            )),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  _makingPhoneCall();
-                                });
-                              },
-                              child: const Icon(
-                                Icons.call,
-                                color: Colors.green,
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                              onTap: () async {
-                                _wahtt();
-
-                                setState(() {});
-                              },
-                              child: const Icon(
-                                Icons.whatsapp,
-                                color: Colors.green,
-                              )),
-                        ],
                       ),
                     ],
                   ),
@@ -272,6 +289,7 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
   getrecivereffrel() {
     ApiWrapper.dataGet(AppUrl.getreciveraf).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
+        print(val);
         Recivereffrel.clear();
         setState(() {});
         val.forEach((e) {

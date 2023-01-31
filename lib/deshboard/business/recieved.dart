@@ -24,6 +24,7 @@ class _RecievedState extends State<Recieved>
   bool loding = false;
   @override
   void initState() {
+    recibiss();
     super.initState();
   }
 
@@ -172,37 +173,28 @@ class _RecievedState extends State<Recieved>
                                             )),
                                           ),
                                         ],
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
+                                      ),SizedBox(width:25,),
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Remark",
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 12,
-                                            )),
+                                                  color: Colors.grey,
+                                                  fontSize: 12,
+                                                )),
                                           ),
                                           SizedBox(
-                                            width: Get.width / 1.2,
+                                            width: Get.width /3,
                                             child: Text(
-                                              recivebuss[index]['remarks'],
+                                              recivebuss[index]['remarks'],overflow:TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
                                                   textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                              )),
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                  )),
                                             ),
                                           ),
                                         ],
@@ -210,8 +202,9 @@ class _RecievedState extends State<Recieved>
                                     ],
                                   ),
                                   const SizedBox(
-                                    height: 10,
+                                    height: 8,
                                   ),
+
                                 ],
                               ),
                             ),

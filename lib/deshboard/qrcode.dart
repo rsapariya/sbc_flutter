@@ -182,10 +182,13 @@ class _QRViewExampleState extends State<QRViewExample> {
     var request = http.MultipartRequest(
         'POST', Uri.parse('https://sbc.sgcci.in/api-old/updateAttendence'));
     request.fields.addAll({
-      'id': getdata.read('USERID'),
+      'user_id': getdata.read('USERID'),
       'ch_id': '1',
       'ev_id': result!.code.toString()
     });
+    print(getdata.read('USERID'));
+    print(result!.code.toString());
+    print("----------------------------");
 
     request.headers.addAll(headers);
 
@@ -194,6 +197,9 @@ class _QRViewExampleState extends State<QRViewExample> {
     if (response.statusCode == 200) {
       Get.off(() => const Events());
       ApiWrapper.showToastMessage("Attendence Sucsessfuly.");
+      print("--------000000000000------");
+      print(getdata.read('USERID'));
+      print(result!.code.toString());
       print(await response.stream.bytesToString());
     } else {
       print(response.reasonPhrase);

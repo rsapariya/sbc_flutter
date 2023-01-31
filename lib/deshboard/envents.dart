@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sbc/deshboard/qrcode.dart';
 import '../units/api.dart';
 import 'home.dart';
 
@@ -142,10 +143,10 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                               Center(
                                 child: InkWell(
                                   onTap: () {
-                                    // Get.to(() => const QRViewExample());
-                                    // event[index]['ev_status'] == "OPEN"
-                                    //     ? Get.to(() => QRViewExample())
-                                    //     : "";
+                                    Get.to(() => const QRViewExample());
+                                    event[index]['ev_status'] == "OPEN"
+                                        ? Get.to(() => QRViewExample())
+                                        : "";
                                   },
                                   child: Container(
                                     width: Get.width / 1.5,
@@ -154,19 +155,9 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                           horizontal: Get.width / 20,
                                           vertical: 8),
                                       child: Center(
-                                        child: Text(
-                                          event[index]['ev_status'],
-                                          style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ),
+                                        child:
                                         // Text(
-                                        //   event[index]['ev_status'] == "OPEN"
-                                        //       ? "JOIN NOW"
-                                        //       : event[index]['ev_status'],
+                                        //   event[index]['ev_status'],
                                         //   style: GoogleFonts.poppins(
                                         //     textStyle: const TextStyle(
                                         //       color: Colors.white,
@@ -174,6 +165,17 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                         //     ),
                                         //   ),
                                         // ),
+                                        Text(
+                                          event[index]['ev_status'] == "OPEN"
+                                              ? "JOIN NOW"
+                                              : event[index]['ev_status'],
+                                          style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     decoration: BoxDecoration(
