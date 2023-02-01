@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,10 @@ class _QRViewExampleState extends State<QRViewExample> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   @override
+  void initState() {
+    super.initState();
+  }
+
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
@@ -36,90 +41,31 @@ class _QRViewExampleState extends State<QRViewExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
-          Expanded(flex: 4, child: _buildQrView(context)),
-          Expanded(
-            flex: 1,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                  else
-                    const Text('Scan a code'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data!)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     Container(
-                  //       margin: const EdgeInsets.all(8),
-                  //       child: ElevatedButton(
-                  //         onPressed: () async {
-                  //           await controller?.pauseCamera();
-                  //         },
-                  //         child: const Text('pause',
-                  //             style: TextStyle(fontSize: 20)),
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //       margin: const EdgeInsets.all(8),
-                  //       child: ElevatedButton(
-                  //         onPressed: () async {
-                  //           await controller?.resumeCamera();
-                  //         },
-                  //         child: const Text('resume',
-                  //             style: TextStyle(fontSize: 20)),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-                ],
+          Container(height: Get.height / 1.15, child: _buildQrView(context)),
+          SizedBox(
+            height: Get.height / 40,
+          ),
+          InkWell(
+            onTap: () async {
+              await controller?.resumeCamera();
+              setState(() {});
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
+              height: Get.height / 15,
+              width: Get.width / 2.5,
+              child: Center(
+                child: Text(
+                  'Scan Code',
+                  style: GoogleFonts.poppins(color: Colors.white, fontSize: 18),
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -130,7 +76,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     var scanArea = (MediaQuery.of(context).size.width < 100 ||
             MediaQuery.of(context).size.height < 100)
         ? 100.0
-        : 300.0;
+        : 400.0;
     // To ensure the Scanner view is properly sizes after rotation
     // we need to listen for Flutter SizeChanged notification and update controller
     return QRView(

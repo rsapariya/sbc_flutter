@@ -156,26 +156,31 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                       fontSize: 14,
                                     )),
                                   ),
-                                  getdata.read('User')['due_date']!=""||getdata.read('User')['due_date']!=null?
-                                  Text(
-                                    "Dute : ${getdata.read('User')['due_date'] ?? ""}",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                    )),
-                                  ):SizedBox(),
+                                  getdata.read('User')['due_date'] != "" ||
+                                          getdata.read('User')['due_date'] !=
+                                              null
+                                      ? Text(
+                                          "Due : ${getdata.read('User')['due_date'] ?? ""}",
+                                          style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                          )),
+                                        )
+                                      : SizedBox(),
                                 ],
                               ),
                               Spacer(),
                               Text(
                                 "${getdata.read('User')['status'] ?? ""}",
                                 style: GoogleFonts.poppins(
-                                    textStyle:  TextStyle(
-                                  color:getdata.read('User')['status']=="active"?Colors.blue:Colors.red,
-                                  fontSize: 16,
-                                      fontWeight:FontWeight.w500
-                                )),
+                                    textStyle: TextStyle(
+                                        color: getdata.read('User')['status'] ==
+                                                "active"
+                                            ? Colors.blue
+                                            : Colors.red,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500)),
                               ),
                             ],
                           ),
