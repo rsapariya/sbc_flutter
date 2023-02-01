@@ -109,9 +109,17 @@ class _MemberDetalisState extends State<MemberDetalis> {
 
   @override
   var member = getdata.read('userdeta')['gender'].toString();
+  String in1 = getdata.read('userdeta')['biz_img1'].toString();
+  String in2 = getdata.read('userdeta')['biz_img2'].toString();
+  String in3 = getdata.read('userdeta')['biz_img3'].toString();
+  String in4 = getdata.read('userdeta')['biz_img4'].toString();
+  String in5 = getdata.read('userdeta')['biz_img5'].toString();
   var date;
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    print("-----------------------------------------------------");
+    print(in1);
+    print("-----------------------------------------------------");
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -515,39 +523,34 @@ class _MemberDetalisState extends State<MemberDetalis> {
               SizedBox(
                 height: Get.height / 60,
               ),
+              SizedBox(
+                height: Get.height / 60,
+              ),
               Row(
                 children: [
-                  Expanded(
-                      child: Container(
-                    height: Get.height / 6,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                            image: getdata.read('userdeta')['biz_img1'] != "" ||
-                                    getdata.read('userdeta')['biz_img1'] != null
-                                ? NetworkImage("https://sbc.sgcci.in/" +
-                                    getdata.read('userdeta')['biz_img1'])
-                                : NetworkImage(
-                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
-                  )),
+                  in1.isEmpty || in1 == null
+                      ? SizedBox()
+                      : Container(
+                          height: Get.height / 6,
+                          width: Get.width / 2.2,
+                          child: Image(
+                            image: NetworkImage("https://sbc.sgcci.in/" +
+                                getdata.read('userdeta')['biz_img1']),
+                          ),
+                        ),
                   SizedBox(
                     width: 10,
                   ),
-                  Expanded(
-                      child: Container(
-                        height: Get.height / 6,
-                        decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(5),
-                            image: DecorationImage(
-                                image: getdata.read('userdeta')['biz_img2'] != "" ||
-                                    getdata.read('userdeta')['biz_img2'] != null
-                                    ? NetworkImage("https://sbc.sgcci.in/" +
-                                    getdata.read('userdeta')['biz_img2'])
-                                    : NetworkImage(
-                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
-                      )),
+                  in2.isEmpty || in2 == null
+                      ? SizedBox()
+                      : Container(
+                          height: Get.height / 6,
+                          width: Get.width / 2.2,
+                          child: Image(
+                            image: NetworkImage("https://sbc.sgcci.in/" +
+                                getdata.read('userdeta')['biz_img2']),
+                          ),
+                        ),
                 ],
               ),
               SizedBox(
@@ -555,38 +558,46 @@ class _MemberDetalisState extends State<MemberDetalis> {
               ),
               Row(
                 children: [
-                  Expanded(
-                      child: Container(
-                        height: Get.height / 6,
-                        decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(5),
-                            image: DecorationImage(
-                                image: getdata.read('userdeta')['biz_img3'] != "" ||
-                                    getdata.read('userdeta')['biz_img3'] != null
-                                    ? NetworkImage("https://sbc.sgcci.in/" +
-                                    getdata.read('userdeta')['biz_img3'])
-                                    :const NetworkImage(
-                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
-                      )),
+                  in3.isEmpty || in3 == null
+                      ? SizedBox()
+                      : Container(
+                          height: Get.height / 6,
+                          width: Get.width / 2.2,
+                          child: Image(
+                            image: NetworkImage("https://sbc.sgcci.in/" +
+                                getdata.read('userdeta')['biz_img3']),
+                          ),
+                        ),
                   SizedBox(
                     width: 10,
                   ),
-                  Expanded(
-                      child: Container(
-                        height: Get.height / 6,
-                        decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(5),
-                            image: DecorationImage(
-                                image: getdata.read('userdeta')['biz_img4'] != "" ||
-                                    getdata.read('userdeta')['biz_img4'] != null
-                                    ? NetworkImage("https://sbc.sgcci.in/" +
-                                    getdata.read('userdeta')['biz_img4'])
-                                    : NetworkImage(
-                                    'https://us.123rf.com/450wm/tkacchuk/tkacchuk2004/tkacchuk200400017/143745488-no-picture-icon-editable-line-vector-no-image-no-photo-available-or-no-picture-for-your-website-or-m.jpg'))),
-                      )),
+                  in4.isEmpty || in4 == null
+                      ? SizedBox()
+                      : Container(
+                          height: Get.height / 6,
+                          width: Get.width / 2.2,
+                          child: Image(
+                            image: NetworkImage("https://sbc.sgcci.in/" +
+                                getdata.read('userdeta')['biz_img4']),
+                          ),
+                        ),
                 ],
+              ),
+              SizedBox(
+                height: Get.height / 60,
+              ),
+              in5.isEmpty || in5 == null
+                  ? SizedBox()
+                  : Container(
+                      height: Get.height / 6,
+                      width: Get.width / 2.2,
+                      child: Image(
+                        image: NetworkImage("https://sbc.sgcci.in/" +
+                            getdata.read('userdeta')['biz_img5']),
+                      ),
+                    ),
+              SizedBox(
+                height: Get.height / 60,
               ),
             ],
           ),
