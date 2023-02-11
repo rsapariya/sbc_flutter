@@ -53,7 +53,7 @@ class _summeryState extends State<summery> {
                             )),
                           ),
                           Text(
-                            "₹${getdata.read("deta")[0]['amount']}",
+                            "₹${getdata.read("deta")[0]['amount']??"0"}",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                               color: Colors.black,
@@ -81,7 +81,7 @@ class _summeryState extends State<summery> {
                             )),
                           ),
                           Text(
-                            "₹${getdata.read("deta")[1]['amount']}",
+                            "₹${getdata.read("deta")[1]['amount']??"0"}",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                               color: Colors.black,
@@ -108,7 +108,7 @@ class _summeryState extends State<summery> {
                                 ),
                               )),
                           Text(
-                            getdata.read('deta')[2]['amount'],
+                            getdata.read('deta')[2]['amount']??"0",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                               color: Colors.black,
@@ -136,7 +136,7 @@ class _summeryState extends State<summery> {
                             )),
                           ),
                           Text(
-                            getdata.read('deta')[3]['amount'],
+                            getdata.read('deta')[3]['amount']??"0",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                               color: Colors.black,
@@ -164,7 +164,7 @@ class _summeryState extends State<summery> {
                               )),
                           Text(
                               overflow: TextOverflow.ellipsis,
-                              "${getdata.read('deta')[4]['amount']}",
+                              "${getdata.read('deta')[4]['amount']??"0"}",
                               style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                                   color: Colors.black,
@@ -192,7 +192,7 @@ class _summeryState extends State<summery> {
                             )),
                           ),
                           Text(
-                            "${getdata.read('deta')[5]['amount']}",
+                            "${getdata.read('deta')[5]['amount']??"0"}",
                             style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                               color: Colors.black,

@@ -82,7 +82,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            Givenreffrel[index]['username'],
+                                            Givenreffrel[index]['username']??"",
                                             style: GoogleFonts.poppins(
                                                 textStyle: TextStyle(
                                               color: Colors.black,
@@ -90,7 +90,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                                             )),
                                           ),
                                           Text(
-                                            Givenreffrel[index]["ref_date"],
+                                            Givenreffrel[index]["ref_date"]??"",
                                             style: GoogleFonts.poppins(
                                                 textStyle: TextStyle(
                                               color: Colors.black,
@@ -181,7 +181,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                getdata.read('details')["username"],
+                getdata.read('details')["username"]??"",
                 style: GoogleFonts.poppins(),
               ),
               IconButton(
@@ -213,7 +213,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                       SizedBox(
                         width: double.infinity,
                         child: Text(
-                          getdata.read('details')["person_name"],
+                          getdata.read('details')["person_name"]??"",
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 color: Colors.black,
@@ -234,7 +234,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                           Row(
                             children: [
                               Text(
-                                getdata.read('details')["person_contact"],
+                                getdata.read('details')["person_contact"]??"",
                                 style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
                                       color: Colors.black,
@@ -280,7 +280,26 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                       SizedBox(
                         width: double.infinity,
                         child: Text(
-                          getdata.read('details')["remarks"],
+                          getdata.read('details')["remarks"]??"",
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                          )),
+                        ),
+                      ),
+                      Text(
+                        "Priority",
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                        )),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          getdata.read('details')["priority"]??"",
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                             color: Colors.black,

@@ -74,9 +74,9 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                               ),
                               Center(
                                 child: Text(
-                                  event[index]['ev_title'],
+                                  event[index]['ev_title']??"",
                                   style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
+                                      textStyle: const TextStyle(
                                     color: Colors.blue,
                                     fontSize: 18,
                                   )),
@@ -92,9 +92,9 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                 )),
                               ),
                               Text(
-                                event[index]['ev_address'],
+                                event[index]['ev_address']??"",
                                 style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                 )),
@@ -105,13 +105,13 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                               Text(
                                 "Description",
                                 style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12,
                                 )),
                               ),
                               Text(
-                                event[index]['ev_description'],
+                                event[index]['ev_description']??"",
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
                                   color: Colors.black,
@@ -130,7 +130,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                 )),
                               ),
                               Text(
-                                "${event[index]['ev_date']} (${event[index]['ev_start']} to ${event[index]['ev_end']})",
+                                "${event[index]['ev_date']??""} (${event[index]['ev_start']??""} to ${event[index]['ev_end']??""})",
                                 style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
                                   color: Colors.black,
@@ -145,7 +145,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                   onTap: () {
                                     Get.to(() => const QRViewExample());
                                     event[index]['ev_status'] == "OPEN"
-                                        ? Get.to(() => QRViewExample())
+                                        ? Get.to(() => const QRViewExample())
                                         : "";
                                   },
                                   child: Container(
@@ -156,19 +156,10 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                                           vertical: 8),
                                       child: Center(
                                         child:
-                                        // Text(
-                                        //   event[index]['ev_status'],
-                                        //   style: GoogleFonts.poppins(
-                                        //     textStyle: const TextStyle(
-                                        //       color: Colors.white,
-                                        //       fontSize: 14,
-                                        //     ),
-                                        //   ),
-                                        // ),
                                         Text(
                                           event[index]['ev_status'] == "OPEN"
                                               ? "JOIN NOW"
-                                              : event[index]['ev_status'],
+                                              : event[index]['ev_status']??"",
                                           style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                               color: Colors.white,

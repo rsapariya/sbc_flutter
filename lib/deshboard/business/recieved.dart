@@ -95,7 +95,7 @@ class _RecievedState extends State<Recieved>
                                         width: Get.width / 1.5,
                                         child: Center(
                                           child: Text(
-                                            recivebuss[index]['username'],
+                                            recivebuss[index]['username']??"",
                                             overflow: TextOverflow.ellipsis,
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
@@ -140,7 +140,7 @@ class _RecievedState extends State<Recieved>
                                             )),
                                           ),
                                           Text(
-                                            recivebuss[index]['entry_date'],
+                                            recivebuss[index]['entry_date']??"",
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
                                               color: Colors.black,
@@ -165,7 +165,7 @@ class _RecievedState extends State<Recieved>
                                             )),
                                           ),
                                           Text(
-                                            recivebuss[index]['amount'],
+                                            recivebuss[index]['amount']??"",
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
                                               color: Colors.black,
@@ -189,7 +189,7 @@ class _RecievedState extends State<Recieved>
                                           SizedBox(
                                             width: Get.width /3,
                                             child: Text(
-                                              recivebuss[index]['remarks'],overflow:TextOverflow.ellipsis,
+                                              recivebuss[index]['remarks']??"",overflow:TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
                                                   textStyle: const TextStyle(
                                                     color: Colors.black,

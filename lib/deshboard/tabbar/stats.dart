@@ -51,7 +51,7 @@ class _statesState extends State<states> {
                               )),
                         ),
                         Text(
-                          "₹${getdata.read("dashboard")["last_one_year"]['business_recieved']}",
+                          "₹${getdata.read("dashboard")["last_one_year"]['business_recieved']??""}",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -77,7 +77,7 @@ class _statesState extends State<states> {
                           ),)
                         ),
                         Text(
-                          "₹${getdata.read("dashboard")["last_one_year"]['business_given']}",
+                          "₹${getdata.read("dashboard")["last_one_year"]['business_given']??""}",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -104,7 +104,7 @@ class _statesState extends State<states> {
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]
-                              ['connection_received'],
+                              ['connection_received']??"",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -128,7 +128,7 @@ class _statesState extends State<states> {
                         ),
                         Text(
                           getdata.read("dashboard")["last_one_year"]
-                              ['connection_given'],
+                              ['connection_given']??"",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -151,7 +151,7 @@ class _statesState extends State<states> {
                               )),
                         ),
                         Text(
-                          getdata.read("dashboard")["last_one_year"]['p2p'],
+                          getdata.read("dashboard")["last_one_year"]['p2p']??"",
                           style:GoogleFonts.poppins(textStyle:  const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -174,7 +174,7 @@ class _statesState extends State<states> {
                             )),
                         ),
                         Text(
-                          getdata.read("dashboard")["last_one_year"]['visitor'],
+                          getdata.read("dashboard")["last_one_year"]['visitor']??"",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,

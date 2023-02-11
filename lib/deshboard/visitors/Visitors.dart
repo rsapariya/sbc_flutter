@@ -91,6 +91,7 @@ class _VisitorsState extends State<Visitors> {
                 )
               : !Loding
                   ? RefreshIndicator(
+                      onRefresh: refresher,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount: visitors.length,
@@ -231,7 +232,8 @@ class _VisitorsState extends State<Visitors> {
                                               width: Get.width / 1.2,
                                               child: Text(
                                                 visitors[index]
-                                                    ["visitor_contact"],
+                                                        ["visitor_contact"] ??
+                                                    "",
                                                 style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                   color: Colors.black,
@@ -252,8 +254,7 @@ class _VisitorsState extends State<Visitors> {
                             ),
                           );
                         },
-                      ),
-                      onRefresh: refresher)
+                      ))
                   : const Center(
                       child: CircularProgressIndicator(
                         backgroundColor: Colors.transparent,

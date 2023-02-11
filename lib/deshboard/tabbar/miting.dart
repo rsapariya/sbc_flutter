@@ -53,7 +53,7 @@ class _mittingState extends State<mitting> {
                               )),
                         ),
                         Text(
-                          "₹${getdata.read("dashboard")["life_time_detailes"]['business_recieved']}",
+                          "₹${getdata.read("dashboard")["life_time_detailes"]['business_recieved']??""}",
                           style:GoogleFonts.poppins(textStyle:   const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -79,7 +79,7 @@ class _mittingState extends State<mitting> {
                           )),
                         ),
                         Text(
-                          "₹${getdata.read("dashboard")["life_time_detailes"]['business_given']}",
+                          "₹${getdata.read("dashboard")["life_time_detailes"]['business_given']??""}",
                           style: GoogleFonts.poppins(textStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -106,7 +106,7 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
-                              ['connection_received'],
+                              ['connection_received']??"",
                           style:GoogleFonts.poppins(textStyle: const   TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -130,7 +130,7 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
-                              ['connection_given'],
+                              ['connection_given']??"",
                           style: GoogleFonts.poppins(textStyle:const TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -154,7 +154,7 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
-                              ['p2p'],
+                              ['p2p']??"",
                           style:GoogleFonts.poppins(textStyle: const TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -178,7 +178,7 @@ class _mittingState extends State<mitting> {
                         ),
                         Text(
                           getdata.read("dashboard")["life_time_detailes"]
-                              ['visitor'],
+                              ['visitor']??"",
                           style:GoogleFonts.poppins(textStyle:  TextStyle(
                               color: Colors.black,
                               fontSize: 14,

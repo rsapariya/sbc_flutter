@@ -3,11 +3,13 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sbc/deshboard/home.dart';
 import 'package:sbc/login/login.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/storage.dart';
 import 'login/onboarding.dart';
+
 var countryCode = [];
 var cat = [];
 var Users = <String>[];
@@ -37,6 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
+  final packageInfo = PackageInfo.fromPlatform();
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,

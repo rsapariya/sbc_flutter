@@ -85,7 +85,7 @@ class _FacetofaceState extends State<Facetoface> {
                                       color: Colors.transparent,
                                     ),
                                     Text(
-                                      Face[index]['username'],
+                                      Face[index]['username']??"",
                                       style: GoogleFonts.poppins(
                                           textStyle: const TextStyle(
                                         color: Colors.blue,
@@ -124,7 +124,7 @@ class _FacetofaceState extends State<Facetoface> {
                                           )),
                                         ),
                                         Text(
-                                          Face[index]['oto_location'],
+                                          Face[index]['oto_location']??"",
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
                                             color: Colors.black,
@@ -147,7 +147,7 @@ class _FacetofaceState extends State<Facetoface> {
                                           )),
                                         ),
                                         Text(
-                                          Face[index]['oto_date'],
+                                          Face[index]['oto_date']??"",
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
                                             color: Colors.black,
@@ -182,7 +182,7 @@ class _FacetofaceState extends State<Facetoface> {
                                         SizedBox(
                                           width: Get.width / 1.2,
                                           child: Text(
-                                            Face[index]["oto_conversation"],
+                                            Face[index]["oto_conversation"]??"",
                                             style: GoogleFonts.poppins(
                                                 textStyle: const TextStyle(
                                               color: Colors.black,

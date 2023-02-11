@@ -68,7 +68,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                               ),
                               Center(
                                 child: Text(
-                                  getbuss[index]['username'],
+                                  getbuss[index]['username']??"",
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
                                     color: Colors.blue,
@@ -93,7 +93,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                         )),
                                       ),
                                       Text(
-                                        getbuss[index]['entry_date'],
+                                        getbuss[index]['entry_date']??"",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                           color: Colors.black,
@@ -118,7 +118,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                         )),
                                       ),
                                       Text(
-                                        getbuss[index]['amount'],
+                                        getbuss[index]['amount']??"",
                                         style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                           color: Colors.black,
@@ -145,7 +145,7 @@ class _SentState extends State<Sent> with SingleTickerProviderStateMixin {
                                       SizedBox(
                                         width:Get.width/3,
                                         child: Text(
-                                          getbuss[index]['remarks'],
+                                          getbuss[index]['remarks']??"",
                                           overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                             color: Colors.black,

@@ -61,7 +61,7 @@ class _AttendanceState extends State<Attendance>
                               ),
                               Center(
                                 child: Text(
-                                  Atandace[index]['ev_title'],
+                                  Atandace[index]['ev_title']??"",
                                   style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
                                     color: Colors.blue,
@@ -83,7 +83,7 @@ class _AttendanceState extends State<Attendance>
                               Row(
                                 children: [
                                   Text(
-                                      "${Atandace[index]['ev_date']} (${Atandace[index]['ev_start']}-${Atandace[index]['ev_end']})",
+                                      "${Atandace[index]['ev_date']??""} (${Atandace[index]['ev_start']}-${Atandace[index]['ev_end']??""})",
                                       style: GoogleFonts.poppins(
                                         textStyle: const TextStyle(
                                           color: Colors.black,
