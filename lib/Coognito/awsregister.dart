@@ -29,7 +29,7 @@ class AWSServices {
       // EmailID = email.toString();
       save('LoginLoding', false);
 
-      Get.offAll(() => home());
+      Get.offAll(() => home(), transition: Transition.leftToRight);
       // save('Login', true);
       ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {

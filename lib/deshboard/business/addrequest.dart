@@ -47,7 +47,7 @@ class _AddrequestState extends State<Addrequest> {
         leading: InkWell(
             onTap: () {
               setState(() {
-                Get.off(() => const bussnesss());
+                Get.off(() => const bussnesss(), transition: Transition.leftToRight);
                 loding = false;
               });
             },
@@ -477,7 +477,7 @@ class _AddrequestState extends State<Addrequest> {
         loding = false;
         print('OKKKKKKKKKK>>>>>>>>>>>>>>>>>>>');
 
-        loding == false ? Get.off(() => const bussnesss()) : loding;
+        loding == false ? Get.off(() => const bussnesss(), transition: Transition.leftToRight) : loding;
       } else {
         setState(() {});
         loding = false;

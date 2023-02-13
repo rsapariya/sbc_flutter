@@ -24,7 +24,7 @@ class Forgotpass {
     try {
       data = await cognitoUser.forgotPassword();
       ApiWrapper.showToastMessage('Code Sent.');
-      Get.to(() => const verification());
+      Get.to(() => const verification(), transition: Transition.leftToRight);
       print('Code sent to $data');
       print(emaill);
     } catch (e) {

@@ -304,7 +304,7 @@ class _addfacetofaceState extends State<addfacetoface> {
       setState(() {
         Loding = false;
       });
-      Get.off(() => const Facetoface());
+      Get.off(() => const Facetoface(), transition: Transition.leftToRight);
       ApiWrapper.showToastMessage("Add Successfully");
 
       if (kDebugMode) {
@@ -313,7 +313,7 @@ class _addfacetofaceState extends State<addfacetoface> {
     } else {
       setState(() {
         Loding = false;
-        Get.off(() => const Facetoface());
+        Get.off(() => const Facetoface(), transition: Transition.leftToRight);
       });
 
       ApiWrapper.showToastMessage("Something Went Wrong!!");

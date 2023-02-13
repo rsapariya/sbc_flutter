@@ -43,9 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void initState() {
     super.initState();
-    getDocs();
     city();
     catapi();
+    getDocs();
     Timer(
         const Duration(seconds: 4),
         () => getdata.read('isOpen') == true

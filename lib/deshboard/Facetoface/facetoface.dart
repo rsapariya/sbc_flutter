@@ -30,7 +30,7 @@ class _FacetofaceState extends State<Facetoface> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(() => addfacetoface());
+          Get.to(() => addfacetoface(), transition: Transition.leftToRight);
         },
         backgroundColor: Colors.blue,
         child: const Icon(

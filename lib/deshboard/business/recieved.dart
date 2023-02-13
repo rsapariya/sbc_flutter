@@ -33,7 +33,7 @@ class _RecievedState extends State<Recieved>
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(() => Addrequest());
+          Get.to(() => Addrequest(), transition: Transition.leftToRight);
         },
         backgroundColor: Colors.blue,
         child: const Icon(

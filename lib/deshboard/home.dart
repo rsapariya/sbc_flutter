@@ -17,6 +17,7 @@ import 'package:sbc/deshboard/tabbar/stats.dart';
 import 'package:sbc/deshboard/tabbar/summery.dart';
 import 'package:sbc/deshboard/visitors/Visitors.dart';
 import 'package:sbc/login/login.dart';
+import '../splaysh.dart';
 import '../units/api.dart';
 import '../units/storage.dart';
 import 'business/request.dart';
@@ -633,7 +634,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const home());
+                Get.to(() => const home(), transition: Transition.leftToRight);
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const home()));
@@ -654,7 +655,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const bussnesss());
+                Get.to(() => const bussnesss(), transition: Transition.leftToRight);
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const bussnesss()));
@@ -674,7 +675,7 @@ class _DrowerState extends State<Drower> {
                   )),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const Refferal());
+                Get.to(() => const Refferal(), transition: Transition.leftToRight);
 
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Refferal()));
@@ -695,7 +696,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const Facetoface());
+                Get.to(() => const Facetoface(), transition: Transition.leftToRight);
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Facetoface()));
@@ -716,7 +717,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.of(context);
-                Get.to(() => const Events());
+                Get.to(() => const Events(), transition: Transition.leftToRight);
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Events()));
               },
@@ -736,7 +737,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const Attendance());
+                Get.to(() => const Attendance(), transition: Transition.leftToRight);
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const Attendance()));
               },
@@ -756,7 +757,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const Visitors());
+                Get.to(() => const Visitors(), transition: Transition.leftToRight);
                 // Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(builder: (context) => const Visitors()));
               },
@@ -776,7 +777,7 @@ class _DrowerState extends State<Drower> {
               ),
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const FilterMember());
+                Get.to(() => const FilterMember(), transition: Transition.leftToRight);
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const FilterMember()));
