@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sbc/deshboard/Profile.dart';
 import 'package:sbc/deshboard/attendance.dart';
 import 'package:sbc/deshboard/Facetoface/facetoface.dart';
@@ -40,12 +41,14 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   List screens = [const summery(), const mitting(), const states()];
   late TabController _tabController;
   bool loding = true;
+
+  String? _packageInfoText;
+
   @override
   void initState() {
     setState(() {});
+    getInfo();
     save('Login', true);
-    print('--------nnnnnnnnnnnnnnnnnnnn-----------');
-    print(getdata.read('USERID'));
     _tabController = TabController(vsync: this, length: 3);
     getUser();
     super.initState();
@@ -67,10 +70,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                     style: GoogleFonts.poppins(),
                   ),
                 ),
-                // PopupMenuItem(
-                //   value: "Change Password",
-                //   child: Text('Change Password'),
-                // ),
                 PopupMenuItem(
                   value: "Sign Out",
                   child: Text('Sign Out', style: GoogleFonts.poppins()),
@@ -88,7 +87,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                     save('Login', false);
                     Get.offAll(() => login());
                     save('EMAIL', 'aaaa');
-                    print(">>>>>>>>>>>>${getdata.read('EMAIL')}");
                   });
                 } else if (menu == "Rate Us") {
                   LaunchReview.launch(androidAppId: "com.sbc.sgcci");
@@ -404,30 +402,21 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getbiss() {
-    print(">>>>>>>>>>>>       GETBUSINESS     >>>>>>>>>>>>");
-
     ApiWrapper.dataGet(AppUrl.Gbuiss).then((val) {
-      print(getdata.read('USERID'));
-
       if ((val != null) && (val.isNotEmpty)) {
-        print("           GETBUSINESS          $val");
         setState(() {
           getbuss.clear();
         });
         val.forEach((e) {
           getbuss.add(e);
-          print(e);
         });
         getbuss.sort((a, b) {
           var adate = a['entry_date']; //before -> var adate = a.expiry;
           var bdate = b['entry_date']; //var bdate = b.expiry;
           return -adate.compareTo(bdate);
         });
-        print("           BUSINESSSSSSSSSSSS          ----->>>>$getbuss");
       } else {
-        if (kDebugMode) {
-          print(val);
-        }
+        if (kDebugMode) {}
       }
     });
   }
@@ -471,7 +460,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   recibiss() {
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         recivebuss.clear();
         val.forEach((e) {
           recivebuss.add(e);
@@ -491,7 +479,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   getevents() {
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         events.clear();
 
         val.forEach((e) {
@@ -531,11 +518,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   getUser() {
-    print(
-        "---------------------------------------------------------------cccccccccccccccccc");
-    print(getdata.read('EMAIL'));
-    print(AppUrl.GetUser + getdata.read('EMAIL').toString());
-    print(AppUrl.GetUser + getdata.read('EMAIL').toString());
     ApiWrapper.dataGet(AppUrl.GetUser + getdata.read('EMAIL').toString())
         .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
@@ -543,10 +525,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
           save('User', val);
           save('USERID', getdata.read('User')['id'].toString());
         });
-        print(getdata.read('User'));
-        print('???????????????????????????');
-        print(getdata.read('USERID'));
-        print('???????????????????????????');
 
         homeapi();
       } else {}
@@ -554,10 +532,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   homeapi() {
-    print(
-        "---------------------------------------------------------------cccccccccccccccccc");
-    print(getdata.read('EmailID'));
-    print(getdata.read('USERID'));
     ApiWrapper.dataGet(AppUrl.dashbord).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         save('dashboard', val);
@@ -578,6 +552,52 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         ApiWrapper.showToastMessage("Something Went Wrong!!");
       }
     });
+  }
+
+  void getInfo() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String packageName = packageInfo.version;
+    setState(() {});
+
+    if (packageName != getdata.read('varsion')) {
+      _showMyDialogg();
+    }
+  }
+
+  Future<void> _showMyDialogg() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'SBC New version 0.0.${getdata.read('varsion')} is available',
+            style: GoogleFonts.poppins(),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  setState(() {});
+                  Get.back();
+                },
+                child: Text(
+                  'Later',
+                  style: GoogleFonts.poppins(color: Colors.black),
+                )),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    LaunchReview.launch(androidAppId: "com.sbc.sgcci");
+                  });
+                },
+                child: const Text(
+                  'Update Now',
+                  style: TextStyle(color: Colors.blue, fontFamily: "popins"),
+                )),
+          ],
+        );
+      },
+    );
   }
 }
 

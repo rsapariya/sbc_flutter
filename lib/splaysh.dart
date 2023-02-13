@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -22,11 +23,27 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+final firebaseInstance = FirebaseFirestore.instance;
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  Future<void> getDocs() async {
+    try {
+      var response = await firebaseInstance
+          .collection('version')
+          .doc('vk8qCpFwAtZhKADYxUNB')
+          .get();
+      setState(() {});
+      print("====================               ==============");
+      print(response['versionname']);
+      save("varsion",response['versionname'].toString());
+      setState(() {});
+    } catch (e) {}
+  }
+
   void initState() {
     super.initState();
-
+    getDocs();
     city();
     catapi();
     Timer(
