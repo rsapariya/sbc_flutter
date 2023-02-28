@@ -34,9 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
           .doc('vk8qCpFwAtZhKADYxUNB')
           .get();
       setState(() {});
-      print("====================               ==============");
-      print(response['versionname']);
-      save("varsion",response['versionname'].toString());
+      save("varsion", response['versionname'].toString());
+      save("current", '10');
       setState(() {});
     } catch (e) {}
   }

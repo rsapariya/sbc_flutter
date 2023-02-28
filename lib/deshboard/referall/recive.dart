@@ -301,7 +301,6 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
       await launchUrl(uri);
     } else {
       if (kDebugMode) {
-        print("error");
       }
       throw "ERROR ";
     }
@@ -310,7 +309,6 @@ class _RecievState extends State<Reciev> with SingleTickerProviderStateMixin {
   getrecivereffrel() {
     ApiWrapper.dataGet(AppUrl.getreciveraf).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print(val);
         Recivereffrel.clear();
         setState(() {});
         val.forEach((e) {

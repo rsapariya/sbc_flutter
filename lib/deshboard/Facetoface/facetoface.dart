@@ -220,7 +220,7 @@ class _FacetofaceState extends State<Facetoface> {
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.transparent,
                     value: null,
-                    strokeWidth: 3.0,
+                    strokeWidth:3,
                   ),
                 ),
     );
@@ -232,17 +232,17 @@ class _FacetofaceState extends State<Facetoface> {
 
   facetofaceapi() {
     if (kDebugMode) {
-      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
     }
 
     ApiWrapper.dataGet(AppUrl.facetoface).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("FACETOFACE--->>>>$val");
+
         Face.clear();
-        print("--------------------------????????????$Face");
+
         val.forEach((e) {
           Face.add(e);
-          print(e);
+
         });
         Face.sort((a, b) {
           var adate = a['oto_date']; //before -> var adate = a.expiry;
@@ -251,7 +251,6 @@ class _FacetofaceState extends State<Facetoface> {
         });
         setState(() {});
         Loding = false;
-        print("**********************$Face");
       } else {
         setState(() {});
         Loding = false;
@@ -261,7 +260,6 @@ class _FacetofaceState extends State<Facetoface> {
   }
 
   deletefacetofaceapi() async {
-    print(">>>>>>>>>>>       DELETE      >>>>>>>>>>>>");
     var headers = {'Cookie': 'PHPSESSID=96e5eb5258d6ea9e422f81c683fea5f8'};
     var request = http.Request(
         'GET', Uri.parse('https://sbc.sgcci.in/api-old/deleteOTO/' + faceis));
@@ -272,10 +270,8 @@ class _FacetofaceState extends State<Facetoface> {
 
     if (response.statusCode == 200) {
       facetofaceapi();
-      print(await response.stream.bytesToString());
     } else {
       ApiWrapper.showToastMessage("Something Went Wrong!!");
-      print(response.reasonPhrase);
     }
   }
 

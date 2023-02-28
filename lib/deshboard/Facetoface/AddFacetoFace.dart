@@ -96,7 +96,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                                   child: InkWell(
                                     onTap: () {
                                       if (kDebugMode) {
-                                        print(list);
+
                                       }
                                       FocusScope.of(context).unfocus();
                                       menber.text = _foundUsers[index]
@@ -108,7 +108,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                                       list = false;
                                       setState(() {});
                                       if (kDebugMode) {
-                                        print(list);
+
                                       }
                                     },
                                     child: SizedBox(
@@ -163,12 +163,12 @@ class _addfacetofaceState extends State<addfacetoface> {
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
                           if (kDebugMode) {
-                            print(pickedDate);
+
                           } //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
                           if (kDebugMode) {
-                            print(formattedDate);
+
                           } //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
@@ -178,7 +178,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                           });
                         } else {
                           if (kDebugMode) {
-                            print("Date is not selected");
+
                           }
                         }
                       },
@@ -226,7 +226,7 @@ class _addfacetofaceState extends State<addfacetoface> {
                                   Loding = true;
                                 });
                                 if (kDebugMode) {
-                                  print(userid);
+
                                 }
                                 Addfacetofaceapi();
                               } else {
@@ -247,7 +247,7 @@ class _addfacetofaceState extends State<addfacetoface> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth:3,
               ),
             ),
     );
@@ -284,7 +284,7 @@ class _addfacetofaceState extends State<addfacetoface> {
 
   Addfacetofaceapi() async {
     if (kDebugMode) {
-      print("--------------------");
+
     }
     var headers = {'Cookie': 'PHPSESSID=96e5eb5258d6ea9e422f81c683fea5f8'};
     var request = http.MultipartRequest(
@@ -308,7 +308,7 @@ class _addfacetofaceState extends State<addfacetoface> {
       ApiWrapper.showToastMessage("Add Successfully");
 
       if (kDebugMode) {
-        print(await response.stream.bytesToString());
+
       }
     } else {
       setState(() {
@@ -319,7 +319,7 @@ class _addfacetofaceState extends State<addfacetoface> {
       ApiWrapper.showToastMessage("Something Went Wrong!!");
 
       if (kDebugMode) {
-        print(response.reasonPhrase);
+
       }
     }
   }

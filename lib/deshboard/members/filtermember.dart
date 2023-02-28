@@ -244,7 +244,7 @@ class _FilterMemberState extends State<FilterMember>
                                   setState(() {});
                                   save('userdeta', _foundUsers[index]);
                                   if (kDebugMode) {
-                                    print(getdata.read('userdeta'));
+
                                   }
                                   Get.to(() => const MemberDetalis());
                                 },
@@ -415,7 +415,6 @@ class _FilterMemberState extends State<FilterMember>
     ApiWrapper.dataGet(AppUrl.GetallUsers + getdata.read('EMAIL').toString())
         .then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print(val);
         setState(() {
           Userss.clear();
         });

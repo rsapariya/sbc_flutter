@@ -91,17 +91,14 @@ class _bussnesssState extends State<bussnesss>
 
   catapi() {
     if (kDebugMode) {
-      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
     ApiWrapper.dataGet(AppUrl.cetagory).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
         if (kDebugMode) {
-          print("----------->>>>$val");
         }
         val.forEach((e) {
           if (kDebugMode) {
-            print(e);
           }
           setState(() {});
         });
@@ -112,7 +109,6 @@ class _bussnesssState extends State<bussnesss>
 
   GetUSers() {
     if (kDebugMode) {
-      print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
     ApiWrapper.dataGet(AppUrl.getusers + getdata.read('EMAIL').toString())

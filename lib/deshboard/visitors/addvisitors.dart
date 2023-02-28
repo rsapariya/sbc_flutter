@@ -239,7 +239,7 @@ class _AddvisitorsState extends State<Addvisitors> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth: 3,
               ),
             ),
     );
@@ -302,7 +302,6 @@ class _AddvisitorsState extends State<Addvisitors> {
       setState(() {});
       ApiWrapper.showToastMessage("Something Went Wrong!!");
       if (kDebugMode) {
-        print(response.reasonPhrase);
       }
     }
   }

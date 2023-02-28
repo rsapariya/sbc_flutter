@@ -132,9 +132,7 @@ class _QRViewExampleState extends State<QRViewExample> {
       'ch_id': '1',
       'ev_id': result!.code.toString()
     });
-    print(getdata.read('USERID'));
-    print(result!.code.toString());
-    print("----------------------------");
+
 
     request.headers.addAll(headers);
 
@@ -143,12 +141,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     if (response.statusCode == 200) {
       Get.off(() => const Events());
       ApiWrapper.showToastMessage("Attendence Sucsessfuly.");
-      print("--------000000000000------");
-      print(getdata.read('USERID'));
-      print(result!.code.toString());
-      print(await response.stream.bytesToString());
     } else {
-      print(response.reasonPhrase);
     }
   }
 }

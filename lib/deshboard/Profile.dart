@@ -585,7 +585,7 @@ class _ProfilepageState extends State<Profilepage> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth:3,
               ),
             ),
     );

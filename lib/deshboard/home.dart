@@ -555,11 +555,9 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   }
 
   void getInfo() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String packageName = packageInfo.version;
     setState(() {});
 
-    if (packageName != getdata.read('varsion')) {
+    if (getdata.read('varsion') != getdata.read('current')) {
       _showMyDialogg();
     }
   }

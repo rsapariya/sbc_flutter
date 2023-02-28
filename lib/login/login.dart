@@ -195,33 +195,12 @@ class _loginState extends State<login> {
                               SizedBox(
                                 height: Get.height / 10,
                               ),
-                              // Row(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       Text(
-                              //         "Don't have an account yet?",
-                              //         style: GoogleFonts.poppins(
-                              //             textStyle: const TextStyle(
-                              //           fontSize: 14,
-                              //         )),
-                              //       ),
-                              //       InkWell(
-                              //           onTap: () {
-                              //             Get.to(() => register());
-                              //           },
-                              //           child: Text("Register",
-                              //               style: GoogleFonts.poppins(
-                              //                   textStyle: const TextStyle(
-                              //                 fontSize: 14,
-                              //                 color: Colors.blue,
-                              //               ))))
-                              //     ])
                             ]))))
             : const Center(
                 child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth: 3,
               )));
   }
 

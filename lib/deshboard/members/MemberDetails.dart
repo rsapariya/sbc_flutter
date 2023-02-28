@@ -116,9 +116,6 @@ class _MemberDetalisState extends State<MemberDetalis> {
   String in5 = getdata.read('userdeta')['biz_img5'].toString();
   var date;
   Widget build(BuildContext context) {
-    print("-----------------------------------------------------");
-    print(in1);
-    print("-----------------------------------------------------");
 
     return Scaffold(
       appBar: AppBar(

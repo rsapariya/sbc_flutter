@@ -134,7 +134,7 @@ class _givenState extends State<given> with SingleTickerProviderStateMixin {
                         child: CircularProgressIndicator(
                           backgroundColor: Colors.transparent,
                           value: null,
-                          strokeWidth: 3.0,
+                          strokeWidth:3,
                         ),
                       ),
           ),

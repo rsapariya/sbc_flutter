@@ -214,7 +214,6 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
   getevents() {
     ApiWrapper.dataGet(AppUrl.eventsss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
         events.clear();
 
         val.forEach((e) {

@@ -259,7 +259,7 @@ class _VisitorsState extends State<Visitors> {
                       child: CircularProgressIndicator(
                         backgroundColor: Colors.transparent,
                         value: null,
-                        strokeWidth: 3.0,
+                        strokeWidth: 3,
                       ),
                     ),
         ));
@@ -323,32 +323,24 @@ class _VisitorsState extends State<Visitors> {
 
     if (response.statusCode == 200) {
       Visitors();
-      if (kDebugMode) {
-        print(await response.stream.bytesToString());
-      }
+      if (kDebugMode) {}
     } else {
       Loding = false;
       ApiWrapper.showToastMessage("Something Went Wrong !!");
-      if (kDebugMode) {
-        print(response.reasonPhrase);
-      }
+      if (kDebugMode) {}
     }
   }
 
   Visitors() {
     ApiWrapper.dataGet(AppUrl.visitors).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        if (kDebugMode) {
-          print("VISITORS--->>>>$val");
-        }
+        if (kDebugMode) {}
         setState(() {
           visitors.clear();
         });
         val.forEach((e) {
           visitors.add(e);
-          if (kDebugMode) {
-            print(e);
-          }
+          if (kDebugMode) {}
         });
         visitors.sort((a, b) {
           var adate = a['ev_date']; //before -> var adate = a.expiry;
@@ -356,9 +348,7 @@ class _VisitorsState extends State<Visitors> {
           return -adate.compareTo(bdate);
         });
         Loding = false;
-        if (kDebugMode) {
-          print("VISITORS>>>>>>----->>>>$visitors");
-        }
+        if (kDebugMode) {}
       } else {
         visitors.clear();
         setState(() {

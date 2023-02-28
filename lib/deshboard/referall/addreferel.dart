@@ -285,12 +285,10 @@ class _addrefrelState extends State<addrefrel> {
                                 2000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
-                          print(
-                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                 //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(
-                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                         //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
                           setState(() {
@@ -298,7 +296,7 @@ class _addrefrelState extends State<addrefrel> {
                                 formattedDate; //set output date to TextField value.
                           });
                         } else {
-                          print("Date is not selected");
+
                         }
                       },
                       decoration: buildInputDecoration(
@@ -346,7 +344,7 @@ class _addrefrelState extends State<addrefrel> {
                                 setState(() {
                                   lodiing = true;
                                 });
-                                print(userid);
+
                                 Addrefrence();
                               } else {
                                 ApiWrapper.showToastMessage(
@@ -366,7 +364,7 @@ class _addrefrelState extends State<addrefrel> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth: 3,
               ),
             ),
     );
@@ -404,15 +402,15 @@ class _addrefrelState extends State<addrefrel> {
   recibiss() {
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-        print("----------->>>>$val");
+
 
         val.forEach((e) {
           recivebuss.add(e);
 
-          print(e);
+
         });
         lodiing = false;
-        print('OKKKKKKKKKK>>>>>>>>>>>>>>>>>>>');
+
 
         lodiing == false ? Get.off(() => const bussnesss()) : lodiing;
       } else

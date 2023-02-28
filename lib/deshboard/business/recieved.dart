@@ -111,7 +111,6 @@ class _RecievedState extends State<Recieved>
                                               recivebuss[index]['entry_id'];
                                           setState(() {});
                                           if (kDebugMode) {
-                                            print(">>>>$delatebiss");
                                           }
                                           _showMyDialog();
                                         },
@@ -216,7 +215,7 @@ class _RecievedState extends State<Recieved>
                       child: CircularProgressIndicator(
                         backgroundColor: Colors.transparent,
                         value: null,
-                        strokeWidth: 3.0,
+                        strokeWidth:3,
                       ),
                     ),
         ),

@@ -14,7 +14,7 @@ class AWSServices {
       clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
 
   Future createInitialRecord(email, password) async {
-    debugPrint('Authenticating User... ${userPool.toString()}');
+
     final cognitoUser = CognitoUser(email, userPool,
         clientSecret: "1eucun5p225vvlqrpsccvu5uodj05d2etmkl6f9ksa1et3rf7tib");
     final authDetails = AuthenticationDetails(
@@ -24,7 +24,7 @@ class AWSServices {
     CognitoUserSession? session;
     try {
       session = await cognitoUser.authenticateUser(authDetails);
-      debugPrint('Login Success...');
+
       save('EMAIL', email.toString());
       // EmailID = email.toString();
       save('LoginLoding', false);
@@ -34,36 +34,26 @@ class AWSServices {
       ApiWrapper.showToastMessage("Login Successfully.");
     } on CognitoUserNewPasswordRequiredException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserNewPasswordRequiredException $e');
+
     } on CognitoUserMfaRequiredException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserSelectMfaTypeException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserMfaRequiredException $e');
     } on CognitoUserMfaSetupException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserMfaSetupException $e');
     } on CognitoUserTotpRequiredException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserTotpRequiredException $e');
     } on CognitoUserCustomChallengeException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserCustomChallengeException $e');
     } on CognitoUserConfirmationNecessaryException catch (e) {
       save('LoginLoding', false);
-      debugPrint('CognitoUserConfirmationNecessaryException $e');
     } on CognitoClientException catch (e) {
       save('LoginLoding', false);
-      print('================================');
-      print(getdata.read('LoginLoding'));
       Get.offAll(() => login());
       ApiWrapper.showToastMessage(e.message);
-      debugPrint('CognitoClientException ---->>>$e');
     } catch (e) {
       save('LoginLoding', false);
       ApiWrapper.showToastMessage('Something Went ');
-      print(e);
     }
   }
 }

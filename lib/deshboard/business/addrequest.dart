@@ -98,9 +98,6 @@ class _AddrequestState extends State<Addrequest> {
                                           .toString();
                                       userid =
                                           _foundUsers[index]['id'].toString();
-                                      print(userid);
-
-                                      print(list);
                                     },
                                     child: SizedBox(
                                       width: Get.width / 2,
@@ -153,12 +150,10 @@ class _AddrequestState extends State<Addrequest> {
                                 2000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
-                          print(
-                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(
-                              formattedDate); //formatted date output using intl package =>  2021-03-16
+                       //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
                           setState(() {
@@ -428,7 +423,7 @@ class _AddrequestState extends State<Addrequest> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth: 3.0,
+                strokeWidth:3,
               ),
             ),
     );
