@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,10 +11,18 @@ import 'package:provider/provider.dart';
 import 'package:sbc/splaysh.dart';
 import 'package:sbc/units/color.dart';
 
+import 'notificationservice/local_notification_service.dart';
+
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print(message.data.toString());
+  print(message.notification!.title);
+}
+
 void main() async {
   await GetStorage.init();
   await dotenv.load();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

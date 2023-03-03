@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
 
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -47,7 +51,8 @@ class _AddrequestState extends State<Addrequest> {
         leading: InkWell(
             onTap: () {
               setState(() {
-                Get.off(() => const bussnesss(), transition: Transition.leftToRight);
+                Get.off(() => const bussnesss(),
+                    transition: Transition.leftToRight);
                 loding = false;
               });
             },
@@ -150,10 +155,10 @@ class _AddrequestState extends State<Addrequest> {
                                 2000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
-                        //pickedDate output format => 2021-03-10 00:00:00.000
+                          //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
-                       //formatted date output using intl package =>  2021-03-16
+                          //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
                           setState(() {
@@ -404,6 +409,7 @@ class _AddrequestState extends State<Addrequest> {
                                   loding = true;
                                 });
                                 print(userid);
+                                gettoken();
                                 bissness();
                               } else {
                                 ApiWrapper.showToastMessage(
@@ -423,10 +429,23 @@ class _AddrequestState extends State<Addrequest> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth:3,
+                strokeWidth: 3,
               ),
             ),
     );
+  }
+
+  void gettoken() async {
+    DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection("UserTokens")
+        .doc(userid.toString())
+        .get();
+
+    String msjtoken = snap['token'];
+    save('OTP', msjtoken.toString());
+    setState(() {});
+    print('---------------------------');
+    print(msjtoken);
   }
 
   InputDecoration buildInputDecoration({
@@ -471,12 +490,21 @@ class _AddrequestState extends State<Addrequest> {
         });
         loding = false;
         print('OKKKKKKKKKK>>>>>>>>>>>>>>>>>>>');
-
-        loding == false ? Get.off(() => const bussnesss(), transition: Transition.leftToRight) : loding;
+        setState(() {});
+        loding == false
+            ? Get.off(() => const bussnesss(),
+                transition: Transition.leftToRight)
+            : loding;
       } else {
         setState(() {});
         loding = false;
+        loding == false
+            ? Get.off(() => const bussnesss(),
+                transition: Transition.leftToRight)
+            : loding;
         ApiWrapper.showToastMessage("Something Went Wrong!!");
+        print('Something Went Wrong!!');
+        print(val);
       }
       // Get.off(() => const bussnesss());
     });
@@ -508,23 +536,19 @@ class _AddrequestState extends State<Addrequest> {
       print('>>>>>>>>>>>>>>>>>>>');
       loding = false;
       setState(() {});
+      Send();
+
       recivebuss.clear();
       recibiss();
       ApiWrapper.showToastMessage('Business Add Sucsessfuly.');
-      print(await response.stream.bytesToString());
     } else {
       print('ELSEELSELSLEELL>>>>>>>>>>>>>>>>>>>');
-
-      print(response.reasonPhrase);
     }
   }
 
   void _runFilterr(String enteredKeyword) {
     print("---------------${list}----------------");
     List results = [];
-    // setState(() {
-    //   list = true;
-    // });
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       // results = Userss.cast<Map<String, dynamic>>();
@@ -541,5 +565,35 @@ class _AddrequestState extends State<Addrequest> {
     }
     results.isEmpty ? list = false : _foundUsers = results;
     setState(() {});
+  }
+
+  void Send() async {
+    try {
+      await http.post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
+          headers: <String, String>{
+            'Content-Type': 'application/json',
+            'Authorization':
+                'key=AAAAwCm_dwk:APA91bGFg_2sv7zm-Msb1-1ggSgF-_32ZydqoAAUyhHJ1UmMMzpKhBSlw4_wA1NDg4eLmFkKho5FuBhtPJdf3CaSZqVwrOru64Q8kb7M7No6GEnLWgn2AuJvRf3KKAxH5o0voIpYyrGa'
+          },
+          body: jsonEncode(<String, dynamic>{
+            'priority': 'high',
+            'data': <String, dynamic>{
+              'click_action': Get.to(() => Addrequest()),
+              'status': 'done',
+              'body':
+                  "${menber.text.toString()} Recived ${amount.text.toString()} business from you.",
+              'title': "SBC Business"
+            },
+            "notification": <String, dynamic>{
+              "title": "SBC Business",
+              'body':
+                  "${menber.text.toString()} Recived ${amount.text.toString()} business from you.",
+              "android_channel_id": "SBC.SGCCI"
+            },
+            'to': getdata.read('OTP'),
+          }));
+    } catch (e) {
+      print('---ERRRO----->>>>>>$e');
+    }
   }
 }

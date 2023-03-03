@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbc/login/forgotpass.dart';
-import 'package:sbc/login/register.dart';
 import 'package:sbc/units/api.dart';
 import 'package:sbc/units/storage.dart';
 import '../Coognito/awsregister.dart';
@@ -12,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 // String? UserID;
 // String? EmailID;
 String? Message;
+
 
 class login extends StatefulWidget {
   login({Key? key}) : super(key: key);

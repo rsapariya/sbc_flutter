@@ -301,8 +301,7 @@ class _AddvisitorsState extends State<Addvisitors> {
       Loding = false;
       setState(() {});
       ApiWrapper.showToastMessage("Something Went Wrong!!");
-      if (kDebugMode) {
-      }
+      if (kDebugMode) {}
     }
   }
 
@@ -322,13 +321,8 @@ class _AddvisitorsState extends State<Addvisitors> {
           items: _myJson.map((Map map) {
             return DropdownMenuItem<String>(
               value: map["ev_id"].toString(),
-              // value: _mySelection,
               child: Row(
                 children: <Widget>[
-                  // Image.asset(
-                  //   map["id"],
-                  //   width: 25,
-                  // ),
                   Container(
                       margin: const EdgeInsets.only(left: 10),
                       child: Text(map["ev_title"])),

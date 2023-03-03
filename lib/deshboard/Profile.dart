@@ -43,26 +43,26 @@ class _ProfilepageState extends State<Profilepage> {
   TextEditingController Businessinfo = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   void initState() {
-    Fname.text = getdata.read('User')['name']??"";
-    Lname.text = getdata.read('User')['lname']??"";
-    Email.text = getdata.read('User')['email']??"";
-    Phone.text = getdata.read('User')['phone']??"";
-    Date.text = getdata.read('User')['birthdate']??"";
-    sDate.text = getdata.read('User')['anniversary']??"";
-    Pcode.text = getdata.read('User')['postalcode']??"";
-    Address.text = getdata.read('User')['address']??"";
-    Achivments.text = getdata.read('User')['achievements']??"";
-    Business.text = getdata.read('User')['business']??"";
-    Website.text = getdata.read('User')['website']??"";
-    Businessinfo.text = getdata.read('User')['business_info']??"";
-    BusinessWhatt.text = getdata.read('User')['whatsapp']??"";
-    Businessadd.text = getdata.read('User')['business_address']??"";
-    Fb.text = getdata.read('User')['facebook']??"";
-    Insta.text = getdata.read('User')['instagram']??"";
-    Linkdin.text = getdata.read('User')['linkedin']??"";
-    Twiter.text = getdata.read('User')['twitter']??"";
-    Googlemap.text = getdata.read('User')['google_map']??"";
-    Keywords.text = getdata.read('User')['keywords']??"";
+    Fname.text = getdata.read('User')['name'] ?? "";
+    Lname.text = getdata.read('User')['lname'] ?? "";
+    Email.text = getdata.read('User')['email'] ?? "";
+    Phone.text = getdata.read('User')['phone'] ?? "";
+    Date.text = getdata.read('User')['birthdate'] ?? "";
+    sDate.text = getdata.read('User')['anniversary'] ?? "";
+    Pcode.text = getdata.read('User')['postalcode'] ?? "";
+    Address.text = getdata.read('User')['address'] ?? "";
+    Achivments.text = getdata.read('User')['achievements'] ?? "";
+    Business.text = getdata.read('User')['business'] ?? "";
+    Website.text = getdata.read('User')['website'] ?? "";
+    Businessinfo.text = getdata.read('User')['business_info'] ?? "";
+    BusinessWhatt.text = getdata.read('User')['whatsapp'] ?? "";
+    Businessadd.text = getdata.read('User')['business_address'] ?? "";
+    Fb.text = getdata.read('User')['facebook'] ?? "";
+    Insta.text = getdata.read('User')['instagram'] ?? "";
+    Linkdin.text = getdata.read('User')['linkedin'] ?? "";
+    Twiter.text = getdata.read('User')['twitter'] ?? "";
+    Googlemap.text = getdata.read('User')['google_map'] ?? "";
+    Keywords.text = getdata.read('User')['keywords'] ?? "";
 
     super.initState();
   }
@@ -124,8 +124,9 @@ class _ProfilepageState extends State<Profilepage> {
                           ),
                         ),
                         Text(
-                          getdata.read('User')['name']??"" +
-                              getdata.read('User')['lname']??"",
+                          getdata.read('User')['name'] ??
+                              "" + getdata.read('User')['lname'] ??
+                              "",
                           style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                             color: Colors.black,
@@ -141,7 +142,7 @@ class _ProfilepageState extends State<Profilepage> {
                           )),
                         ),
                         Text(
-                          getdata.read('User')['role_type']??"",
+                          getdata.read('User')['role_type'] ?? "",
                           style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                             color: Colors.black,
@@ -279,7 +280,8 @@ class _ProfilepageState extends State<Profilepage> {
                             DateTime? pickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(1950), //DateTime.now() - not to allow to choose before today.
+                                firstDate: DateTime(
+                                    1950), //DateTime.now() - not to allow to choose before today.
                                 lastDate: DateTime(2101));
                             if (pickedDate != null) {
                               //pickedDate output format => 2021-03-10 00:00:00.000
@@ -585,7 +587,7 @@ class _ProfilepageState extends State<Profilepage> {
               child: CircularProgressIndicator(
                 backgroundColor: Colors.transparent,
                 value: null,
-                strokeWidth:3,
+                strokeWidth: 3,
               ),
             ),
     );
