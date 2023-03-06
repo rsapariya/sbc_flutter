@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sbc/deshboard/Profile.dart';
+import 'package:sbc/deshboard/aboutapp.dart';
 import 'package:sbc/deshboard/attendance.dart';
 import 'package:sbc/deshboard/Facetoface/facetoface.dart';
 import 'package:sbc/deshboard/referall/Reffrel.dart';
@@ -65,13 +66,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
         .set({'token': token});
   }
 
-  // void saveToken(String token) async {
-  //   await FirebaseFirestore.instance
-  //       .collection('UserTokens')
-  //       .doc(getdata.read('User')['id'].toString())
-  //       .delete();
-  // }
-
   @override
   void initState() {
     setState(() {});
@@ -80,52 +74,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
     _tabController = TabController(vsync: this, length: 3);
     getUser();
     super.initState();
-
-    // 1. This method call when app in terminated state and you get a notification
-    // when you click on notification app open from terminated state and you can get notification data in this method
-
-    // FirebaseMessaging.instance.getInitialMessage().then(
-    //   (message) {
-    //     print("FirebaseMessaging.instance.getInitialMessage");
-    //     if (message != null) {
-    //       print("New Notification");
-    //       // if (message.data['_id'] != null) {
-    //       //   Navigator.of(context).push(
-    //       //     MaterialPageRoute(
-    //       //       builder: (context) => DemoScreen(
-    //       //         id: message.data['_id'],
-    //       //       ),
-    //       //     ),
-    //       //   );
-    //       // }
-    //     }
-    //   },
-    // );
-
-    // 2. This method only call when App in forground it mean app must be opened
-    // FirebaseMessaging.onMessage.listen(
-    //   (message) {
-    //     print("FirebaseMessaging.onMessage.listen");
-    //     if (message.notification != null) {
-    //       print(message.notification!.title);
-    //       print(message.notification!.body);
-    //       print("message.data11 ${message.data}");
-    //       LocalNotificationService.createanddisplaynotification(message);
-    //     }
-    //   },
-    // );
-    //
-    // // 3. This method only call when App in background and not terminated(not closed)
-    // FirebaseMessaging.onMessageOpenedApp.listen(
-    //   (message) {
-    //     print("FirebaseMessaging.onMessageOpenedApp.listen");
-    //     if (message.notification != null) {
-    //       print(message.notification!.title);
-    //       print(message.notification!.body);
-    //       print("message.data22 ${message.data['_id']}");
-    //     }
-    //   },
-    // );
   }
 
   Widget build(BuildContext context) {
@@ -148,19 +96,27 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         PopupMenuItem(
                             value: "Rate Us",
                             child:
-                                Text('Rate Us', style: GoogleFonts.poppins()))
+                                Text('Rate Us', style: GoogleFonts.poppins())),
+                        PopupMenuItem(
+                            value: "About",
+                            child: Text('About', style: GoogleFonts.poppins())),
                       ],
                   onSelected: (String menu) {
                     if (menu == "Profile") {
-                      Get.to(() => const Profilepage());
+                      Get.to(() => const Profilepage(),
+                          transition: Transition.rightToLeft);
                     } else if (menu == "Sign Out") {
                       setState(() {
                         save('Login', false);
-                        Get.offAll(() => login());
+
+                        Get.offAll(() => login(),
+                            transition: Transition.leftToRight);
                         save('EMAIL', 'aaaa');
                       });
                     } else if (menu == "Rate Us") {
                       LaunchReview.launch(androidAppId: "com.sbc.sgcci");
+                    } else if (menu == "About") {
+                      Get.to(() => About(), transition: Transition.rightToLeft);
                     }
                   })
             ],

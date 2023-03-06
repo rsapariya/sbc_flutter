@@ -40,24 +40,6 @@ class _SplashScreenState extends State<SplashScreen> {
     } catch (e) {}
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   void initState() {
     super.initState();
     city();
