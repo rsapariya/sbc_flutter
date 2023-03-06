@@ -577,7 +577,7 @@ class _AddrequestState extends State<Addrequest> {
           body: jsonEncode(<String, dynamic>{
             'priority': 'high',
             'data': <String, dynamic>{
-              'click_action': Get.to(() => Addrequest()),
+              // 'click_action': Get.to(() => Addrequest()),
               'status': 'done',
               'body':
                   "${menber.text.toString()} Recived ${amount.text.toString()} business from you.",
