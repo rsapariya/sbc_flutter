@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print, override_on_non_overriding_member, sized_box_for_whitespace, curly_braces_in_flow_control_structures, camel_case_types, prefer_typing_uninitialized_variables, annotate_overrides, non_constant_identifier_names
 
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,6 +111,7 @@ class _addrefrelState extends State<addrefrel> {
                                       list = false;
                                       _foundUsers.clear();
                                       setState(() {});
+                                      gettoken();
                                     },
                                     child: SizedBox(
                                       width: Get.width / 2,
@@ -115,8 +119,7 @@ class _addrefrelState extends State<addrefrel> {
                                         padding: EdgeInsets.symmetric(
                                             vertical: Get.height / 60),
                                         child: Text(
-                                          _foundUsers[index]['username'] ??
-                                              "",
+                                          _foundUsers[index]['username'] ?? "",
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
@@ -192,7 +195,8 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Cold",
                                   style: GoogleFonts.poppins(
@@ -223,7 +227,8 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Regular",
                                   style: GoogleFonts.poppins(
@@ -254,7 +259,8 @@ class _addrefrelState extends State<addrefrel> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: Center(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   "Hot",
                                   style: GoogleFonts.poppins(
@@ -285,19 +291,17 @@ class _addrefrelState extends State<addrefrel> {
                                 2000), //DateTime.now() - not to allow to choose before today.
                             lastDate: DateTime(2101));
                         if (pickedDate != null) {
-                 //pickedDate output format => 2021-03-10 00:00:00.000
+                          //pickedDate output format => 2021-03-10 00:00:00.000
                           String formattedDate =
                               DateFormat('yyyy-MM-dd').format(pickedDate);
-                         //formatted date output using intl package =>  2021-03-16
+                          //formatted date output using intl package =>  2021-03-16
                           //you can implement different kind of Date Format here according to your requirement
 
                           setState(() {
                             date.text =
                                 formattedDate; //set output date to TextField value.
                           });
-                        } else {
-
-                        }
+                        } else {}
                       },
                       decoration: buildInputDecoration(
                           hintText: "Date",
@@ -402,15 +406,10 @@ class _addrefrelState extends State<addrefrel> {
   recibiss() {
     ApiWrapper.dataGet(AppUrl.Rbuiss).then((val) {
       if ((val != null) && (val.isNotEmpty)) {
-
-
         val.forEach((e) {
           recivebuss.add(e);
-
-
         });
         lodiing = false;
-
 
         lodiing == false ? Get.off(() => const bussnesss()) : lodiing;
       } else
@@ -444,6 +443,7 @@ class _addrefrelState extends State<addrefrel> {
       lodiing = false;
       setState(() {});
       Get.off(() => const Refferal());
+      Send();
       ApiWrapper.showToastMessage("Referral Add successfully.");
       print(await response.stream.bytesToString());
     } else {
@@ -474,5 +474,49 @@ class _addrefrelState extends State<addrefrel> {
     }
     results.isEmpty ? list = false : _foundUsers = results;
     setState(() {});
+  }
+
+  void gettoken() async {
+    DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection("UserTokens")
+        .doc(userid.toString())
+        .get();
+
+    String msjtoken = snap['token'];
+    save('OTPR', msjtoken.toString());
+    setState(() {});
+    print('---------------------------');
+    print(msjtoken);
+  }
+
+  void Send() async {
+    try {
+      print(getdata.read('OTPR'));
+      print('---------------SEND -------');
+      await http.post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
+          headers: <String, String>{
+            'Content-Type': 'application/json',
+            'Authorization':
+                'key=AAAAwCm_dwk:APA91bGFg_2sv7zm-Msb1-1ggSgF-_32ZydqoAAUyhHJ1UmMMzpKhBSlw4_wA1NDg4eLmFkKho5FuBhtPJdf3CaSZqVwrOru64Q8kb7M7No6GEnLWgn2AuJvRf3KKAxH5o0voIpYyrGa'
+          },
+          body: jsonEncode(<String, dynamic>{
+            'priority': 'high',
+            'data': <String, dynamic>{
+              // 'click_action': Get.to(() => Addrequest()),
+              'status': 'done',
+              'body': "You just got a Referral from ${menber.text.toString()}",
+
+              'title': "SBC Referral"
+            },
+            "notification": <String, dynamic>{
+              "title": "SBC Referral",
+              'body': "You just got a Referral from ${menber.text.toString()}",
+              "android_channel_id": "SBC.SGCCI"
+            },
+            'to': getdata.read('OTPR'),
+          }));
+    } catch (e) {
+      print('---ERRRO----->>>>>>$e');
+    }
   }
 }
