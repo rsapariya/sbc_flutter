@@ -88,18 +88,18 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         PopupMenuItem(
                             value: "Profile",
                             child:
-                                Text('Profile', style: GoogleFonts.poppins())),
+                                Text("Profile", style: GoogleFonts.poppins())),
                         PopupMenuItem(
                             value: "Sign Out",
                             child:
-                                Text('Sign Out', style: GoogleFonts.poppins())),
+                                Text("Sign Out", style: GoogleFonts.poppins())),
                         PopupMenuItem(
                             value: "Rate Us",
                             child:
-                                Text('Rate Us', style: GoogleFonts.poppins())),
+                                Text("Rate Us", style: GoogleFonts.poppins())),
                         PopupMenuItem(
                             value: "About",
-                            child: Text('About', style: GoogleFonts.poppins())),
+                            child: Text("About", style: GoogleFonts.poppins())),
                       ],
                   onSelected: (String menu) {
                     if (menu == "Profile") {
@@ -185,25 +185,23 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                               "Due : ${getdata.read('User')['due_date'] ?? ""}",
                                               style: GoogleFonts.poppins(
                                                   textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 14,
-                                              )))
+                                                      color: Colors.black,
+                                                      fontSize: 14)))
                                           : SizedBox(),
                                     ],
                                   ),
                                   Spacer(),
                                   Text(
-                                    "${getdata.read('User')['status'] ?? ""}",
-                                    style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            color: getdata.read(
-                                                        'User')['status'] ==
-                                                    "active"
-                                                ? Colors.blue
-                                                : Colors.red,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500)),
-                                  )
+                                      "${getdata.read('User')['status'] ?? ""}",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              color: getdata.read(
+                                                          'User')['status'] ==
+                                                      "active"
+                                                  ? Colors.blue
+                                                  : Colors.red,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500)))
                                 ])))),
                     Padding(
                         padding:
