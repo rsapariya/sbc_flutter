@@ -76,7 +76,6 @@ class _ProfilepageState extends State<Profilepage> {
       source: source,
     );
     setState(() {
-      // ignore: unnecessary_cast
       imageFile = pickedFile as PickedFile?;
       profileuplode();
     });

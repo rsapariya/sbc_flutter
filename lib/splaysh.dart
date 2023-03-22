@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           .get();
       setState(() {});
       save("varsion", response['versionname'].toString());
-      save("current", '11');
+      save("current", '13');
       setState(() {});
     } catch (e) {}
   }
