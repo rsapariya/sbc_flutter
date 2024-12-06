@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:825334134537:android:c53edd3efd884de637c5d8",
         "android_client_info": {
-          "package_name": "com.sbc.sgcci"
+          "package_name": "in.sbc.sgcci"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "825334134537-e8hppmrlj9v7dhfloj8ncphmmms3gvhb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sbc.sgcci",
+            "package_name": "in.sbc.sgcci",
             "certificate_hash": "014aeee396dec321855b89f0e820fd86f807ee94"
           }
         },

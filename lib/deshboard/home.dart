@@ -530,7 +530,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
     setState(() {});
 
     if (getdata.read('varsion') != getdata.read('current')) {
-      _showMyDialogg();
+     // _showMyDialogg();
     }
   }
 
